@@ -38,9 +38,6 @@
 		<li><a href="/persons/userlocationfindform">Find Person Location </a>
 		<li><a href="/persons/listallpersons">list of person </a>
 	</ul>
-<div>
-<iframe  width="1025" height="350"  src="" ></iframe>
-</div>
 <footer>
 		<p>
 			create by shanthini <br>Copyright &#169; 2022 &nbsp; All rights

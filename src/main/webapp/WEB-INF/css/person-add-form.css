@@ -42,7 +42,6 @@ h1 {
 	float: right;
 	display: flex;
 	justify-content: space-between;
-	float: right;
 	flex-wrap: nowrap;
 	align-items: center;
 	padding: 10px;
@@ -68,7 +67,6 @@ h1 {
 	border-radius: 50px;
 	background-color: rgb(6, 70, 99, 0.9);
 	padding-right: 22px;
-	color: #ECB365;
 	height: 50%;
 }
 
@@ -205,7 +203,7 @@ a {
 }
 
 button:hover {
-	border-bottom-color: black;
+	/* border-bottom-color: black; */
 	border: 2px solid rgb(6, 70, 99, 0.9);
 }
 

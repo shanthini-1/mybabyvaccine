@@ -41,7 +41,6 @@ h1 {
 	float: right;
 	display: flex;
 	justify-content: space-between;
-	float: right;
 	flex-wrap: nowrap;
 	align-items: center;
 	padding: 10px;
@@ -63,7 +62,6 @@ h1 {
 	flex-wrap: inherit;
 	padding-top: 7px;
 	padding-bottom: 6px;
-	color: #ECB365;
 	border-radius: 50px;
 	background-color: rgb(6, 70, 99, 0.9);
 	padding-right: 22px;
@@ -179,6 +177,4 @@ footer {
 	color: #ECB365;
 	text-shadow: black;
 	text-align: center;
-	text-shadow: black;
-	text-shadow: black;
 }
