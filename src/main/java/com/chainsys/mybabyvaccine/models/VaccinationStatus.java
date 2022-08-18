@@ -28,9 +28,7 @@ import com.chainsys.mybabyvaccine.compositemodel.ChildVaccineCompositeTable;
  * @author shan3102
  *
  */
-/*
- * composite key
- */
+
 @Entity
 @Table(name = "VACCINATION_STATUS")
 @IdClass(ChildVaccineCompositeTable.class)
@@ -63,13 +61,13 @@ public class VaccinationStatus {
 	
 	@Digits(integer = 6,fraction = 3,message = "*Weigth can be null")
 	@Positive(message = "weight can not be negative")
-	@Pattern(regexp = "^([0-9]*+\\.?[0-9]*|\\.[0-9]+)$",message = "*Weight should match required pattern")
+	@Pattern(regexp = "^(\\d*+\\.?\\d*|\\.\\d+)$",message = "*Weight should match required pattern")
 	@Column(name = "BABY_WEIGHT")
 	private double babyWeight;
 	
 	@Digits(integer = 6,fraction = 3,message = "Birth Weigth can be null")
 	@Positive(message = "weight can not be negative")
-	@Pattern(regexp = "^([0-9]*+\\.?[0-9]*|\\.[0-9]+)$",message = "*Birth weight should match required pattern")
+	@Pattern(regexp = "^(\\d*+\\.?\\d*|\\.\\d+)$",message = "*Birth weight should match required pattern")
 	@Column(name = "BABY_HEIGHT")
 	private double babyHeight;
 

@@ -74,7 +74,7 @@ public class Person {
 
 	@NotNull(message = "*Password should not be null")
 	@Size(min = 8, max = 25, message = "*password should match required length")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=()])(?=\\S+$).{8,25}$", message = "*Password should match given pattern")
+	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=()])(?=\\S+$).{8,25}$", message = "*Password should match given pattern")
 	@Column(name = "PASS_WORD")
 	private String passWord;
 

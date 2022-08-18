@@ -41,7 +41,7 @@ public class Vaccine {
 	
 	@NotNull(message = "*Vaccination Description should not be null")
 	@Size(min =3,max=150,message = "*Vaccine Description should match required length")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+-=()])(?=\\S+$).{8,25}$",message = "*Vaccination Description should match given pattern")
+	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+-=()])(?=\\S+$).{8,25}$",message = "*Vaccination Description should match given pattern")
 	@Column(name = "VAC_DESCRIPTION")
 	private String vacDescription;
 
@@ -60,7 +60,7 @@ public class Vaccine {
 	
 	@Digits(integer = 9,fraction = 2,message = "*Price can be null")
 	@Positive(message = "*Price can not be negative")
-	@Pattern(regexp = "^([0-9]*+\\.?[0-9]*|\\.[0-9]+)$",message = "*price should match required pattern")
+	@Pattern(regexp = "^(\\d*+\\.?\\d*|\\.\\d+)$",message = "*price should match required pattern")
 	@Column(name = "VACCINE_PRICE")
 	private float vaccinePrice;
 

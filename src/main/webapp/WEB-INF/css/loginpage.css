@@ -46,7 +46,6 @@ h2 {
 	width: 90%;
 	max-width: 450px;
 	position: relative;
-	padding: 0px;
 	-webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 	    box-shadow: 1px 5px 5px 5px rgb(0 0 0 / 12%);
 	text-align: center;
@@ -104,7 +103,6 @@ h2.active {
 
 .inputa {
 	background-color: #e4e4e7;
-	border: none;
 	color: #0d0d0d;
 	padding: 15px 32px;
 	text-align: center;
@@ -151,12 +149,7 @@ h2.active {
 	width: 100%;
 }
 
-/* OTHERS */
-*:focus {
-	outline: none;
-}
-
-* {
+*{
 	box-sizing: border-box;
 }
 

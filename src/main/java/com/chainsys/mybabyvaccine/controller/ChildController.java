@@ -100,8 +100,8 @@ public class ChildController {
 	}
 
 	@PostMapping("/modifychilds")
-	public String updateChildForm(@ModelAttribute("modifyChild") Child theChild) {
-		childServices.addChild(theChild);
+	public String updateChildForm(@ModelAttribute("modifyChild") Child childObj) {
+		childServices.addChild(childObj);
 		return "redirect:/admin/child/listallchilds";
 	}
 

@@ -28,8 +28,8 @@ public class VaccinationSchedularServices {
 		return vaccinationSchedularRepo.findAll();
 	}
 
-	public List<VaccinationSchedular> getAllVaccineSchedularsByChildId(int ChildId){
-		return vaccinationSchedularRepo.findByChildId(ChildId);
+	public List<VaccinationSchedular> getAllVaccineSchedularsByChildId(int childId){
+		return vaccinationSchedularRepo.findByChildId(childId);
 	}
 	
 

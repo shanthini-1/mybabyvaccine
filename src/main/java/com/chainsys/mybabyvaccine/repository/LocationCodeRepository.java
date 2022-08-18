@@ -5,6 +5,7 @@ package com.chainsys.mybabyvaccine.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import com.chainsys.mybabyvaccine.models.LocationCode;
@@ -23,12 +24,10 @@ public interface LocationCodeRepository extends CrudRepository<LocationCode, Int
 
 	List<LocationCode> findAll();
 
-//	List<LocationCode> findAllByPincode();
-//
-//	List<LocationCode> findAllByDistrict();
-//
-//	List<LocationCode> findAllByStateName();
-//
-//	List<LocationCode> findAllByCountry();
+	@Query(value = "Select distinct district from location_code;", nativeQuery = true)
+	List<String> listOfDistricts();
+
+	@Query(value = "Select distinct State_name from location_code;", nativeQuery = true)
+	List<String> listOfState();
 
 }
