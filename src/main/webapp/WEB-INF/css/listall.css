@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+.book{
+background-color:  #0eddbc;
+}
+body {
+	display: flex;
+	text-align: left;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-image: white;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+table, th, td{
+border: 2px solid navy;
+height: 37px;
+width: 445px;
+}
+button {
+	text-align: center;
+	margin-left: -10px;
+	width: 100px;
+	height: 35px;
+	margin-top: 10px;
+}

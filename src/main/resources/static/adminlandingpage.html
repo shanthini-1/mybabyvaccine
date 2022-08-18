@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: block;
+	overflow: hidden;
+}
+
+span {
+	padding-right: 40px;
+	color: navy;
+	float: right;
+}
+
+h1 {
+	color: navy;
+	text-align: center;
+	font-family: sans-serif;
+	margin-top: 1px;
+}
+
+/* Style the navigation bar */
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	background-color: white;
+	overflow: hidden;
+	align-content: center;
+}
+
+/* Navbar links */
+.navbar a {
+	float: left;
+	color: rgb(6, 70, 99);
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.navmenu {
+	font-size: 20px;
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	float: right;
+	flex-wrap: nowrap;
+	align-items: center;
+	padding: 10px;
+}
+
+.menu-list {
+	padding: 0px;
+}
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+	background-color: rgb(236, 179, 101, 0.3);
+}
+
+.logo {
+	padding-left: 20px;
+	font-size: 150%;
+	flex-wrap: inherit;
+	padding-top: 18px;
+	color: #ECB365;
+	border-radius: 50px;
+	background-color: rgb(6, 70, 99, 0.9);
+	padding-right: 20px;
+	color: #ECB365;
+}
+
+main {
+	padding: 95px;
+	background-color: rgb(236, 179, 101, 0.3);
+	display: flex;
+	justify-content: space-around;
+	align-content: row;
+	display: flex;
+	background-color: rgb(236, 179, 101, 0.3);
+}
+
+.imgbd {
+	width: 300px;
+	height: 300px;
+}
+
+.imgbd:hover {
+	border: 2px solid navy;
+}
+
+footer {
+	background-color: #04293A;
+	color: #ECB365;
+	text-align: center;
+	padding: 10px;
+}
+</style>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+	<header>
+		<div>
+			<span id="time"> </span>
+		</div>
+	</header>
+	<nav class="navbar">
+		<div class="logo">Baby Health Tracker</div>
+		<div class="navmenu">
+			<div class="menu-list">
+				<a href="index.html"><em class="fa fa-home"
+					style="font-size: 20px;"></em> Home</a>
+			</div>
+			<div class="menu-list">
+				<a href="loginpage.html"><em class="fa fa-sign-out"></em> Log
+					Out</a>
+			</div>
+		</div>
+	</nav>
+	<main>
+		<div>
+			<a href="/actionstarters/hospital-staff-firstpage.jsp"><img
+				src="https://media.istockphoto.com/photos/shot-of-a-diverse-group-of-medical-professionals-in-a-hospitals-picture-id1324292283?b=1&k=20&m=1324292283&s=170667a&w=0&h=IAUOBVNZwWAmLNNoRZVJ8xXGczWgZQ0Qf2x542ngXR8="
+				alt="staff" class="imgbd"> </a>
+		</div>
+		<div>
+			<a href="/actionstarters/hospital-firstpage.jsp"><img
+				src="https://media.istockphoto.com/photos/hospital-building-with-glass-wall-and-mirrored-building-picture-id1179324818?k=20&m=1179324818&s=612x612&w=0&h=CiqTHea8aDm9AFxZM2c7bjrEk2eyvisRYzi5Gd-8MR0="
+				alt="hospital" class="imgbd"> </a>
+		</div>
+		<div>
+			<a href="/actionstarters/location.jsp"><img
+				src="https://i.blogs.es/635f55/maps/450_1000.webp" alt="location"
+				class="imgbd"> </a>
+		</div>
+	</main>
+	<footer>
+		<div>
+			<p>
+				create by shanthini <br>Copyright © 2022 &nbsp; All rights
+				reserved.
+			</p>
+		</div>
+	</footer>
+	<script>
+		function refreshTime() {
+			const timeDisplay = document.getElementById("time");
+			const dateString = new Date().toLocaleTimeString();
+			const formattedString = dateString.replace(" - ");
+			timeDisplay.textContent = formattedString;
+		}
+		setInterval(refreshTime, 1000);
+	</script>
+	<!-- <script type="text/javascript"
+		src="C:/Users/shan3102/eclipse-workspace/mybabyvaccine/src/main/resources/js/time.js"></script> -->
+</body>
+</html>
