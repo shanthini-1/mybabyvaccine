@@ -7,9 +7,12 @@ package com.chainsys.mybabyvaccine.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +31,8 @@ import com.chainsys.mybabyvaccine.services.PersonServices;
 @Controller
 @RequestMapping("/children")
 public class ChildController {
-	private static final String REDIRECT_PAGE = "redirect:/child/listallchilds";
+	private static final String REDIRECT_PAGE = "redirect:/children/listallchilds";
+	private static final String REDIRECT_PAGE_ADD_FORM = "redirect:/children/addchildform";
 	@Autowired
 	private ChildServices childServices;
 	@Autowired
@@ -47,7 +51,7 @@ public class ChildController {
 	public String getAllChilds(Model model) {
 		List<Child> childList = childServices.getChilds();
 		model.addAttribute("listAllChilds", childList);
-		return "list-childs";
+		return "/child/list-childs";
 	}
 
 	@GetMapping("/fetchchildform")
@@ -59,20 +63,28 @@ public class ChildController {
 	public String getChildById(@RequestParam("id") int childId, Model model) {
 		Child thechild = childServices.findById(childId);
 		model.addAttribute("fetchChildById", thechild);
-		return "find-by-id-child-form";
+		return "/child/find-by-id-child-form";
 	}
 
 	@GetMapping("/addchildform")
 	public String showChildAddForm(Model model) {
 		Child theChild = new Child();
 		model.addAttribute("addChild", theChild);
-		return "add-form-child";
+		return "/child/add-form-child";
 	}
 
 	@PostMapping("addchilds")
-	public String addChild(@ModelAttribute("addChild") Child theChild) {
+	public String addChild(@Valid @ModelAttribute("addChild") Child theChild,Errors error,Model model) {
+		try {
 		childServices.addChild(theChild);
-		return REDIRECT_PAGE;
+		}
+		catch (Exception e) {
+			model.addAttribute("error", "Wrong input enteries");
+			return REDIRECT_PAGE_ADD_FORM;
+		}
+		String msg ="Added successfully";
+		model.addAttribute("result",msg);
+		return REDIRECT_PAGE_ADD_FORM;
 	}
 
 	@GetMapping("/updatechildform")
@@ -84,7 +96,7 @@ public class ChildController {
 	public String showChildUpdateForm(@RequestParam("id") int childId, Model model) {
 		Child theChild = childServices.findById(childId);
 		model.addAttribute("modifyChild", theChild);
-		return "update-form-child";
+		return "/child/update-form-child";
 	}
 
 	@PostMapping("/modifychilds")
@@ -107,7 +119,7 @@ public class ChildController {
 //	----------------------------------
 	@GetMapping("/fetchhospitalandchildform")
 	public String showHospitalChildDetailForm() {
-		return "fetch-hospital-child-form";
+		return "/child/fetch-hospital-child-form";
 	}
 
 	@GetMapping("/childhospitaldetails")
@@ -115,13 +127,13 @@ public class ChildController {
 		Child theChild = childServices.findById(childId);
 		model.addAttribute("childDetails", theChild);
 		model.addAttribute("childHospitaldetails", hospitalServices.getHospitalById(theChild.getHospitalId()));
-		return "find-by-id-child-hospital-form";
+		return "/child/find-by-id-child-hospital-form";
 	}
 
 //	-----------------------
 	@GetMapping("/fetchdoctorandchildform")
 	public String showDoctorChildDetailForm() {
-		return "fetch-doctor-child-form";
+		return "/child/fetch-doctor-child-form";
 	}
 
 	@GetMapping("/childdoctordetails")
@@ -174,7 +186,7 @@ public class ChildController {
 		model.addAttribute("hospital", hospital);
 		List<Child> childs = childServices.getChildByHospitalId(hospitalId);
 		model.addAttribute("listofchildbyhospital", childs);
-		return "list-childs-by-hospital";
+		return "/child/list-childs-by-hospital";
 	}
 
 //	----------------------------------
@@ -189,7 +201,7 @@ public class ChildController {
 		model.addAttribute("hospitalDoctor", hospitalStaff);
 		List<Child> childs = childServices.getChildDoctorId(doctorId);
 		model.addAttribute("listofchildbydoctor", childs);
-		return "list-childs-by-doctor";
+		return "/child/list-childs-by-doctor";
 	}
 
 //	-------------------------------------

@@ -74,14 +74,8 @@
 			reserved.
 		</p>
 	</footer>
-	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
-	</script>
+<script type="text/javascript">
+	<%@include file="/WEB-INF/js/time.js" %>
+</script>
 </body>
 </html>

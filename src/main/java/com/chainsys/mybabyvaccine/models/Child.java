@@ -14,12 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 /** 
  * @author shan3102
@@ -39,8 +36,6 @@ public class Child {
 	private String childName;
 	
 	@NotNull(message = "*Birth date can not be null")
-	@PastOrPresent(message = "*Date of birth must be less than today")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "CHILD_DOB")
 	private Date childDob;
 	
@@ -50,7 +45,6 @@ public class Child {
 	
 	@Digits(integer = 5,fraction = 3,message = "Birth Weigth can be null")
 	@Positive(message = "weight can not be negative")
-	@Pattern(regexp = "^([0-9]*+\\.?[0-9]*|\\.[0-9]+)$",message = "*Birth weight should match required pattern")
 	@Column(name = "BIRTH_WEIGHT")
 	private double birthWeight;
 	

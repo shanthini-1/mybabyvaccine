@@ -1,15 +1,14 @@
 package com.chainsys.mybabyvaccine.controller;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.mybabyvaccine.models.Login;
 import com.chainsys.mybabyvaccine.services.LoginService;
@@ -17,7 +16,7 @@ import com.chainsys.mybabyvaccine.services.LoginService;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-
+	private static final String REDIRECT_ERROR_PAGE =  "redirect:/login/errorpage?error=";
 	@Autowired
 	private LoginService loginService;
 
@@ -29,10 +28,13 @@ public class LoginController {
 	}
 
 	@PostMapping("/checklogin")
-	public String addNewUser(@Valid @ModelAttribute("userLogin") Login theUser, Model model, Errors err) {
-		Login userA = loginService.fetchExistingUser(theUser);
-		if (err.hasErrors()) {
-			return "redirect:/login/loginform";
+	public String addNewUser(@ModelAttribute("userLogin") Login theUser, Model model) {
+		Login userA=null;
+		try {
+		userA = loginService.fetchExistingUser(theUser);
+		}catch(Exception exp) {
+			String errorMsg =  "Invalid Email or Password";
+			return REDIRECT_ERROR_PAGE+errorMsg;
 		}
 		if (userA != null) {
 			if ("Staff".equals(userA.getPersonCategory())) {
@@ -42,27 +44,33 @@ public class LoginController {
 			} else if ("Admin".equals(userA.getPersonCategory())) {
 				return "redirect:/login/adminpagea";
 			} else {
-				model.addAttribute("error", "Invalid Person Category choosed");
-				return "redirect:/login/loginform";
+				String errorMsg = "Invalid Person Category choosed";
+				return REDIRECT_ERROR_PAGE+errorMsg;
 			}
 		} else {
-			model.addAttribute("error", "Invalid Email or Password");
-			return "redirect:/login/loginform";
+			String errorMsg= "Invalid Email or Password";
+			return REDIRECT_ERROR_PAGE+errorMsg;
 		}
 	}
 
 	@GetMapping("/staffpagea")
 	public String showStaffPage(Model model) {
-		return "actionstarters/staffaction";
+		return "/actionstarters/staffaction";
 	}
 
 	@GetMapping("/userpagea")
 	public String showUserPage(Model model) {
-		return "actionstarters/useraction";
+		return "/actionstarters/useraction";
 	}
 
 	@GetMapping("/adminpagea")
 	public String showAdminPage(Model model) {
-		return "actionstarters/adminaction";
+		return "/actionstarters/adminaction";
+	}
+	
+	@GetMapping("/errorpage")
+	public String showErrorPage(@RequestParam("error")String msg, Model model) {
+		model.addAttribute("error", msg);
+		return "/home/error";
 	}
 }

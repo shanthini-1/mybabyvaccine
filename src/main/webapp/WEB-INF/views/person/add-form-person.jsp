@@ -29,7 +29,7 @@
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
-				<a href="index.jsp"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 
@@ -37,7 +37,7 @@
 	</nav>
 	<div id="root">
 		<div>
-			<h1 class=".logotitle">User Registeration</h1>
+			<h1 class="logotitle">User Registeration</h1>
 		</div>
 		<div id="form">
 			<addpersonform:form action="addpersons" method="post"
@@ -71,7 +71,7 @@
 					</div>
 					<div class="col-75">
 						<addpersonform:input path="userDob" type="date"
-							placeholder="birth date" />
+							placeholder="birth date" required="true"/>
 					</div>
 				</div>
 				<addpersonform:errors path="userDob" class="text-danger" />
@@ -194,13 +194,7 @@
 		</p>
 	</footer>
 	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
+			<%@include file="/WEB-INF/js/time.js" %>
 	</script>
 </body>
 </html>

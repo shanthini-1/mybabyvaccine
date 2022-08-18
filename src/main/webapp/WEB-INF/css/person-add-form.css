@@ -108,8 +108,6 @@ footer {
 	color: #ECB365;
 	text-shadow: black;
 	text-align: center;
-	text-shadow: black;
-	text-shadow: black;
 }
 
 /* Style inputs, select elements and textareas */
@@ -133,7 +131,7 @@ label {
 
 /* Style the submit button */
 input[type=submit] {
-	background-color: #04AA6D;
+	background-color:rgb(192, 192, 192);
 	color: white;
 	padding: 12px 20px;
 	border: none;

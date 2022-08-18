@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Sign in page</title>
 <style>
-<%@include file="/WEB-INF/css/loginpage.css" %>
+<%@ include file="/WEB-INF/css/loginpage.css"%>
 </style>
 
 <link rel="stylesheet"
@@ -25,11 +25,11 @@
 		<div class="logo">My Baby Vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="index.html"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 			<div class="menu-list">
-				<a href="index.html"><em class="fa fa-arrow-circle-left"
+				<a href="/"><em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em> Back</a>
 			</div>
 		</div>
@@ -37,7 +37,6 @@
 	<div class="wrapper fadeInDown">
 		<div class="formContent">
 			<h2 class="active">Sign In</h2>
-
 			<form:form action="checklogin" method="post"
 				modelAttribute="userLogin" class="wrapper">
 				<div class="contentitem">
@@ -51,7 +50,7 @@
 							<option value="User">User</option>
 							<option value="Admin">Admin</option>
 						</form:select>
-						<form:errors path="personCategory" class="text-danger" ></form:errors>
+						<form:errors path="personCategory" class="text-danger"></form:errors>
 					</div>
 
 					<div class="col-a">
@@ -64,7 +63,7 @@
 							style="text-transform: none;" required="true" class="inputa" />
 
 
-						<form:errors path="email" class="text-danger" ></form:errors>
+						<form:errors path="email" class="text-danger"></form:errors>
 					</div>
 					<div class="col-a">
 						<label for="passWord">Password</label>
@@ -79,9 +78,9 @@
 					</div>
 				</div>
 				<form:button class="inputs">Log in</form:button>
-				<form:errors class="error">${error}</form:errors>
-			</form:form>
 
+			</form:form>
+			
 
 			<div id="formFooter">
 				<a class="underlineHover" href="/persons/addpersonform"
@@ -96,13 +95,7 @@
 		</p>
 	</footer>
 	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
+			<%@include file="/WEB-INF/js/time.js" %>
 	</script>
 </body>
 </html>

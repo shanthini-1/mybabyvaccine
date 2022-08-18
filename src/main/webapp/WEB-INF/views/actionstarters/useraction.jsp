@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@include file="/WEB-INF/js/time.js" %><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -38,17 +38,18 @@
 			<div class="dropbtn">
 				<a href="/persons/userfirstview">User</a>
 			</div>
-		</div><div class="dropdown">
-		<div class="dropbtn">
-			<a href="/vaccines/vaccinefirstview">vaccine</a>
+		</div>
+		<div class="dropdown">
+			<div class="dropbtn">
+				<a href="/vaccines/vaccinefirstview">vaccine</a>
+			</div>
+		</div>
+		<div class="dropdown">
+			<div class="dropbtn">
+				<a href="/children/childfirstview">Child</a>
+			</div>
 		</div>
 	</div>
-	<div class="dropdown">
-		<div class="dropbtn">
-			<a href="/children/childfirstview">Child</a>
-		</div>
-	</div>
-</div>
 	<div class="body-content">
 
 		<div>
@@ -63,7 +64,7 @@
 		</div>
 		<div>
 			<a href="/children/childfirstview"><img
-				src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbuFUIrK21X2St15ogMfe_gb4m-Fz1Yd8Fqw&usqp=CAU "
+				src="https://static.toiimg.com/photo/68790934.cms "
 				alt="Children" id="imgbd"> </a>
 		</div>
 	</div>
@@ -74,13 +75,9 @@
 		</p>
 	</footer>
 	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
+		
+	<%@include file="/WEB-INF/js/time.js" %>
+		
 	</script>
 </body>
 </html>
