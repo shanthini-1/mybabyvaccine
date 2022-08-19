@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="addform" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="addform"
+	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -10,15 +11,11 @@
 <title>Add vaccine form</title>
 </head>
 <body>
-		<div id="root">
+	<div id="root">
 		<div id="form">
-			<addform:form action="addvaccines" method="post" modelAttribute="addvaccine">
-				<div>
-					<label for="vaccineId">Vaccine Id</label>
-				</div>
-				<div>
-					<addform:input path="vaccineId" />
-				</div>
+			<addform:form action="addvaccines" method="post"
+				modelAttribute="addvaccine">
+
 				<div>
 					<label for="week">Week</label>
 				</div>
@@ -27,36 +24,37 @@
 				</div>
 				<div>
 					<label for="vaccineName">Vaccine Name </label>
-					</div>
-					<div>
-					<addform:input path="vaccineName"/>
-					</div>
-					<div>
+				</div>
+				<div>
+					<addform:input path="vaccineName" />
+				</div>
+				<div>
 					<label for="vacDescription">Description</label>
-					</div>
-					<div>
-					<addform:input path="vacDescription"/>
-					</div>
-					<div>
+				</div>
+				<div>
+					<addform:input path="vacDescription" />
+				</div>
+				<div>
 					<label for="dosage">Dosage</label>
-					</div>
-					<div>
-					<addform:input path="dosage"/>
-					</div>
-					<div>
+				</div>
+				<div>
+					<addform:input path="dosage" />
+				</div>
+				<div>
 					<label for="suggestion">Suggestion</label>
-					</div>
-					<div>
-					<addform:input path="suggestion"/>
-					</div>
-					<div>
+				</div>
+				<div>
+					<addform:input path="suggestion" />
+				</div>
+				<div>
 					<label for="vaccinePrice">Vaccine price</label>
-					</div>
-					<div>
-					<addform:input path="vaccinePrice"/>
-					</div>
-					<div>
-					<addform:button>Add Vaccine</addform:button></div>
+				</div>
+				<div>
+					<addform:input path="vaccinePrice" />
+				</div>
+				<div>
+					<addform:button>Add Vaccine</addform:button>
+				</div>
 			</addform:form>
 		</div>
 	</div>

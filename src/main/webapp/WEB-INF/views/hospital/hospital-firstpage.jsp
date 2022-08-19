@@ -9,16 +9,16 @@
 <body>
 	<h1>Hospital</h1>
 	<ul>
-		<li><a href="/admin/hospital/addhospitalform">Add Hospital </a>
-		<li><a href="/admin/hospital/showhospitalupdateform">Update
+		<li><a href="/hospitals/addhospitalform">Add Hospital </a>
+		<li><a href="/hospitals/showhospitalupdateform">Update
 				Hospital </a>
-		<li><a href="/admin/hospital/showhospitaldeleteform">Delete
+		<li><a href="/hospitals/showhospitaldeleteform">Delete
 				Hospital </a>
-		<li><a href="/admin/hospital/hospitalfindform">Find Hospital
+		<li><a href="/hospitals/hospitalfindform">Find Hospital
 		</a>
-		<li><a href="/admin/hospital/listallhospitals">list All
+		<li><a href="/hospitals/listallhospitals">list All
 				Hospital </a>
-		<li><a href="/admin/hospital/hoscontactfindform">Find Contact
+		<li><a href="/hospitals/hoscontactfindform">Find Contact
 				Person</a>
 	</ul>
 </body>

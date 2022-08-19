@@ -43,16 +43,7 @@
 		<div id="form">
 			<addchildform:form action="/children/addchilds" method="post"
 				modelAttribute="addChild">
-				<div class="row">
-					<div class="col-25">
-						<label for="childId">Child Id</label>
-					</div>
-					<div class="col-75">
-						<addchildform:input path="childId" type="text" name="user id"
-							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
-					</div>
-				</div>
+				
 				<addchildform:errors path="childId" class="text-danger" />
 				<div class="row">
 					<div class="col-25">

@@ -5,7 +5,10 @@ package com.chainsys.mybabyvaccine.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
@@ -23,6 +26,8 @@ import javax.validation.constraints.Size;
 @Table(name = "VACCINE")
 public class Vaccine {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "VACCINE_ID_SEQ")
+	@SequenceGenerator(name="VACCINE_ID_SEQ",sequenceName = "VACCINE_ID_SEQ",allocationSize = 1)
 	@Column(name = "VACCINE_ID")
 	private int vaccineId;
 	

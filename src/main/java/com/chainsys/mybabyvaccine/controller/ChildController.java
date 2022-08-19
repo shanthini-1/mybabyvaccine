@@ -51,12 +51,12 @@ public class ChildController {
 	public String getAllChilds(Model model) {
 		List<Child> childList = childServices.getChilds();
 		model.addAttribute("listAllChilds", childList);
-		return "/child/list-childs";
+		return "/children/list-childs";
 	}
 
 	@GetMapping("/fetchchildform")
 	public String showChildDetailForm() {
-		return "fetch-child-by-id-form";
+		return "/child/fetch-child-by-id-form";
 	}
 
 	@GetMapping("/fetchchild")
@@ -89,25 +89,25 @@ public class ChildController {
 
 	@GetMapping("/updatechildform")
 	public String showChildUpdateDetailForm() {
-		return "update-child-by-id-form";
+		return "/child/update-child-by-id-form";
 	}
 
 	@GetMapping("/childmodifyform")
 	public String showChildUpdateForm(@RequestParam("id") int childId, Model model) {
-		Child theChild = childServices.findById(childId);
-		model.addAttribute("modifyChild", theChild);
+		Child theChildren = childServices.findById(childId);
+		model.addAttribute("modifyChild", theChildren);
 		return "/child/update-form-child";
 	}
 
 	@PostMapping("/modifychilds")
 	public String updateChildForm(@ModelAttribute("modifyChild") Child childObj) {
 		childServices.addChild(childObj);
-		return "redirect:/admin/child/listallchilds";
+		return REDIRECT_PAGE;
 	}
 
 	@GetMapping("/Deletechildform")
 	public String showChildDeleteDetailForm() {
-		return "delete-child-by-id-form";
+		return "/child/delete-child-by-id-form";
 	}
 
 	@GetMapping("/childdeleteform")
@@ -119,7 +119,7 @@ public class ChildController {
 //	----------------------------------
 	@GetMapping("/fetchhospitalandchildform")
 	public String showHospitalChildDetailForm() {
-		return "/child/fetch-hospital-child-form";
+		return "fetch-hospital-child-form";
 	}
 
 	@GetMapping("/childhospitaldetails")
@@ -127,13 +127,13 @@ public class ChildController {
 		Child theChild = childServices.findById(childId);
 		model.addAttribute("childDetails", theChild);
 		model.addAttribute("childHospitaldetails", hospitalServices.getHospitalById(theChild.getHospitalId()));
-		return "/child/find-by-id-child-hospital-form";
+		return "find-by-id-child-hospital-form";
 	}
 
 //	-----------------------
 	@GetMapping("/fetchdoctorandchildform")
 	public String showDoctorChildDetailForm() {
-		return "/child/fetch-doctor-child-form";
+		return "fetch-doctor-child-form";
 	}
 
 	@GetMapping("/childdoctordetails")
@@ -186,7 +186,7 @@ public class ChildController {
 		model.addAttribute("hospital", hospital);
 		List<Child> childs = childServices.getChildByHospitalId(hospitalId);
 		model.addAttribute("listofchildbyhospital", childs);
-		return "/child/list-childs-by-hospital";
+		return "list-childs-by-hospital";
 	}
 
 //	----------------------------------
@@ -201,11 +201,10 @@ public class ChildController {
 		model.addAttribute("hospitalDoctor", hospitalStaff);
 		List<Child> childs = childServices.getChildDoctorId(doctorId);
 		model.addAttribute("listofchildbydoctor", childs);
-		return "/child/list-childs-by-doctor";
+		return "list-childs-by-doctor";
 	}
 
 //	-------------------------------------
-// try to do this by both father and mother id select * from child where fatherid = & motherid
 	@GetMapping("/fetchchildbyparentid")
 	public String showChildParentFindForm() {
 		return "list-child-by-parent-form";

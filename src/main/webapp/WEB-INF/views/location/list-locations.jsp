@@ -36,7 +36,7 @@ h1 {
 }
 
 /* Navbar links */
-.navbar a {
+.navbar a  {
 	float: left;
 	color: rgb(6, 70, 99);
 	text-align: center;
@@ -56,9 +56,6 @@ h1 {
 	padding: 10px;
 }
 
-.menu-list {
-	padding: 0px;
-}
 
 /* Navbar links on mouse-over */
 .navbar a:hover {
@@ -118,20 +115,18 @@ span {
 	margin-right: auto;
 	margin-left: auto;
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-}  
+	align-items: flex-start;
+}
 
 table {
- table-layout: auto;
-    width: 100%;
-    display: table;
-    border-collapse: separate;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    border-color: grey;
+	table-layout: auto;
+	width: 100%;
+	display: table;
+	border-collapse: separate;
+	box-sizing: border-box;
+	text-indent: initial;
+	border-spacing: 2px;
+	border-color: grey;
 }
 
 footer {
@@ -143,6 +138,30 @@ footer {
 	text-shadow: black;
 	text-shadow: black;
 }
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: rgb(236, 179, 101, 0.3);
+}
+tr : hover{
+ color :rgb(6, 70, 99, 0.9); 
+}
+a{
+text-decoration: none;
+color:inherit;
+}
+
 </style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -158,23 +177,26 @@ footer {
 		<div class="logo">Baby Health Tracker</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/actionstarters/hospital-staff-firstpage.jsp"><em
-					class="fa fa-arrow-circle-left" style="font-size: 20px;"></em> Back
-				</a>
+				<a href="/"><em class="fa fa-arrow-circle-left"
+					style="font-size: 20px;"></em> Back </a>
 			</div>
 			<div class="menu-list">
-				<a href="index.html"><em class="fa fa-home"
-					style="font-size: 20px;"></em> Home</a>
+				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
+					Home</a>
+			</div>
+			<div class="menu-list">
+				<a href="/loctaions/addlocationform"><em class="fa fa-plus"
+					style="font-size: 20px;"></em> Location</a>
 			</div>
 		</div>
 	</nav>
-	<div>
-		<h1>List of All Location</h1>
-	</div>
+	<div></div>
 	<div class="container">
 
 		<table>
-			<caption>List of All Location</caption>
+			<caption>
+				<strong>List of All Location</strong>
+			</caption>
 			<thead>
 				<tr>
 					<th>Pin Code</th>
@@ -192,8 +214,10 @@ footer {
 						<td>${locationCode.district}</td>
 						<td>${locationCode.stateName}</td>
 						<td>${locationCode.country}</td>
-						<td><a href="/locations/locationmodifyform?locId=${locationCode.pinCode}">Edit</a></td>
-						  <td><a href="/locations/locationdeleteform?locId=${locationCode.pinCode}">Delete</a></td>
+						<td><a
+							href="/locations/locationmodifyform?locId=${locationCode.pinCode}">Edit</a></td>
+						<td><a
+							href="/locations/locationdeleteform?locId=${locationCode.pinCode}">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -206,13 +230,7 @@ footer {
 		</p>
 	</footer>
 	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
+			<%@include file="/WEB-INF/js/time.js" %>
 	</script>
 </body>
 </html>

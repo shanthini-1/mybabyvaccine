@@ -37,8 +37,6 @@
 	<div class="dashboard">
 			<ul>
 		<li><a href="/children/addchildform">Add Child </a>
-		<li><a href="/children/updatechildform">Update Child </a>
-		<li><a href="/children/Deletechildform">Delete Child </a>
 		<li><a href="/children/fetchchildform">Fetch Child </a>
 		<li><a href="/children/listallchilds">List Children </a>
 		<li><a href="/children/fetchchildbyhospitalid">List

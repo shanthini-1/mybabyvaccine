@@ -44,17 +44,6 @@
 				modelAttribute="addPerson">
 				<div class="row">
 					<div class="col-25">
-						<label for="userId">User Id</label>
-					</div>
-					<div class="col-75">
-						<addpersonform:input path="userId" type="text" name="user id"
-							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
-					</div>
-				</div>
-				<addpersonform:errors path="userId" class="text-danger" />
-				<div class="row">
-					<div class="col-25">
 						<label for="userName">User Name</label>
 					</div>
 					<div class="col-75">

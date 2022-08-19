@@ -79,7 +79,7 @@ public class LocationCodeController {
 	}
 
 	@GetMapping("/locationmodifyform")
-	public String showLocationUpdateForm(@RequestParam("id") int locId, Model model) {
+	public String showLocationUpdateForm(@RequestParam("locId") int locId, Model model) {
 		LocationCode theLoc = locationCodeService.getLocationcodeById(locId);
 		model.addAttribute("modifyLocation", theLoc);
 		return "/location/update-form-location";

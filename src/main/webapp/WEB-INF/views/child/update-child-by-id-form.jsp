@@ -40,7 +40,7 @@
 		</div>
 		<div id="form">
 
-	<form:form action="/children/childmodifyform" method="get">
+	<form:form action="childmodifyform" method="get">
 		<div class="row">
 			<div class="col-25">
 				<label for="childId">Child Id</label>

@@ -10,11 +10,14 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Max;
@@ -34,6 +37,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name = "PERSON")
 public class Person {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "user_id_seq")
+	@SequenceGenerator(name="user_id_seq",sequenceName = "user_id_seq",allocationSize = 1)
 	@Column(name = "USER_ID")
 	private Integer userId;
 
@@ -71,7 +76,7 @@ public class Person {
 	@Digits(integer = 11, fraction = 0, message = "*Phone number should not less than 10 digits")
 	@Column(name = "PHONE_NO")
 	private long phoneNumber;
-
+ 
 	@NotNull(message = "*Password should not be null")
 	@Size(min = 8, max = 25, message = "*password should match required length")
 	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=()])(?=\\S+$).{8,25}$", message = "*Password should match given pattern")
