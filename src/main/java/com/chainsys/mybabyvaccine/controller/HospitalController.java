@@ -63,10 +63,11 @@ public class HospitalController {
 	public String showHospitalAddForm(Model model) {
 		Hospital theHospital = new Hospital();
 		model.addAttribute("addHospital", theHospital);
-		List<Integer> pincodeList = locationCodeServices.getLocationPincodeList();
-		model.addAttribute("listAllTheHospitals", pincodeList);
+		List<Integer> pincodelist = locationCodeServices.getLocationPincodeList();
+		model.addAttribute("listAllpincode", pincodelist);
 		List<Person> staffList = personServices.getAllStaff();
 		model.addAttribute("listAllStaffs", staffList);
+		System.out.println(staffList);
 		return "/hospital/add-form-hospital";
 	}
 
@@ -82,6 +83,11 @@ public class HospitalController {
 
 	@GetMapping("/hospitalmodifyform")
 	public String showHospitalUpdateForm(@RequestParam("id") int hospitalId, Model model) {
+		List<Integer> pincodelist = locationCodeServices.getLocationPincodeList();
+		model.addAttribute("listAllpincode", pincodelist);
+		List<Person> staffList = personServices.getAllStaff();
+		model.addAttribute("listAllStaffs", staffList);
+		System.out.println(staffList);
 		Hospital theHospital = hospitalServices.getHospitalById(hospitalId);
 		model.addAttribute("modifyHospital", theHospital);
 		return "/hospital/update-form-hospital";

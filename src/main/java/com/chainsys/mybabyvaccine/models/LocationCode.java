@@ -22,7 +22,7 @@ public class LocationCode {
 	@Max(value=699999,message="*pincode should not be greater than 6999999 ")
 	@Min(value=600000,message="*pincode should not be less than 600000")
 	@Column(name="PIN_CODE")
-	private int pinCode;
+	private Integer pinCode;
 	
 	@NotNull(message = "*District cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
@@ -42,11 +42,11 @@ public class LocationCode {
 	@Column(name = "COUNTRY")
 	private String country;
 
-	public int getPinCode() {
+	public Integer getPinCode() {
 		return pinCode;
 	}
 
-	public void setPinCode(int pinCode) {
+	public void setPinCode(Integer pinCode) {
 		this.pinCode = pinCode;
 	}
 

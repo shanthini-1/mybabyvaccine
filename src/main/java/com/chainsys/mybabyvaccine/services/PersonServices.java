@@ -51,20 +51,20 @@ public class PersonServices {
 
 	}
 	
-	public List<Person> getAllFather(){
-		return personRepo.fatherList();
-	}
-	
-	public List<Person> getAllMother(){
-		return personRepo.motherList();
-	}
-	
-	public List<Person> getAllUser(){
-		return personRepo.userList();
-	}
+//	public List<Person> getAllFather(){
+//		return personRepo.fatherList();
+//	}
+//	
+//	public List<Person> getAllMother(){
+//		return personRepo.motherList();
+//	}
+//	
+//	public List<Person> getAllUser(){
+//		return personRepo.userList();
+//	}
 	
 	public List<Person> getAllStaff(){
-		return personRepo.staffList();
+		return personRepo.findAllByPersonCategory();
 	}
 
 

@@ -87,16 +87,12 @@
 						<label for="pinCode">Hospital pin Code</label>
 					</div>
 					<div class="col-75">
-					 <addhospitalform:select path="pinCode" name="pinCode" id="pinCode" placeholder="pincode"
-					pattern="^[6][0-9]*{6}"  required="true">
-					<addhospitalform:option value=''>-select-</addhospitalform:option>
-						<c:forEach items="${listAllPincode}" var="pinCode"
+					 <select name="pinCode" id="pinCode" required>
+						<c:forEach items="${listAllpincode}" var="pinCode"
 							varStatus="loop">
-							<addhospitalform:option value='${pinCode}'>${pinCode}</addhospitalform:option>
+							<option  value='${pinCode}'>${pinCode}<option>
 						</c:forEach>
-					</addhospitalform:select> 
-					
-						<addhospitalform:input path="pinCode" />
+					</select> 
 					</div>
 				</div>
 				<div class="row">
@@ -104,14 +100,12 @@
 						<label for="contactPersonId">Contact Person Id</label>
 					</div>
 					<div class="col-75">
-					 <addhospitalform:select path="contactPersonId" name="ctId" id="contactPerson" placeholder="contactPerson"
-					pattern="^[0-9]*{6}"  required="true">
-					<addhospitalform:option value=''>-select-</addhospitalform:option>
+							 <select name="contactPersonId" id="contactPersonId" required>
 						<c:forEach items="${listAllStaffs}" var="cperson"
 							varStatus="loop">
-							<addhospitalform:option value='${cperson.userId}'>${cperson.userName} - ${cperson.userId}</addhospitalform:option>
+							<option value='${cperson.userId}'>${cperson.userId}<option>
 						</c:forEach>
-					</addhospitalform:select>
+					</select> 
 					</div>
 				</div>
 				<div>

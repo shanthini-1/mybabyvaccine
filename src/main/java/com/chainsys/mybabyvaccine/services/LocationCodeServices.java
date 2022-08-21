@@ -28,11 +28,11 @@ public class LocationCodeServices {
 		return locationCodeRepo.save(loc);
 	}
 
-	public void removeLocation(int locId) {
+	public void removeLocation(Integer locId) {
 		locationCodeRepo.deleteById(locId);
 	}
 
-	public LocationCode getLocationcodeById(int locId) {
+	public LocationCode getLocationcodeById(Integer locId) {
 		return locationCodeRepo.findByPinCode(locId);
 	}
 

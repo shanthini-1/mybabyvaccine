@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.chainsys.mybabyvaccine.models.Hospital;
 import com.chainsys.mybabyvaccine.models.HospitalStaff;
 import com.chainsys.mybabyvaccine.models.Person;
 import com.chainsys.mybabyvaccine.services.HospitalServices;
 import com.chainsys.mybabyvaccine.services.HospitalStaffServices;
+import com.chainsys.mybabyvaccine.services.LocationCodeServices;
 import com.chainsys.mybabyvaccine.services.PersonServices;
 
 /**
@@ -36,6 +36,8 @@ public class HospitalStaffController {
 	private HospitalServices hospitalServices;
 	@Autowired
 	private PersonServices personServices;
+	@Autowired
+	private LocationCodeServices codeServices;
 	
 	@GetMapping("/hospitalstafffirstview")
 	public String showHospitalActionMenu() {
@@ -80,10 +82,11 @@ public class HospitalStaffController {
 	public String showHospitalStaffAddForm(Model model) {
 		HospitalStaff theHospitalStaff = new HospitalStaff();
 		model.addAttribute("addHospitalStaff", theHospitalStaff);
-		List<Hospital> hospitalList = hospitalServices.getHospitals();
-		model.addAttribute("listAllTheHospitals", hospitalList);
-		List<Person> staffList = personServices.getAllStaff();
-		model.addAttribute("listAllStaffs", staffList);
+//		List<Integer> pincodelist = codeServices.getLocationPincodeList();
+//		model.addAttribute("listAllpincode", pincodelist);
+//		List<Person> staffList = personServices.getAllStaff();
+//		model.addAttribute("listAllStaffs", staffList);
+//		System.out.println(staffList);
 		return "/hospital/add-form-hospital-staff";
 	}
 

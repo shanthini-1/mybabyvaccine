@@ -88,8 +88,9 @@
 					</div>
 				</div>
 				<locationaddform:errors path="country" class="text-danger" />
-				
+				<div class="button-s">
 						<locationaddform:button>Add Location</locationaddform:button>
+						</div>
 			</locationaddform:form>
 		</div>
 	</div>

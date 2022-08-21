@@ -14,11 +14,11 @@ import com.chainsys.mybabyvaccine.models.Hospital;
  *
  */
 public interface HospitalRepository extends CrudRepository<Hospital, Integer> {
-	Hospital findByHospitalId(int hosId);
+	Hospital findByHospitalId(Integer hosId);
 	@Override
 	<S extends Hospital>S save(S hospital);
 
-	void deleteById(int hosId);
+	void deleteById(Integer hosId);
 
 	List<Hospital> findAll();
 	

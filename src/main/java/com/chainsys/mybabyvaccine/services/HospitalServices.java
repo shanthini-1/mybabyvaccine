@@ -25,7 +25,7 @@ public class HospitalServices {
 		return hospitalRepo.findAll();
 	}
 
-	public Hospital getHospitalById(int hospitalId) {
+	public Hospital getHospitalById(Integer hospitalId) {
 		return hospitalRepo.findByHospitalId(hospitalId);
 	}
 
@@ -33,7 +33,7 @@ public class HospitalServices {
 		return hospitalRepo.save(theHospital);
 	}
 
-	public void removeHospital(int hospitalId) {
+	public void removeHospital(Integer hospitalId) {
 		hospitalRepo.deleteById(hospitalId);
 	}
 	public Hospital getHosContactPersonById(Integer contactPersonId) {

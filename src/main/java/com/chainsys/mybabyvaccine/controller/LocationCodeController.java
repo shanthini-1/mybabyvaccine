@@ -50,7 +50,7 @@ public class LocationCodeController {
 	}
 
 	@GetMapping("/fetchlocation")
-	public String getLocationById(@RequestParam("id") int locId, Model model) {
+	public String getLocationById(@RequestParam("id") Integer locId, Model model) {
 		LocationCode theloc = locationCodeService.getLocationcodeById(locId);
 		model.addAttribute("fetchLocationById", theloc);
 		return " find-by-id-location-form";
@@ -79,7 +79,7 @@ public class LocationCodeController {
 	}
 
 	@GetMapping("/locationmodifyform")
-	public String showLocationUpdateForm(@RequestParam("locId") int locId, Model model) {
+	public String showLocationUpdateForm(@RequestParam("locId") Integer locId, Model model) {
 		LocationCode theLoc = locationCodeService.getLocationcodeById(locId);
 		model.addAttribute("modifyLocation", theLoc);
 		List<Integer> pincodeList = locationCodeService.getLocationPincodeList();
@@ -99,7 +99,7 @@ public class LocationCodeController {
 	}
 
 	@GetMapping("/locationdeleteform")
-	public String deleteLocation(@RequestParam("locId") int locId) {
+	public String deleteLocation(@RequestParam("locId") Integer locId) {
 		locationCodeService.removeLocation(locId);
 		return REDIRECT_PAGE;
 	}

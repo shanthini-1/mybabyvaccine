@@ -15,21 +15,21 @@ import com.chainsys.mybabyvaccine.models.LocationCode;
  * @date 1/8/2022
  */
 public interface LocationCodeRepository extends CrudRepository<LocationCode, Integer> {
-	LocationCode findByPinCode(int locCode);
+	LocationCode findByPinCode(Integer locCode);
 
 	@Override
 	<S extends LocationCode> S save(S locationCode);
 
-	void deleteById(int locCode);
+	void deleteById(Integer locCode);
 
 	List<LocationCode> findAll();
 
-	@Query(value = "Select distinct district from location_code;", nativeQuery = true)
+	@Query(value = "Select distinct district from location_code", nativeQuery = true)
 	List<String> listOfDistricts();
 
-	@Query(value = "Select distinct State_name from location_code;", nativeQuery = true)
+	@Query(value = "Select distinct State_name from location_code", nativeQuery = true)
 	List<String> listOfState();
 	
-	@Query(value = "Select pin_code from location_code;", nativeQuery = true)
+	@Query(value = "Select pin_code from location_code", nativeQuery = true)
 	List<Integer> listOfPincode();
 }

@@ -62,7 +62,7 @@ public class Hospital {
 	@Max(value = 699999, message = "*pincode should not be greater than 6999999 ")
 	@Min(value = 600000, message = "*pincode should not be less than 600000")
 	@Column(name = "PIN_CODE")
-	private int pinCode;
+	private Integer pinCode;
 
 	@NotNull(message = "Person Id cannot be null")
 	@Column(name = "CONTACT_PERSON_ID")
@@ -131,11 +131,11 @@ public class Hospital {
 		this.hospitalCity = hospitalCity;
 	}
 
-	public int getPinCode() {
+	public Integer getPinCode() {
 		return pinCode;
 	}
 
-	public void setPinCode(int pinCode) {
+	public void setPinCode(Integer pinCode) {
 		this.pinCode = pinCode;
 	}
 

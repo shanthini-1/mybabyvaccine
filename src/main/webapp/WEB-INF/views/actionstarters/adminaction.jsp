@@ -63,7 +63,7 @@
 				alt="location" id="imgbd"> </a>
 		</div>
 		<div>
-			<a href="/staffs/hospitalstafffirstview"><img
+			<a href="/hospitalstaff/hospitalstafffirstview"><img
 				src="https://www.aamc.org/sites/default/files/Workforce%20Report%201200x666.jpg "
 				alt="staff" id="imgbd"> </a>
 		</div>

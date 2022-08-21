@@ -48,15 +48,14 @@ input #childId {
 		</div>
 		<div id="form">
 			<form:form action="/children/fetchchild" method="get">
-					 <form:select path="cid" name="cid" id="cid" placeholder="child id"
-					pattern="^[0-9]*$" required="true">
-					<form:option value=''>-select-</form:option>
+					 <select name="cid" id="cid" required>
+				 	<option value=''>-select-</option> 
 						<c:forEach items="${listAllChildrenId}" var="childId"
 							varStatus="loop">
-							<form:option value='${childId}'>${childId}</form:option>
+							<option value='${childId}'>${childId}<option>
 						</c:forEach>
-					</form:select> 
-					<form:button>find</form:button>
+					</select> 
+				<input type="submit" value="search"/>
 			</form:form>
 		</div>
 	</div>

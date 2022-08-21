@@ -60,7 +60,7 @@ public class ChildServices {
 	}
 
 
-	public List<Child> getChildByHospitalId(int hospitalId) {
+	public List<Child> getChildByHospitalId(Integer hospitalId) {
 		return childRepo.findAllByHospitalId(hospitalId);
 	}
 
