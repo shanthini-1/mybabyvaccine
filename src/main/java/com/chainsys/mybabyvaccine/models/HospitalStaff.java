@@ -31,7 +31,7 @@ public class HospitalStaff {
 	private Integer staffId;
 	
 	@Column(name = "HOSPITAL_ID")
-	private int hospitalId;
+	private Integer hospitalId;
 
 	@NotNull(message = "*Staff role cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")

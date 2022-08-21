@@ -29,5 +29,7 @@ public interface LocationCodeRepository extends CrudRepository<LocationCode, Int
 
 	@Query(value = "Select distinct State_name from location_code;", nativeQuery = true)
 	List<String> listOfState();
-
+	
+	@Query(value = "Select pin_code from location_code;", nativeQuery = true)
+	List<Integer> listOfPincode();
 }

@@ -36,4 +36,7 @@ public class LocationCodeServices {
 		return locationCodeRepo.findByPinCode(locId);
 	}
 
+	public List<Integer> getLocationPincodeList() {
+		return locationCodeRepo.listOfPincode();
+	}
 }

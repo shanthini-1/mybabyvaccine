@@ -13,6 +13,7 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -39,6 +40,7 @@ public class VaccinationSchedular {
 	
 	@NotNull(message = "*Date to vaccinate can not be null")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@FutureOrPresent
 	@Column(name="DATE_TO_VACCINATE")
 	private Date dateToVaccinate;
 	

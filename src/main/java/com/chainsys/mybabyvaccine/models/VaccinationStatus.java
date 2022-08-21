@@ -3,7 +3,7 @@
  */
 package com.chainsys.mybabyvaccine.models;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -54,20 +54,18 @@ public class VaccinationStatus {
 	private String vaccinatedStatus;
 	
 	@Column(name = "HOSPITAL_ID")
-	private int hospitalId;
+	private Integer hospitalId;
 	
 	@Column(name = "ATTENDER_ID")
 	private long attenderId;
 	
 	@Digits(integer = 6,fraction = 3,message = "*Weigth can be null")
 	@Positive(message = "weight can not be negative")
-	@Pattern(regexp = "^(\\d*+\\.?\\d*|\\.\\d+)$",message = "*Weight should match required pattern")
 	@Column(name = "BABY_WEIGHT")
 	private double babyWeight;
 	
 	@Digits(integer = 6,fraction = 3,message = "Birth Weigth can be null")
 	@Positive(message = "weight can not be negative")
-	@Pattern(regexp = "^(\\d*+\\.?\\d*|\\.\\d+)$",message = "*Birth weight should match required pattern")
 	@Column(name = "BABY_HEIGHT")
 	private double babyHeight;
 
@@ -126,11 +124,11 @@ public class VaccinationStatus {
 		this.vaccinatedStatus = vaccinatedStatus;
 	}
 
-	public int getHospitalId() {
+	public Integer getHospitalId() {
 		return hospitalId;
 	}
 
-	public void setHospitalId(int hospitalId) {
+	public void setHospitalId(Integer hospitalId) {
 		this.hospitalId = hospitalId;
 	}
 

@@ -42,6 +42,7 @@ public class ChildController {
 	@Autowired
 	private PersonServices personServices;
 	
+	
 	@GetMapping("/childfirstview")
 	public String showChildActionMenu() {
 		return "/child/child-firstpage";
@@ -51,18 +52,25 @@ public class ChildController {
 	public String getAllChilds(Model model) {
 		List<Child> childList = childServices.getChilds();
 		model.addAttribute("listAllChilds", childList);
-		return "/children/list-childs";
+		return "/child/list-childs";
 	}
 
 	@GetMapping("/fetchchildform")
-	public String showChildDetailForm() {
+	public String showChildDetailForm(Model model) {
+		List<Integer>childidlist = childServices.getAllChildId();
+		model.addAttribute("listAllChildrenId", childidlist);
 		return "/child/fetch-child-by-id-form";
 	}
 
 	@GetMapping("/fetchchild")
-	public String getChildById(@RequestParam("id") int childId, Model model) {
-		Child thechild = childServices.findById(childId);
-		model.addAttribute("fetchChildById", thechild);
+	public String getChildById(@RequestParam("cid") int childId, Model model) {
+		Child theChild = childServices.findById(childId);
+		model.addAttribute("fetchChildById", theChild);
+		model.addAttribute("childHospitaldetails", hospitalServices.getHospitalById(theChild.getHospitalId()));
+		model.addAttribute("childDoctordetails", personServices.getPersonById(theChild.getDoctorId()));
+		model.addAttribute("childDaddetails", personServices.getPersonById(theChild.getFatherId()));
+		model.addAttribute("childMomdetails", personServices.getPersonById(theChild.getMotherId()));
+		model.addAttribute("childGuardianDetails",personServices.getPersonById(theChild.getGuardianId()));
 		return "/child/find-by-id-child-form";
 	}
 
@@ -93,7 +101,7 @@ public class ChildController {
 	}
 
 	@GetMapping("/childmodifyform")
-	public String showChildUpdateForm(@RequestParam("id") int childId, Model model) {
+	public String showChildUpdateForm(@RequestParam("childId") int childId, Model model) {
 		Child theChildren = childServices.findById(childId);
 		model.addAttribute("modifyChild", theChildren);
 		return "/child/update-form-child";
@@ -111,7 +119,7 @@ public class ChildController {
 	}
 
 	@GetMapping("/childdeleteform")
-	public String deleteChild(@RequestParam("id") int childId) {
+	public String deleteChild(@RequestParam("childId") int childId) {
 		childServices.removeChild(childId);
 		return REDIRECT_PAGE;
 	}
@@ -237,5 +245,7 @@ public class ChildController {
 		model.addAttribute("listofchildbyguardian", childs);
 		return "list-childs-by-gaurdian";
 	}
+	
+	
 
 }

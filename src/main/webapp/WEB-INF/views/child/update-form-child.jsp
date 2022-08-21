@@ -41,8 +41,8 @@
 			<h1 class="logotitle">Child Update form</h1>
 		</div>
 		<div id="form">
-			<updatechildform:form action="addchilds" method="post"
-				modelAttribute="addChild">
+			<updatechildform:form action="modifychilds" method="post"
+				modelAttribute="modifyChild">
 				<div class="row">
 					<div class="col-25">
 						<label for="childId">Child Id</label>
@@ -50,7 +50,7 @@
 					<div class="col-75">
 						<updatechildform:input path="childId" type="text" name="user id"
 							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
+							pattern="^[0-9]*$" required="true" readonly="true"/>
 					</div>
 				</div>
 				<updatechildform:errors path="childId" class="text-danger" />
@@ -184,7 +184,7 @@
 					<div class="col-75">
 						<updatechildform:input path="guardianId" type="text"
 							name="user id" minlength="3" maxlength="6" id="user id"
-							placeholder="user id" pattern="^[0-9]*$" required="true" />
+							placeholder="user id" pattern="^[0-9]*$"  />
 					</div>
 				</div>
 				<updatechildform:errors path="guardianId" class="text-danger" />

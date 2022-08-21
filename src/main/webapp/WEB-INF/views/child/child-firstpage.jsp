@@ -24,7 +24,7 @@
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/login/loginform">
+				<a href="/children/childfirstview">
 				<em	class="fa fa-arrow-circle-left" style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -37,16 +37,14 @@
 	<div class="dashboard">
 			<ul>
 		<li><a href="/children/addchildform">Add Child </a>
-		<li><a href="/children/fetchchildform">Fetch Child </a>
 		<li><a href="/children/listallchilds">List Children </a>
+		<li><a href="/children/fetchchildform">Fetch Child </a>
 		<li><a href="/children/fetchchildbyhospitalid">List
 				Children by Hospital </a>
 		<li><a href="/children/fetchchildbydoctorid">List
 				Children by Doctor</a>
-	
-		<li><a href="/admin/children/fetchhospitalandchildform">fetch
+		<li><a href="/children/fetchhospitalandchildform">fetch
 				Child hospital</a>
-		
 		<li><a href="/children/fetchchildandparent">fetch Child
 				parent</a>
 		<li><a href="/children/fetchchildandguardian">fetch Child

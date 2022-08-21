@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="findchildform"
+<%@ taglib prefix="findhospitalstaffform"
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>find Child By Id</title>
+<title>find Hospital Staff Person By Id</title>
 <style>
 <%@include file="/WEB-INF/css/person-add-form.css" %>
 </style>
@@ -24,7 +24,7 @@
 		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/children/fetchchildform"><em
+				<a href="/hospitalstaff/hospitalstafffirstview"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -35,31 +35,53 @@
 	</nav>
 	<div id="root">
 		<div id="form">
-			<findchildform:form action="" method="get"
-				modelAttribute="fetchChildById">
-
+		<h3>Staff Details</h3>
+			<findhospitalstaffform:form action="" method="get"
+				modelAttribute="fetchHospitalStaffById">
 				<div class="row">
 					<div class="col-25">
-						<label for="childId">Child Id</label>
+						<label for="staffId">Staff Id</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="childId" readonly="true"/>
+						<findhospitalstaffform:input path="staffId" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="childName">Child Name</label>
+						<label for="staffRole">Staff Role</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="childName" readonly="true"/>
+						<findhospitalstaffform:input path="staffRole" readonly="true" />
+					</div>
+				</div>
+			</findhospitalstaffform:form>
+			<findhospitalstaffform:form action="" method="get"
+				modelAttribute="fetchHospitalById">
+				<div class="row">
+					<div class="col-25">
+						<label for="hospitalName">Hospital Name</label>
+					</div>
+					<div class="col-75">
+						<findhospitalstaffform:input path="hospitalName" />
+					</div>
+				</div>
+			</findhospitalstaffform:form>
+			<findhospitalstaffform:form action="" method="get"
+				modelAttribute="fetchstaffById">
+				<div class="row">
+					<div class="col-25">
+						<label for="userName">User Name</label>
+					</div>
+					<div class="col-75">
+						<findhospitalstaffform:input path="userName" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="childDob">Child Dob </label>
+						<label for="userDob">User Dob </label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="childDob" readonly="true"/>
+						<findhospitalstaffform:input path="userDob" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
@@ -67,74 +89,42 @@
 						<label for="gender">Gender</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="gender" readonly="true"/>
+						<findhospitalstaffform:input path="gender" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="birthWeight">Birth Weight</label>
+						<label for="email">Email</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="birthWeight" readonly="true"/>
+						<findhospitalstaffform:input path="email" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="birthPlace">Birth Place</label>
+						<label for="phoneNumber">Phone Number</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="birthPlace" readonly="true"/>
+						<findhospitalstaffform:input path="phoneNumber" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="bloodGroup">Blood Group</label>
+						<label for="city">city</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="bloodGroup" readonly="true"/>
+						<findhospitalstaffform:input path="city" readonly="true" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-25">
-						<label for="hospitalId">Hospital Id</label>
-					</div>
-				<div class="col-75">
-					<findchildform:input path="hospitalId" value="${childHospitaldetails.hospitalName}" readonly="true"/>
-				</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="doctorId">Doctor Id</label>
+						<label for="pinCode">Pin Code</label>
 					</div>
 					<div class="col-75">
-						<findchildform:input path="doctorId" value="${childDoctordetails.userName}" readonly="true"/>
+						<findhospitalstaffform:input path="pinCode" readonly="true" />
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="fatherId">Father Id</label>
-					</div>
-					<div class="col-75">
-						<findchildform:input path="fatherId" value="${childDaddetails.userName}" readonly="true"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="motherId">Mother Id</label>
-					</div>
-					<div class="col-75">
-						<findchildform:input path="motherId" value="${childMomdetails.userName}" readonly="true"/>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-25">
-						<label for="guardianId">Guardian Id</label>
-					</div>
-					<div class="col-75">
-						<findchildform:input path="guardianId" placeholder="-" value="${childGuardianDetails.userName}" readonly="true"/>
-					</div>
-				</div>
-			</findchildform:form>
+			</findhospitalstaffform:form>
 		</div>
 	</div>
 	<footer>

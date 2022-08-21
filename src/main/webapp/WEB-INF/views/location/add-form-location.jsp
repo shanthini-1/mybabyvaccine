@@ -88,16 +88,8 @@
 					</div>
 				</div>
 				<locationaddform:errors path="country" class="text-danger" />
-				<div id="formbuttons">
-					<div>
-						<locationaddform:button>
-							<a href="/location/addlocationform">Back</a>
-						</locationaddform:button>
-					</div>
-					<div>
+				
 						<locationaddform:button>Add Location</locationaddform:button>
-					</div>
-				</div>
 			</locationaddform:form>
 		</div>
 	</div>
@@ -108,13 +100,7 @@
 		</p>
 	</footer>
 	<script>
-		function refreshTime() {
-			const timeDisplay = document.getElementById("time");
-			const dateString = new Date().toLocaleTimeString();
-			const formattedString = dateString.replace(" - ");
-			timeDisplay.textContent = formattedString;
-		}
-		setInterval(refreshTime, 1000);
+			<%@include file="/WEB-INF/js/time.js" %>
 	</script>
 </body>
 </html>

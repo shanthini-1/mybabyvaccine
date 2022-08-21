@@ -50,4 +50,22 @@ public class PersonServices {
 		return thePerson;
 
 	}
+	
+	public List<Person> getAllFather(){
+		return personRepo.fatherList();
+	}
+	
+	public List<Person> getAllMother(){
+		return personRepo.motherList();
+	}
+	
+	public List<Person> getAllUser(){
+		return personRepo.userList();
+	}
+	
+	public List<Person> getAllStaff(){
+		return personRepo.staffList();
+	}
+
+
 }

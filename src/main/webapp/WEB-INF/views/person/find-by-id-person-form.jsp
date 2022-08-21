@@ -4,7 +4,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="ISO-8859-1">
 <title>find Person By Id</title>
@@ -78,13 +78,6 @@
 				</div>
 				<div>
 					<findpersonform:input path="pinCode" readonly="true" />
-				</div>
-				<!-- add location data filled automatically when pin code entered in html (city,district,state,country) -->
-				<div>
-					<label for="passWord">Password</label>
-				</div>
-				<div>
-					<findpersonform:input path="passWord" readonly="true" />
 				</div>
 			</findpersonform:form>
 		</div>

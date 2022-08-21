@@ -17,9 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.mybabyvaccine.compositemodel.ChildVaccineCompositeTable;
 import com.chainsys.mybabyvaccine.models.Child;
+import com.chainsys.mybabyvaccine.models.Hospital;
+import com.chainsys.mybabyvaccine.models.HospitalStaff;
 import com.chainsys.mybabyvaccine.models.VaccinationStatus;
 import com.chainsys.mybabyvaccine.models.Vaccine;
 import com.chainsys.mybabyvaccine.services.ChildServices;
+import com.chainsys.mybabyvaccine.services.HospitalServices;
+import com.chainsys.mybabyvaccine.services.HospitalStaffServices;
 import com.chainsys.mybabyvaccine.services.VaccinationStatusServices;
 import com.chainsys.mybabyvaccine.services.VaccineServices;
 
@@ -39,13 +43,16 @@ public class VaccinationStatusController {
 	private ChildServices childServices;
 	@Autowired
 	private VaccineServices vaccineServices;
-
-
+	@Autowired
+	private HospitalServices hospitalServices;
+	@Autowired
+	private HospitalStaffServices hospitalStaffServices;
+	
 	@GetMapping("/listallvaccinationstatus")
 	public String getVaccinationStatus(Model model) {
 		List<VaccinationStatus> vaccinationStatusList = vaccinationStatusService.getVaccinationStatus();
 		model.addAttribute("allVaccinationStatuslist", vaccinationStatusList);
-		return "list-vaccination-status";
+		return "/vaccine-status/list-vaccination-status";
 	}
 
 //---------------
@@ -53,7 +60,15 @@ public class VaccinationStatusController {
 	public String showVaccinationStatusAddForm(Model model) {
 		VaccinationStatus theVac = new VaccinationStatus();
 		model.addAttribute("addvaccinationStatus", theVac);
-		return "add-vaccine-status-form";
+		List<Integer>childidlist = childServices.getAllChildId();
+		model.addAttribute("listAllChildrenId", childidlist);
+		List<Vaccine> vaclist = vaccineServices.getVaccines();
+		model.addAttribute("allvaccines", vaclist);
+		List<Hospital> hospitalList = hospitalServices.getHospitals();
+		model.addAttribute("listAllTheHospitals", hospitalList);
+		List<HospitalStaff> attenderList = hospitalStaffServices.getHospitalStaffAttender();
+		model.addAttribute("listAllAttenders", attenderList);
+		return "/vaccine-status/add-vaccine-status-form";
 	}
 
 	@PostMapping("/addvaccinationstatuss")
@@ -66,7 +81,7 @@ public class VaccinationStatusController {
 	
 	@GetMapping("/modifyvaccinationstatusform")
 	public String modifyingVaccinationStatusForm() {
-		return "update-vaccine-status-form";
+		return "/vaccine-status/update-vaccine-status-form";
 	}
 
 	@GetMapping("/vaccinationstatusmodifyform")
@@ -75,19 +90,19 @@ public class VaccinationStatusController {
 		ChildVaccineCompositeTable compObj = new ChildVaccineCompositeTable(childId, vacId);
 		Optional<VaccinationStatus> theVac = vaccinationStatusService.getVaccinationStatussById(compObj);
 		model.addAttribute("modifyvaccinationStatus", theVac);
-		return "update-vaccinationstatus-form";
+		return "/vaccine-status/update-vaccinationstatus-form";
 	}
 
 	@PostMapping("/modifyvaccinationstatuschild")
-	public String modifyVaccineStatusForm(@ModelAttribute("modifyvaccinationStatus") VaccinationStatus theVac) {
-		vaccinationStatusService.addVaccinationStatus(theVac);
-		return "redirect:/admin/vaccinationstatus/listallvaccinationstatus";
+	public String modifyVaccineStatusForm(@ModelAttribute("modifyvaccinationStatus") VaccinationStatus vaccstatus) {
+		vaccinationStatusService.addVaccinationStatus(vaccstatus);
+		return REDIRECT_PAGE;
 	}
 
 //	-------------------------
 	@GetMapping("/deletevaccinationstatusform")
 	public String deleteVaccinationStatusForm() {
-		return "delete-vaccine-status-form";
+		return "/vaccine-status/delete-vaccine-status-form";
 	}
 
 	@GetMapping("/vaccinationStatusdeleteform")
@@ -101,14 +116,14 @@ public class VaccinationStatusController {
 //-----------------------------
 	@GetMapping("/listchildrenbyvacid")
 	public String listChildrenByVaccine() {
-		return "list-children-form-by-vaccine";
+		return "/vaccine-status/list-children-form-by-vaccine";
 	}
 
 	@GetMapping("/vaccineslistforchildren")
 	public String getChildrenListByVaccineId(@RequestParam("id") int vaccineId, Model model) {
 		List<VaccinationStatus> babies = vaccinationStatusService.getChildrenListByVacId(vaccineId);
 		model.addAttribute("listofvaccineschild", babies);
-		return "list-children-by-vaccine-form";
+		return "vaccine-status/list-children-by-vaccine-form";
 	}
 
 //-----------------
@@ -121,13 +136,13 @@ public class VaccinationStatusController {
 	public String getVaccineListByChildId(@RequestParam("id") int childId, Model model) {
 		List<VaccinationStatus> vaccines = vaccinationStatusService.getVaccineListByChildId(childId);
 		model.addAttribute("listofvaccines", vaccines);
-		return "list-vaccines-by-child-form";
+		return "/vaccine-status/list-vaccines-by-child-form";
 	}
 
 //-----------------------------
 	@GetMapping("/fetchchildvaccinebyidform")
 	public String listChildVaccineById() {
-		return "fetch-childvaccine-form-by-id";
+		return "/vaccine-status/fetch-childvaccine-form-by-id";
 	}
 
 	@GetMapping("/fetchvaccinationstatusbyid")
@@ -136,27 +151,26 @@ public class VaccinationStatusController {
 		ChildVaccineCompositeTable compObj = new ChildVaccineCompositeTable(childId, vacId);
 		Optional<VaccinationStatus> theVac = vaccinationStatusService.getVaccinationStatussById(compObj);
 		model.addAttribute("findVaccinationStatusById", theVac);
-		return "findbyid-vaccinationstatus-form";
+		return "/vaccine-status/findbyid-vaccinationstatus-form";
 	}
 
 //------------------------------
 	@GetMapping("/childvaccinedetails")
 	public String detailsOfVaccinebychild() {
-		return "vaccineslistchild";
+		return "/vaccine-status/vaccineslistchild";
 	}
+	
 	@GetMapping("/childvaccinestatuslistbychild")
-
 	public String listChildbyVaccine(@RequestParam("vId") int vaccineId, Model model) {
-		
 		Vaccine vac = vaccineServices.getVaccinesById(vaccineId);
 		model.addAttribute("getVaccine", vac);
 		List<VaccinationStatus>  vaccinationStatus = vaccinationStatusService.getChildrenListByVacId(vaccineId);
 		model.addAttribute("childvacdetailslist", vaccinationStatus);
-		return "list-childs-vaccinestatus";
+		return "/vaccine-status/list-childs-vaccinestatus";
 	}
 	@GetMapping("/detailsofchildvaccine")
 	public String detailsOfChildVaccine() {
-		return "childrenlistvaccine";
+		return "/vaccine-status/childrenlistvaccine";
 	}
 
 	@GetMapping("/childrenvaccinelist")
@@ -165,7 +179,7 @@ public class VaccinationStatusController {
 		model.addAttribute("chilinfo", child);
 		List<VaccinationStatus> vaccinesByChild = vaccinationStatusService.getVaccineListByChildId(childId);
 		model.addAttribute("vaccinestatus", vaccinesByChild);
-		return "child-vaccinestatus-detail-form";
+		return "/vaccine-status/child-vaccinestatus-detail-form";
 	}
 
 }

@@ -47,17 +47,18 @@ input #childId {
 			<h1 class="logotitle">Find child</h1>
 		</div>
 		<div id="form">
-			<form:form action="/children/fetchchild" method="get">
-					 <form:select path="cid" name="cid" id="cid" placeholder="child id"
-					pattern="^[0-9]*$" required="true">
-					<form:option value=''>-select-</form:option>
+			<form action="/children/fetchchild" method="get">
+				<div onclick="myFunction()" id="myDropdown">
+					 <select name="cid" id=cid  onclick="filterFunction()">
+					<option value=''></option>
 						<c:forEach items="${listAllChildrenId}" var="childId"
 							varStatus="loop">
-							<form:option value='${childId}'>${childId}</form:option>
+							<option value='${childId}'>${childId}</option>
 						</c:forEach>
-					</form:select> 
-					<form:button>find</form:button>
-			</form:form>
+					</select> 
+				</div>
+					<input type="submit" value="find"></input>
+			</form>
 		</div>
 	</div>
 	<footer>
@@ -66,6 +67,28 @@ input #childId {
 			reserved.
 		</p>
 	</footer>
+	<script type="text/javascript">
+		function myFunction() {
+			document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		function filterFunction() {
+			var input, filter, option, i;
+			input = document.getElementById("cid");
+			filter = input.value.toUpperCase();
+			 div = document.getElementById("myDropdown"); 
+			option = div.getElementsByTagName("option");
+			for (i = 0; i < option.length; i++) {
+				txtValue = option[i].textContent || option[i].innerText;
+				if (txtValue.toUpperCase().indexOf(filter) > -1) {
+					option[i].style.display = "";
+				} else {
+					option[i].style.display = "none";
+					/* <option value='${childId}'>${childId}</option> */
+				}
+			}
+		}
+	</script>
 	<script>
 		
 	<%@include file="/WEB-INF/js/time.js" %>

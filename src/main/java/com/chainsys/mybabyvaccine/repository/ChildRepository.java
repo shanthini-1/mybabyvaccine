@@ -6,6 +6,7 @@ package com.chainsys.mybabyvaccine.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.chainsys.mybabyvaccine.models.Child;
@@ -33,5 +34,8 @@ public interface ChildRepository extends JpaRepository<Child, Integer> {
 	List<Child> findAllByFatherIdAndMotherId(Integer fatherId, Integer motherId);
 
 	List<Child> findAllByGuardianId(Integer guardianId);
+	
+	@Query(value="select child_id from child_table",nativeQuery = true)
+	List<Integer> listOfChildId();
 
 }

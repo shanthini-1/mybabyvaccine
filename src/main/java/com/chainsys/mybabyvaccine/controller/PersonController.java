@@ -63,6 +63,8 @@ public class PersonController {
 	public String showPersonAddForm(Model model) {
 		Person thePerson = new Person();
 		model.addAttribute("addPerson", thePerson);
+		List<Integer> pincodeList = locServices.getLocationPincodeList();
+		model.addAttribute("listAllPincode", pincodeList);
 		return "person/add-form-person";
 	}
 

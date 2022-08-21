@@ -48,7 +48,7 @@ public class ChildServices {
 			VaccinationSchedular vsObj = new VaccinationSchedular();
 			vsObj.setChildId(theChild.getChildId());
 			vsObj.setVaccineId(vaccine.getVaccineId());
-			Date date =Date.valueOf (theChild.getChildDob().toLocalDate().plusMonths(vaccine.getMonthToVaccinate()));
+			Date date =Date.valueOf(theChild.getChildDob().toLocalDate().plusMonths(vaccine.getWeek()));
 			vsObj.setDateToVaccinate(date);
 			vaccinationSchedularRepository.save(vsObj);
 		}
@@ -74,6 +74,10 @@ public class ChildServices {
 
 	public List<Child> getChildGuardianId(Integer parentId) {
 		return childRepo.findAllByGuardianId(parentId);
+	}
+
+	public List<Integer> getAllChildId(){
+		return childRepo.listOfChildId();
 	}
 
 }

@@ -2,6 +2,7 @@
  * 
  */
 package com.chainsys.mybabyvaccine.services;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,10 @@ public class VaccinationSchedularServices {
 
 	public List<VaccinationSchedular> getAllVaccineSchedularsByChildId(int childId){
 		return vaccinationSchedularRepo.findByChildId(childId);
+	}
+
+	public List<VaccinationSchedular> getAllVaccineSchedulesByDate(Date date) {
+		return vaccinationSchedularRepo.findByDateToVaccinate(date);
 	}
 	
 

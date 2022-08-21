@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.chainsys.mybabyvaccine.models.Hospital;
 import com.chainsys.mybabyvaccine.models.HospitalStaff;
+import com.chainsys.mybabyvaccine.models.Person;
 import com.chainsys.mybabyvaccine.services.HospitalServices;
 import com.chainsys.mybabyvaccine.services.HospitalStaffServices;
 import com.chainsys.mybabyvaccine.services.PersonServices;
@@ -34,6 +36,11 @@ public class HospitalStaffController {
 	private HospitalServices hospitalServices;
 	@Autowired
 	private PersonServices personServices;
+	
+	@GetMapping("/hospitalstafffirstview")
+	public String showHospitalActionMenu() {
+		return "/hospital/hospital-staff-firstpage";
+	}
 
 	/*
 	 * list all hospital staff
@@ -42,7 +49,7 @@ public class HospitalStaffController {
 	public String getAllHospitalStaffs(Model model) {
 		List<HospitalStaff> hospitalStaffList = hospitalStaffServices.getHospitalStaffs();
 		model.addAttribute("listAllHospitalStaffs", hospitalStaffList);
-		return "list-hospital-staff";
+		return "/hospital/list-hospital-staff";
 	}
 
 //-------------------------------
@@ -51,7 +58,7 @@ public class HospitalStaffController {
 	 */
 	@GetMapping("/fetchstaffidform")
 	public String showHospitalStaffFindForm() {
-		return "hospitalstaff-find-form";
+		return "/hospital/hospitalstaff-find-form";
 	}
 
 	/*
@@ -62,7 +69,7 @@ public class HospitalStaffController {
 	public String getHospitalStaffById(@RequestParam("id") Integer staffId, Model model) {
 		Optional<HospitalStaff> theHospitalStaff = hospitalStaffServices.getHospitalStaffById(staffId);
 		model.addAttribute("fetchStaffDetailsById", theHospitalStaff);
-		return "find-by-id-staff-form";
+		return "/hospital/find-by-id-staff-form";
 	}
 //	-------------------------------------
 
@@ -73,7 +80,11 @@ public class HospitalStaffController {
 	public String showHospitalStaffAddForm(Model model) {
 		HospitalStaff theHospitalStaff = new HospitalStaff();
 		model.addAttribute("addHospitalStaff", theHospitalStaff);
-		return "add-form-hospital-staff";
+		List<Hospital> hospitalList = hospitalServices.getHospitals();
+		model.addAttribute("listAllTheHospitals", hospitalList);
+		List<Person> staffList = personServices.getAllStaff();
+		model.addAttribute("listAllStaffs", staffList);
+		return "/hospital/add-form-hospital-staff";
 	}
 
 	/*
@@ -90,7 +101,7 @@ public class HospitalStaffController {
 	 */
 	@GetMapping("/hospitalstaffmodifyform")
 	public String showHospitalStaffmodifyForm() {
-		return "hospitalstaff-modify-form";
+		return "/hospital/hospitalstaff-modify-form";
 	}
 
 	/*
@@ -100,16 +111,16 @@ public class HospitalStaffController {
 	public String showHospitalStaffUpdate(@RequestParam("id") int hospitalId, Model model) {
 		Optional<HospitalStaff> theHospitalStaff = hospitalStaffServices.getHospitalStaffById(hospitalId);
 		model.addAttribute("modifyHospitalStaff", theHospitalStaff);
-		return "update-form-hospital-staff";
+		return "/hospital/update-form-hospital-staff";
 	}
 
 	/*
 	 * update staff details and list staffs after updating
 	 */
 	@PostMapping("/modifyhospitalstaffs")
-	public String updateHospitalStaff(@ModelAttribute("modifyHospitalStaff") HospitalStaff theHospitalStaff) {
-		hospitalStaffServices.addHospitalStaff(theHospitalStaff);
-		return "redirect:/admin/hospitalstaff/listallhospitalstaffs";
+	public String updateHospitalStaff(@ModelAttribute("modifyHospitalStaff") HospitalStaff hospitalStaff) {
+		hospitalStaffServices.addHospitalStaff(hospitalStaff);
+		return REDIRECT_PAGE;
 	}
 
 	/*
@@ -117,7 +128,7 @@ public class HospitalStaffController {
 	 */
 	@GetMapping("/showhospitalstaffdeleteform")
 	public String showHospitalStaffRemoveForm() {
-		return "hospitalstaff-delete-form";
+		return "/hospital/hospitalstaff-delete-form";
 	}
 
 	/*
@@ -136,7 +147,7 @@ public class HospitalStaffController {
 
 	@GetMapping("/hospitalstaffdetailsfindform")
 	public String showHospitalStaffDetailsFindForm() {
-		return "hospital-staff-details-form";
+		return "/hospital/hospital-staff-details-form";
 	}
 
 	/*
@@ -154,6 +165,6 @@ public class HospitalStaffController {
 			model.addAttribute("fetchstaffById", personServices.getPersonById(thehosstaff.get().getStaffId()));
 
 		}
-		return "find-by-id-hospital-staff-form";
+		return "/hospital/find-by-id-hospital-staff-form";
 	}
 }

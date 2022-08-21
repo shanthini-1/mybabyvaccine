@@ -25,7 +25,7 @@
 		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/login/loginform"><em
+				<a href="/person/user-firstpage"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -84,9 +84,10 @@
 					<div class="col-75">
 						<addpersonform:select name="personCategory" path="personCategory"
 							id="personCategory" required="true">
+							<option value="">-none-</option>
 							<option value="Staff">Staff</option>
 							<option value="User">User</option>
-							<option value="Admin">Admin</option>
+						
 						</addpersonform:select>
 					</div>
 				</div>
@@ -153,8 +154,14 @@
 						<label for="pinCode">Pin Code</label>
 					</div>
 					<div class="col-75">
-						<addpersonform:input path="pinCode" type="text" name="pincode"
-							id="pincode" maxlength="6" minlength="6" pattern="^[6][0-9]*{6}" />
+						 <addpersonform:select path="pinCode" name="pinCode" id="pinCode" placeholder="pincode"
+					pattern="^[6][0-9]*{6}"  required="true">
+					<addpersonform:option value=''>-select-</addpersonform:option>
+						<c:forEach items="${listAllPincode}" var="pinCode"
+							varStatus="loop">
+							<addpersonform:option value='${pinCode}'>${pinCode}</addpersonform:option>
+						</c:forEach>
+					</addpersonform:select> 
 					</div>
 				</div>
 				<addpersonform:errors path="pinCode" class="text-danger" />

@@ -82,6 +82,8 @@ public class LocationCodeController {
 	public String showLocationUpdateForm(@RequestParam("locId") int locId, Model model) {
 		LocationCode theLoc = locationCodeService.getLocationcodeById(locId);
 		model.addAttribute("modifyLocation", theLoc);
+		List<Integer> pincodeList = locationCodeService.getLocationPincodeList();
+		model.addAttribute("listAllPincode", pincodeList);
 		return "/location/update-form-location";
 	}
 

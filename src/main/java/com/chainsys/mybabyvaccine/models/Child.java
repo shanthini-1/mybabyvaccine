@@ -17,6 +17,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
@@ -40,7 +41,9 @@ public class Child {
 	@Column(name = "CHILD_NAME")
 	private String childName;
 	
+	
 	@NotNull(message = "*Birth date can not be null")
+	@PastOrPresent
 	@Column(name = "CHILD_DOB")
 	private Date childDob;
 	
@@ -64,7 +67,7 @@ public class Child {
 	private String bloodGroup;
 	
 	@Column(name = "HOSPITAL_ID")
-	private int hospitalId;
+	private Integer hospitalId;
 	
 	@Column(name = "DOCTOR_ID")
 	private Integer doctorId;
@@ -178,11 +181,11 @@ public class Child {
 		this.birthPlace = birthPlace;
 	}
 
-	public int getHospitalId() {
+	public Integer getHospitalId() {
 		return hospitalId;
 	}
 
-	public void setHospitalId(int hospitalId) {
+	public void setHospitalId(Integer hospitalId) {
 		this.hospitalId = hospitalId;
 	}
 

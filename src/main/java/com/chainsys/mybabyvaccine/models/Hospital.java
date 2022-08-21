@@ -8,10 +8,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -27,8 +30,10 @@ import javax.validation.constraints.Size;
 @Table(name = "HOSPITAL")
 public class Hospital {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO,generator = "HOSPITAL_ID_SEQ")
+	@SequenceGenerator(name="HOSPITAL_ID_SEQ",sequenceName = "HOSPITAL_ID_SEQ",allocationSize = 1)
 	@Column(name = "HOSPITAL_ID")
-	private int hospitalId;
+	private Integer hospitalId;
 
 	@NotNull(message = "*Hospital Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
@@ -37,7 +42,7 @@ public class Hospital {
 	private String hospitalName;
 
 	@NotNull(message = "*Hospital Plot number should not be null")
-	@Size(min = 8, max = 25, message = "*Hospital Plot number should match required length")
+	@Size(min = 1, max = 25, message = "*Hospital Plot number should match required length")
 	@Pattern(regexp = "^[0-9A-Za-z+-\\/]*$", message = "*Hospital Plot Number should match given pattern")
 	@Column(name = "HOSPITAL_PLOT_NO")
 	private String hospitalPlotNo;
@@ -48,9 +53,9 @@ public class Hospital {
 	@Column(name = "HOSPITAL_STREET")
 	private String hospitalStreet;
 
-	@NotNull(message = "*Street cannot be null")
+	@NotNull(message = "*city cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Street name ")
+	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid city name ")
 	@Column(name = "HOSPITAL_CITY")
 	private String hospitalCity;
 
@@ -86,11 +91,11 @@ public class Hospital {
 		this.hospitalChilds = hospitalChilds;
 	}
 
-	public int getHospitalId() {
+	public Integer getHospitalId() {
 		return hospitalId;
 	}
 
-	public void setHospitalId(int hospitalId) {
+	public void setHospitalId(Integer hospitalId) {
 		this.hospitalId = hospitalId;
 	}
 

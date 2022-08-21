@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Fetch children</title>
+<title>Insert title here</title>
 <style type="text/css">
 <%@include file="/WEB-INF/css/person-add-form.css" %>
- #root {
+#root {
 	margin-bottom: 289px;
 	padding-bottom: 34px;
 }
@@ -32,7 +30,7 @@ input #childId {
 		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/children/childfirstview"><em
+				<a href="/vaccinationschedular/vaccineSchedularfirstview"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -44,20 +42,23 @@ input #childId {
 	</nav>
 	<div id="root">
 		<div>
-			<h1 class="logotitle">Find child</h1>
+			<h1 class="logotitle">Find Person</h1>
 		</div>
 		<div id="form">
-			<form:form action="/children/fetchchild" method="get">
-					 <form:select path="cid" name="cid" id="cid" placeholder="child id"
-					pattern="^[0-9]*$" required="true">
-					<form:option value=''>-select-</form:option>
-						<c:forEach items="${listAllChildrenId}" var="childId"
-							varStatus="loop">
-							<form:option value='${childId}'>${childId}</form:option>
-						</c:forEach>
-					</form:select> 
-					<form:button>find</form:button>
-			</form:form>
+			<form action="/vaccinationschedular/vaccinelistdate" method="get">
+				<div class="row">
+					<div class="col-25">
+						<label>Date</label>
+					</div>
+					<div class="col-75">
+						<input type="Date" placeholder="yyyy-mm-dd" name="date"
+							id="date"  pattern="yyyy-mm-dd" required>
+					</div>
+				</div>
+				<div class="button-s">
+					<input type="submit" value="List Schedule" name="submit" id="submit">
+				</div>
+			</form>
 		</div>
 	</div>
 	<footer>
@@ -71,5 +72,6 @@ input #childId {
 	<%@include file="/WEB-INF/js/time.js" %>
 		
 	</script>
+
 </body>
 </html>

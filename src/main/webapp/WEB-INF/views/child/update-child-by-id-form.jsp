@@ -30,7 +30,6 @@
 				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
 					Home</a>
 			</div>
-
 		</div>
 	</nav>
 
@@ -40,14 +39,14 @@
 		</div>
 		<div id="form">
 
-	<form:form action="childmodifyform" method="get">
+	<form:form action="/children/childmodifyform" method="get" >
 		<div class="row">
 			<div class="col-25">
 				<label for="childId">Child Id</label>
 			</div>
 			<div class="col-75">
 				<form:input path="childId" type="text" name="user id"
-					minlength="3" maxlength="6" id="user id" placeholder="user id"
+					minlength="3" maxlength="6" id="child id" placeholder="child id"
 					pattern="^[0-9]*$" required="true" />
 			</div>
 		</div>

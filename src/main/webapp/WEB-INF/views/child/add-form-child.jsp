@@ -11,9 +11,11 @@
 <style>
 <%@include file="/WEB-INF/css/person-add-form.css" %>
 </style>
+<script type="text/javascript">
+<%@include file="/WEB-INF/js/datecheck.js" %>
+</script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
 	<header>
@@ -32,7 +34,6 @@
 				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
 					Home</a>
 			</div>
-
 		</div>
 	</nav>
 <div>${error}</div>
@@ -50,8 +51,8 @@
 						<label for="childName">Child Name</label>
 					</div>
 					<div class="col-75">
-						<addchildform:input path="childName" type="text" name="childId"
-							minlength="3" maxlength="25" id="user name"
+						<addchildform:input path="childName" type="text" name="child name"
+							minlength="3" maxlength="25" id="child name"
 							placeholder="child name" pattern="^[A-Za-z ]+[A-Za-z ]*{3-25}$"
 							required="true" />
 					</div>
@@ -63,7 +64,7 @@
 					</div>
 					<div class="col-75">
 						<addchildform:input path="childDob" type="date"
-							placeholder="birth date" required="true" />
+							placeholder="birth date" required="true"  id="dateNoFuture" onblur="checkDatenofuture();"/>
 					</div>
 				</div>
 				<addchildform:errors path="childDob" class="text-danger" />
@@ -72,11 +73,8 @@
 						<label for="gender">Gender </label>
 					</div>
 					<div class="col-75">
-						<addchildform:select path="gender" class="text-box"
-							title="gender required" required="true">
-							<addchildform:option value="Male">Male</addchildform:option>
-							<addchildform:option value="Female">Female</addchildform:option>
-						</addchildform:select>
+							  Male <addchildform:radiobutton path="gender" value="Male" required="true"/>  
+        					Female <addchildform:radiobutton path="gender" value="Female"/>
 					</div>
 				</div>
 				<addchildform:errors path="gender" class="text-danger" />
@@ -85,7 +83,7 @@
 						<label for="birthWeight">Birth Weight</label>
 					</div>
 					<div class="col-75">
-						<addchildform:input path="birthWeight" type="text"
+						<addchildform:input path="birthWeight" type="number" inputmode="decimal"
 							name="birthWeight" maxlength="5" id="birthWeight"
 							placeholder="birthWeight"
 							pattern="^([0-9]*+\\.?[0-9]*|\\.[0-9]+)$" required="true" />
@@ -109,7 +107,7 @@
 					</div>
 					<div class="col-75">
 						<addchildform:select path="bloodGroup" class="text-box"
-							placeholder="BloodGroup" title="Id must be required"
+							placeholder="BloodGroup" title="it must be required"
 							required="true">
 							<addchildform:option value="">-select-</addchildform:option>
 							<addchildform:option value="A Positive">A Positive</addchildform:option>
@@ -182,7 +180,6 @@
 				<div class="button-s">
 					<addchildform:button>Add Child</addchildform:button>
 				</div>
-				<addchildform:errors >${error}</addchildform:errors>
 			</addchildform:form>
 			${result}
 		</div>
@@ -194,9 +191,7 @@
 		</p>
 	</footer>
 	<script>
-		
 	<%@include file="/WEB-INF/js/time.js" %>
-		
 	</script>
 </body>
 </html>

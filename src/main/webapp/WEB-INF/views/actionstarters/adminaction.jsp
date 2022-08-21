@@ -24,6 +24,10 @@
 				<em	class="fa fa-arrow-circle-left" style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
+				<a href="/"><em class="fa fa-sign-out"
+					style="font-size: 20px;"></em> log out</a>
+			</div>
+			<div class="menu-list">
 				<a href="index.jsp"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>

@@ -2,6 +2,7 @@
  * 
  */
 package com.chainsys.mybabyvaccine.repository;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -17,9 +18,6 @@ public interface VaccinationSchedularRepository extends CrudRepository<Vaccinati
 	List<VaccinationSchedular> findByChildId(int childId);
 	List<VaccinationSchedular> findByVaccineId(int vaccineId);
 	<S extends VaccinationSchedular>S save(S vaccineSchedule);
-
-	void deleteById(int childId);
-
 	List<VaccinationSchedular> findAll();
-	
+	List<VaccinationSchedular> findByDateToVaccinate(Date date);
 }

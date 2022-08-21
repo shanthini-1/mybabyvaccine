@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.mybabyvaccine.models.Hospital;
+import com.chainsys.mybabyvaccine.models.Person;
 import com.chainsys.mybabyvaccine.services.HospitalServices;
+import com.chainsys.mybabyvaccine.services.LocationCodeServices;
 import com.chainsys.mybabyvaccine.services.PersonServices;
 
 
@@ -30,9 +32,11 @@ public class HospitalController {
 	private HospitalServices hospitalServices;
 	@Autowired
 	private PersonServices personServices;
+	@Autowired
+	private LocationCodeServices locationCodeServices;
 
 	@GetMapping("/hospitalfirstview")
-	public String showLocationFirstForm() {
+	public String showHospitalActionMenu() {
 		return "/hospital/hospital-firstpage";
 	}
 	
@@ -40,26 +44,30 @@ public class HospitalController {
 	public String getAllHospitals(Model model) {
 		List<Hospital> hospitalList = hospitalServices.getHospitals();
 		model.addAttribute("listAllTheHospitals", hospitalList);
-		return "list-hospital";
+		return "/hospital/list-hospital";
 	}
 
 	@GetMapping("/hospitalfindform")
 	public String showHospitalFindForm() {
-		return "hospital-find-form";
+		return "/hospital/hospital-find-form";
 	}
 
 	@GetMapping("/fetchhospital")
 	public String getHospitalById(@RequestParam("id") int hospitalId, Model model) {
 		Hospital thehospital = hospitalServices.getHospitalById(hospitalId);
 		model.addAttribute("fetchHospitalById", thehospital);
-		return "find-by-id-hospital-form";
+		return "/hospital/find-by-id-hospital-form";
 	}
 
 	@GetMapping("/addhospitalform")
 	public String showHospitalAddForm(Model model) {
 		Hospital theHospital = new Hospital();
 		model.addAttribute("addHospital", theHospital);
-		return "add-form-hospital";
+		List<Integer> pincodeList = locationCodeServices.getLocationPincodeList();
+		model.addAttribute("listAllTheHospitals", pincodeList);
+		List<Person> staffList = personServices.getAllStaff();
+		model.addAttribute("listAllStaffs", staffList);
+		return "/hospital/add-form-hospital";
 	}
 
 	@PostMapping("/addhospitals")
@@ -69,14 +77,14 @@ public class HospitalController {
 	}
 	@GetMapping("/showhospitalupdateform")
 	public String showHospitalModifyForm() {
-		return "hospital-modify-form";
+		return "/hospital/hospital-modify-form";
 	}
 
 	@GetMapping("/hospitalmodifyform")
 	public String showHospitalUpdateForm(@RequestParam("id") int hospitalId, Model model) {
 		Hospital theHospital = hospitalServices.getHospitalById(hospitalId);
 		model.addAttribute("modifyHospital", theHospital);
-		return "update-form-hospital";
+		return "/hospital/update-form-hospital";
 	}
 
 	@PostMapping("/modifyhospitals")
@@ -98,7 +106,7 @@ public class HospitalController {
 //	--------------------------------------
 	@GetMapping("/hoscontactfindform")
 	public String showContactPersonFindForm() {
-		return "hospital-contactperson-form";
+		return "/hospital/hospital-contactperson-form";
 	}
 
 	@GetMapping("/gethospitalcontactperson")
@@ -106,6 +114,6 @@ public class HospitalController {
 		List<Hospital> hospitals = hospitalServices.getHospitalsByContactperson(id);
 		model.addAttribute("listHosByConPersonId", hospitals);
 		model.addAttribute("fetchConPerfromPersonById", personServices.getPersonById(id));
-		return "list-hospitals-by-contact-person-form";
+		return "/hospital/list-hospitals-by-contact-person-form";
 	}
 }

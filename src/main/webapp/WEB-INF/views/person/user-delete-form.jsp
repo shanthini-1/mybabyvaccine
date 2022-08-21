@@ -12,7 +12,7 @@
 <body>
 	<h3>Delete person</h3>
 	<br>
-	<form action="/user/person/persondeleteform" method="get" >
+	<form action="/persons/persondeleteform" method="get" >
 		<label >enter id </label> <input type="text"
 			placeholder="user id" name="id"> <input type='submit'
 			value="delete" name="submit">

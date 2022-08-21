@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="addform"
-	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="updateform"
+	uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>Add vaccine form</title>
+<title>Update Vaccine Form</title>
 <style>
 <%@include file="/WEB-INF/css/person-add-form.css" %>
 </style>
@@ -36,17 +35,22 @@
 	</nav>
 	<div id="root">
 		<div id="form">
-			<addform:form action="addvaccines" method="post"
-				modelAttribute="addvaccine">
-
-				<div class="row">
+			<updateform:form action="modifyvaccines" method="post"
+				modelAttribute="modifyvaccine">
+				<div>
+					<label for="vaccineId">Vaccine Id</label>
+				</div>
+				<div>
+					<updateform:input path="vaccineId" readonly="true" />
+				</div>
+			<div class="row">
 					<div class="col-25">
 						<label for="vaccineName">Vaccine Name </label>
 					</div>
 					<div class="col-75">
-						<addform:input path="vaccineName" type="text" name="vaccineName"
-							minlength="3" maxlength="25" id="vaccine name"
-							placeholder="vaccine name" pattern="^[A-Za-z ]+[A-Za-z ]*{3-25}$"
+						<updateform:input path="vaccineName" type="text" name="childId"
+							minlength="3" maxlength="25" id="user name"
+							placeholder="child name" pattern="^[A-Za-z]+[A-Za-z ]*{3-25}$"
 							required="true" />
 					</div>
 				</div>
@@ -55,7 +59,7 @@
 						<label for="vacDescription">Description</label>
 					</div>
 					<div class="col-75">
-						<addform:input path="vacDescription" />
+						<updateform:input path="vacDescription" />
 					</div>
 				</div>
 				<div class="row">
@@ -63,7 +67,7 @@
 						<label for="week">Month</label>
 					</div>
 					<div class="col-75">
-						<addform:input path="week" type="text" name="week" maxlength="2"
+						<updateform:input path="week" type="text" name="week" maxlength="2"
 							id="week" placeholder=" no of month" pattern="^\\d*{2}$"
 							required="true" />
 					</div>
@@ -73,9 +77,9 @@
 						<label for="dosage">Dosage</label>
 					</div>
 					<div class="col-75">
-						<addform:input path="dosage" type="text" name="dosage"
+						<updateform:input path="dosage" type="text" name="dosage"
 							maxlength="2" id="dosage" placeholder="dosage"
-							pattern="^\\d*{2}$" required="true" />
+							pattern="^[0-9]*{2}$" required="true" />
 					</div>
 				</div>
 				<div class="row">
@@ -83,14 +87,14 @@
 						<label for="suggestion">Suggestion</label>
 					</div>
 					<div class="col-75">
-						<addform:select path="suggestion" class="text-box"
+						<updateform:select path="suggestion" class="text-box"
 							placeholder="suggestion" title="it must be required"
 							required="true">
-							<addform:option value="">-select-</addform:option>
-							<addform:option value="If available"> If Available</addform:option>
-							<addform:option value="Compulsory"> Compulsory</addform:option>
-							<addform:option value="Optional"> Optional</addform:option>
-						</addform:select>
+							<updateform:option value="">-select-</updateform:option>
+							<updateform:option value="If available"> If Available</updateform:option>
+							<updateform:option value="Compulsory"> Compulsory</updateform:option>
+							<updateform:option value="Optional"> Optional</updateform:option>
+						</updateform:select>
 					</div>
 				</div>
 				<div class="row">
@@ -98,15 +102,15 @@
 						<label for="vaccinePrice">Vaccine price</label>
 					</div>
 					<div class="col-75">
-						<addform:input path="vaccinePrice" pattern="^\d+(?:\.\d{0,2})$"
+						<updateform:input path="vaccinePrice" pattern="^\d+(?:\.\d{0,2})$"
 							type="text" name="vaccinePrice" maxlength="9" id="vaccinePrice"
 							placeholder="vaccinePrice" required="true" />
 					</div>
 				</div>
 				<div class="button-s">
-					<addform:button>Add Vaccine</addform:button>
+					<updateform:button>Add Vaccine</updateform:button>
 				</div>
-			</addform:form>
+			</updateform:form>
 		</div>
 	</div>
 	

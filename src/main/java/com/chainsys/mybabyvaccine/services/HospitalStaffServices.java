@@ -37,5 +37,7 @@ public class HospitalStaffServices {
 		hospitalStaffRepo.deleteById(staffId);
 	}
 
-
+	public List<HospitalStaff> getHospitalStaffAttender() {
+		return hospitalStaffRepo.listAllAttender();
+	}
 }

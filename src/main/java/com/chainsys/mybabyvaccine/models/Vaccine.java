@@ -37,7 +37,7 @@ public class Vaccine {
 	@Digits(integer = 2 ,fraction = 0, message = "*Month to vaccinate should match given pattern")
 	@Column(name = "MONTH_TO_VACCINATE")
 	private int week;
-	
+
 	@NotNull(message = "*Name should not be null")
 	@Size(min = 3,max = 25,message = "*Name should have size of 3-25 characters")
 	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]{3,25}$" , message = "*Name should match given pattern")
@@ -77,14 +77,12 @@ public class Vaccine {
 		this.vaccineId = vaccineId;
 	}
 
-	
-
-	public int getMonthToVaccinate() {
+	public int getWeek() {
 		return week;
 	}
 
-	public void setMonthToVaccinate(int monthToVaccinate) {
-		this.week = monthToVaccinate;
+	public void setWeek(int week) {
+		this.week = week;
 	}
 
 	public String getVaccineName() {

@@ -38,26 +38,26 @@ public class VaccineController {
 	public String getVaccines(Model model) {
 		List<Vaccine> vaclist = vacServices.getVaccines();
 		model.addAttribute("allvaccines", vaclist);
-		return "list-vaccines";
+		return "/vaccine/list-vaccines";
 	}
 
 	@GetMapping("/getvaccine")
 	public String fetchVaccineform() {
-		return " fetch-vaccine-form";
+		return "/vaccine/fetch-vaccine-form";
 	}
 
 	@GetMapping("/fetchvaccine")
 	public String getVaccineById(@RequestParam("id") int vacId, Model model) {
 		Vaccine theVac = vacServices.getVaccinesById(vacId);
 		model.addAttribute("findvaccinebyid", theVac);
-		return "findbyid-vaccine-form";
+		return "/vaccine/findbyid-vaccine-form";
 	}
 
 	@GetMapping("/vaccineaddform")
 	public String showVaccineAddForm(Model model) {
 		Vaccine theVac = new Vaccine();
 		model.addAttribute("addvaccine", theVac);
-		return "add-vaccine-form";
+		return "/vaccine/add-vaccine-form";
 	}
 
 	@PostMapping("/addvaccines")
@@ -68,14 +68,14 @@ public class VaccineController {
 
 	@GetMapping("/modifyvaccineform")
 	public String updateVaccineform() {
-		return "modify-vaccine-form";
+		return "/vaccine/modify-vaccine-form";
 	}
 
 	@GetMapping("/vaccinemodifyform")
 	public String showVaccineUpdateForm(@RequestParam("id") int id, Model model) {
 		Vaccine theVac = vacServices.getVaccinesById(id);
 		model.addAttribute("modifyvaccine", theVac);
-		return "update-vaccine-form";
+		return "/vaccine/update-vaccine-form";
 	}
 
 	@PostMapping("/modifyvaccines")
@@ -86,7 +86,7 @@ public class VaccineController {
 
 	@GetMapping("/deletevaccine")
 	public String deleteVaccineform() {
-		return " delete-vaccine-form";
+		return "/vaccine/delete-vaccine-form";
 	}
 
 	@GetMapping("/vaccinedeleteform")

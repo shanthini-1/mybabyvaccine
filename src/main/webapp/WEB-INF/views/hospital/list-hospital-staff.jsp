@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>List of vaccine</title>
+<title>List of Hospital Staff</title>
 <style type="text/css">
 <%@include file="/WEB-INF/css/listpage.css" %>
 </style>
@@ -19,10 +19,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">Baby Health Tracker</div>
+		<div class="logo">My Baby Vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
+				<a href="/hospitalstaff/hospitalstafffirstview"><em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em> Back </a>
 			</div>
 			<div class="menu-list">
@@ -30,40 +30,36 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 					Home</a>
 			</div>
 			<div class="menu-list">
-				<a href="/vaccines/vaccineaddform"><em class="fa fa-plus"
-					style="font-size: 20px;"></em> Child</a>
+				<a href="/hospitalstaff/addhospitalstaffform"><em class="fa fa-plus"
+					style="font-size: 20px;"></em> Hospital</a>
 			</div>
 		</div>
 	</nav>
-	<div></div>
+	<div>
+	</div>
 	<div class="container">
 			<table>
-				<caption>vaccines</caption>
+				<caption>Hospital Staff</caption>
 				<thead>
 					<tr>
-						<th>Vaccine Id</th>
-						<th>Vaccine Name</th>
-						<th>Week</th>
-						<th>Vaccine Description</th>
-						<th>Dosage</th>
-						<th>Suggestion</th>
-						<th>Vaccine Price</th>
+						<th>Hospital Id</th>
+						<th>Staff Id</th>
+						<th>Staff Role</th>
+						<th>view</th>
 						<th>Edit</th>
 						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="vac" items="${allvaccines}">
+					<c:forEach var="hospitalstaff" items="${listAllHospitalStaffs}">
 						<tr>
-							<td>${vac.vaccineId}</td>
-							<td>${vac.vaccineName}</td>
-							<td>${vac.week}</td>
-							<td>${vac.vacDescription}</td>
-							<td>${vac.dosage}</td>
-							<td>${vac.suggestion}</td>
-							<td>${vac.vaccinePrice}</td>
-							<td><a href="/vaccines/vaccinemodifyform?id=${vac.vaccineId}">Edit</a></td>
-						<td><a href="/vaccines/vaccinedeleteform?id=${vac.vaccineId}">Delete</a></td>
+							<td>${hospitalstaff.hospitalId}</td>
+							<td>${hospitalstaff.staffId}</td>
+							<td>${hospitalstaff.staffRole}</td>
+							<td><a href="/hospitalstaff/gethospitalstaffpersondetails?id=${hospital.contactPersonId}">view</a></td>
+							<td><a href="/hospitalstaff/hospitalstaffdeleteform?id=${hospitalstaff.staffId}">Edit</a></td>
+							<td><a href="/hospitalstaff/hospitalstaffdeleteform?id=${hospitalstaff.staffId}">Delete</a></td>
+							
 						</tr>
 					</c:forEach>
 				</tbody>

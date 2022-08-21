@@ -1,0 +1,150 @@
+@charset "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: block;
+	overflow-x: hidden;
+}
+
+h1 {
+	color: navy;
+	text-align: center;
+	font-family: sans-serif;
+	margin-top: 1px;
+}
+
+/* Style the navigation bar */
+.navbar {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	width: 100%;
+	background-color: white;
+	overflow: hidden;
+	align-content: center;
+}
+
+/* Navbar links */
+.navbar a  {
+	float: left;
+	color: rgb(6, 70, 99);
+	text-align: center;
+	padding: 12px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.navmenu {
+	font-size: 20px;
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	float: right;
+	flex-wrap: nowrap;
+	align-items: center;
+	padding: 10px;
+}
+
+
+/* Navbar links on mouse-over */
+.navbar a:hover {
+	background-color: rgb(236, 179, 101, 0.3);
+}
+
+.logo {
+	padding-left: 20px;
+	font-size: 150%;
+	flex-wrap: inherit;
+	padding-top: 18px;
+	color: #ECB365;
+	border-radius: 50px;
+	background-color: rgb(6, 70, 99, 0.9);
+	padding-right: 20px;
+	color: #ECB365;
+}
+
+span {
+	padding-right: 40px;
+	color: navy;
+}
+
+#root {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	margin-bottom: 144px;
+	color: rgb(236, 179, 101, 0.5);
+}
+
+#form {
+	margin: auto;
+	width: 50%;
+	line-height: 30px;
+	padding: 15px;
+}
+
+.text-danger {
+	color: red;
+	font-size: 15px;
+}
+
+.container {
+	max-width: max-content;
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	align-items: flex-start;
+	min-height: 100vh;
+	justify-content: center;
+}
+
+table {
+	table-layout: auto;
+	width: 100%;
+	display: table;
+	border-collapse: separate;
+	box-sizing: border-box;
+	text-indent: initial;
+	border-spacing: 2px;
+	border-color: grey;
+	box-sizing: content-box;
+}
+
+footer {
+	padding: 10px;
+	background-color: #04293A;
+	color: #ECB365;
+	text-shadow: black;
+	text-align: center;
+	text-shadow: black;
+	text-shadow: black;
+}
+
+table {
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	text-transform: capitalize;
+}
+
+td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: rgb(236, 179, 101, 0.3);
+}
+tr:hover{
+ color :rgb(6, 70, 99, 0.9); 
+}
+a{
+text-decoration: none;
+color:inherit;
+}
