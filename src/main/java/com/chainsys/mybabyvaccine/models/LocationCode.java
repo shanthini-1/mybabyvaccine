@@ -26,19 +26,19 @@ public class LocationCode {
 	
 	@NotNull(message = "*District cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid district")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid district")
 	@Column(name = "DISTRICT")
 	private String district;
 	
 	@NotNull(message = "*State Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid State Name")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid State Name")
 	@Column(name = "STATE_NAME")
 	private String stateName;
 	
 	@NotNull(message = "*Country Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Country Name")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid Country Name")
 	@Column(name = "COUNTRY")
 	private String country;
 

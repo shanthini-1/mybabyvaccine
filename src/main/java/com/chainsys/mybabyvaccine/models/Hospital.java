@@ -37,7 +37,7 @@ public class Hospital {
 
 	@NotNull(message = "*Hospital Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Hospital Name")
+	@Pattern(regexp = "^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", message = "Valid Charactors include (A-Z) (a-z) (' space -)")
 	@Column(name = "HOSPITAL_NAME")
 	private String hospitalName;
 
@@ -49,13 +49,13 @@ public class Hospital {
 
 	@NotNull(message = "*Street cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Street name ")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid Street name ")
 	@Column(name = "HOSPITAL_STREET")
 	private String hospitalStreet;
 
 	@NotNull(message = "*city cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid city name ")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid city name ")
 	@Column(name = "HOSPITAL_CITY")
 	private String hospitalCity;
 

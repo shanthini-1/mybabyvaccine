@@ -50,7 +50,7 @@ public class Person {
 
 	@NotNull(message = "*Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z ]+[A-Za-z]*$", message = "*please enter valid name ")
+	@Pattern(regexp = "^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", message = "Valid Charactors include (A-Z) (a-z) (' space -)")
 	@Column(name = "USER_NAME")
 	private String userName;
 
@@ -91,13 +91,13 @@ public class Person {
 
 	@NotNull(message = "*Street cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Street name ")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter valid Street name ")
 	@Column(name = "STREET")
 	private String street;
 
 	@NotNull(message = "*City cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter city name correctly")
+	@Pattern(regexp = "^[a-zA-Z',.\\s-]{1,25}$", message = "*please enter city name correctly")
 	@Column(name = "CITY")
 	private String city;
 
