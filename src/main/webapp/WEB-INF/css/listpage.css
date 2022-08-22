@@ -105,11 +105,15 @@ table {
 	table-layout: auto;
 	width: 100%;
 	display: table;
-	border-collapse: separate;
 	text-indent: initial;
 	border-spacing: 2px;
 	border-color: grey;
 	box-sizing: content-box;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	text-transform: capitalize;
+	
 }
 
 footer {

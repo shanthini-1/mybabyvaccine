@@ -100,17 +100,22 @@ span {
 	align-items: flex-start;
 	min-height: 100vh;
 	justify-content: center;
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
 }
 
 table {
 	table-layout: auto;
 	width: 100%;
 	display: table;
-	border-collapse: separate;
 	box-sizing: border-box;
 	text-indent: initial;
 	border-spacing: 2px;
 	border-color: grey;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 footer {
@@ -119,13 +124,6 @@ footer {
 	color: #ECB365;
 	text-shadow: black;
 	text-align: center;
-}
-
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-	text-transform: capitalize;
 }
 
 td, th {
@@ -142,12 +140,8 @@ tr:hover{
 }
 a{
 text-decoration: none;
-color:inherit;
+	color: navy;
 }
-
-
-
-
 
 
 /* Style inputs, select elements and textareas */
@@ -178,13 +172,6 @@ input[type=submit] {
 	border-radius: 4px;
 	cursor: pointer;
 	float: right;
-}
-
-/* Style the container */
-.container {
-	border-radius: 5px;
-	background-color: #f2f2f2;
-	padding: 20px;
 }
 
 /* Floating column for labels: 25% width */
@@ -239,10 +226,6 @@ button {
 	border-color: navy;
 }
 
-a {
-	text-decoration: none;
-	color: navy;
-}
 
 button:hover {
 	/* border-bottom-color: black; */

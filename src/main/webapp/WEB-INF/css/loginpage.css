@@ -3,6 +3,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
 body {
 	background-color: white;
@@ -149,9 +150,6 @@ h2.active {
 	width: 100%;
 }
 
-*{
-	box-sizing: border-box;
-}
 
 footer {
 	padding: 5px;
