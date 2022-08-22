@@ -82,11 +82,10 @@ public class HospitalStaffController {
 	public String showHospitalStaffAddForm(Model model) {
 		HospitalStaff theHospitalStaff = new HospitalStaff();
 		model.addAttribute("addHospitalStaff", theHospitalStaff);
-//		List<Integer> pincodelist = codeServices.getLocationPincodeList();
-//		model.addAttribute("listAllpincode", pincodelist);
-//		List<Person> staffList = personServices.getAllStaff();
-//		model.addAttribute("listAllStaffs", staffList);
-//		System.out.println(staffList);
+		List<Integer> pincodelist = codeServices.getLocationPincodeList();
+		model.addAttribute("listAllpincode", pincodelist);
+		List<Person> staffList = personServices.getAllStaff();
+		model.addAttribute("listAllStaffs", staffList);
 		return "/hospital/add-form-hospital-staff";
 	}
 

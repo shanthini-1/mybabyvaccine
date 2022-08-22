@@ -67,7 +67,6 @@ public class HospitalController {
 		model.addAttribute("listAllpincode", pincodelist);
 		List<Person> staffList = personServices.getAllStaff();
 		model.addAttribute("listAllStaffs", staffList);
-		System.out.println(staffList);
 		return "/hospital/add-form-hospital";
 	}
 
@@ -87,7 +86,6 @@ public class HospitalController {
 		model.addAttribute("listAllpincode", pincodelist);
 		List<Person> staffList = personServices.getAllStaff();
 		model.addAttribute("listAllStaffs", staffList);
-		System.out.println(staffList);
 		Hospital theHospital = hospitalServices.getHospitalById(hospitalId);
 		model.addAttribute("modifyHospital", theHospital);
 		return "/hospital/update-form-hospital";
