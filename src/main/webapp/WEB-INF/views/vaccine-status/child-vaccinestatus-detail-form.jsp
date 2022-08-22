@@ -3,7 +3,7 @@
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
-<html>
+<html lang ="en">
 <head>
 <title>Details of vaccination status children</title>
 </head>
@@ -89,6 +89,7 @@
 		<div id="root">
 		<div id="vacform">
 			<table>
+			<caption>Vaccination Status Of Child</caption>
 				<thead>
 					<tr>
 						<th>Child Id</th>
