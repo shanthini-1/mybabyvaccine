@@ -35,7 +35,7 @@ public class HospitalStaff {
 
 	@NotNull(message = "*Staff role cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^[A-Za-z]+[A-Za-z ]*$", message = "*please enter valid Staff role ")
+	@Pattern(regexp = "^[A-Za-z ,_-]+$", message = "*please enter valid Staff role ")
 	@Column(name = "STAFF_ROLE")
 	private String staffRole;
 	

@@ -37,7 +37,7 @@ public class Hospital {
 
 	@NotNull(message = "*Hospital Name cannot be null")
 	@Size(min = 3, max = 25, message = "*Required length does not match")
-	@Pattern(regexp = "^([a-zA-Z]{2,}\\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\\s?([a-zA-Z]{1,})?)", message = "Valid Charactors include (A-Z) (a-z) (' space -)")
+	@Pattern(regexp = "^[a-zA-Z \\-\\.\\']*$", message = "Valid Charactors include (A-Z) (a-z) (' space -)")
 	@Column(name = "HOSPITAL_NAME")
 	private String hospitalName;
 
