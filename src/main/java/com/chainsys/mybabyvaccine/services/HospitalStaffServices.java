@@ -40,4 +40,12 @@ public class HospitalStaffServices {
 	public List<HospitalStaff> getHospitalStaffAttender() {
 		return hospitalStaffRepo.listAllAttender();
 	}
+
+	public List<HospitalStaff> getHospitalStaffDoctor() {
+		return hospitalStaffRepo.listAllDoctor();
+	}
+
+	public List<HospitalStaff> getHospitalStaffByrole() {
+		return hospitalStaffRepo.listAllDoctor();
+	}
 }

@@ -1,4 +1,4 @@
-<%@include file="/WEB-INF/js/time.js" %><%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -32,7 +32,7 @@
 					style="font-size: 20px;"></em> log out</a>
 			</div>
 			<div class="menu-list">
-				<a href="index.jsp"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 		</div>
@@ -40,36 +40,36 @@
 	<div class="dashboard">
 		<div class="dropdown">
 			<div class="dropbtn">
-				<a href="/persons/userfirstview">User</a>
+				<a href="/persons/viewuser">User</a>
 			</div>
 		</div>
 		<div class="dropdown">
 			<div class="dropbtn">
-				<a href="/vaccines/vaccinefirstview">vaccine</a>
+				<a href="/vaccines/listallvaccinesuser">vaccine</a>
 			</div>
 		</div>
 		<div class="dropdown">
 			<div class="dropbtn">
-				<a href="/children/childfirstview">Child</a>
+				<a href="">Child</a>
 			</div>
 		</div>
 	</div>
 	<div class="body-content">
 
 		<div>
-			<a href="/persons/userfirstview"><img
+			<a href="/persons/viewuser"><img
 				src="https://www.theladders.com/wp-content/uploads/parents-baby-190626.jpg "
 				alt="person" id="imgbd"> </a>
 		</div>
 		<div>
-			<a href="/vaccines/vaccinefirstview"><img
+			<a href="/vaccines/listallvaccinesuser"><img
 				src="https://www.bhf.org.uk/-/media/news-images/2021/september/syringe-and-vial-640x410.jpg?w=100%25&rev=8a0afcdac1474a998d8947904defc52b&hash=10602B13683498D6DF1AE8D386551BC7 "
 				alt="vaccine" id="imgbd"> </a>
 		</div>
 		<div>
-			<a href="/children/childfirstview"><img
+			<img
 				src="https://static.toiimg.com/photo/68790934.cms "
-				alt="Children" id="imgbd"> </a>
+				alt="Children" id="imgbd"> 
 		</div>
 	</div>
 	<footer>

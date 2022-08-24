@@ -46,14 +46,13 @@
 						<label for="hospitalId">Hospital Id</label>
 					</div>
 					<div class="col-75">
-					 <addhospitalstaffform:select path="hospitalId" name="hospital Id" id="hospital Id" placeholder="Hospital Id"
-					pattern="^[0-9]*{6}"  required="true">
-					<addhospitalstaffform:option value=''>-select-</addhospitalstaffform:option>
-						<c:forEach items="${listAllTheHospitals}" var="hospital"
-							varStatus="loop">
-							<addhospitalstaffform:option value='${hospital.hospitalId}'>${hospital.hospitalName} - ${hospital.hospitalId}</addhospitalstaffform:option>
-						</c:forEach>
-					</addhospitalstaffform:select> 
+						<select name="hospitalId" id="hospitalId" required>
+							<option value="" selected disabled >Select
+								Person</option>
+							<c:forEach items="${listAllTheHospitals}" var="hospital">
+								<option value='${hospital.hospitalId}'>${hospital.hospitalName}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -61,14 +60,13 @@
 						<label for="staffId">Staff Id</label>
 					</div>
 					<div class="col-75">
-					 <addhospitalstaffform:select path="staffId" name="staff Id" id="staff Id" placeholder="staff Id"
-					pattern="^[0-9]*{6}"  required="true">
-					<addhospitalstaffform:option value=''>-select-</addhospitalstaffform:option>
-						<c:forEach items="${listAllStaffs}" var="staff"
-							varStatus="loop">
-							<addhospitalstaffform:option value='${staff.userId}'>${staff.userName} - ${staff.userId}</addhospitalstaffform:option>
-						</c:forEach>
-					</addhospitalstaffform:select> 
+					 <select name="staffId" id="staffId" required>
+							<option value="" selected disabled >Select
+								Person</option>
+							<c:forEach items="${listOfstaffs}" var="staffPerson">
+								<option value='${staffPerson.userId}'>${staffPerson.userName}</option>
+							</c:forEach>
+						</select> 
 					</div>
 				</div>
 				<div class="row">

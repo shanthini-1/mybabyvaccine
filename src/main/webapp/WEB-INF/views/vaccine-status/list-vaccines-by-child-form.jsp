@@ -6,10 +6,37 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List of Child</title>
+<style type="text/css">
+<%@include file="/WEB-INF/css/listpage.css" %>
+</style>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-		<div id="root">
-		<div id="vacform">
+	<header>
+		<div>
+			<span id="time"> </span>
+		</div>
+	</header>
+	<nav class="navbar">
+		<div class="logo">Baby Health Tracker</div>
+		<div class="navmenu">
+			<div class="menu-list">
+				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
+					style="font-size: 20px;"></em> Back </a>
+			</div>
+			<div class="menu-list">
+				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
+					Home</a>
+			</div>
+			<div class="menu-list">
+				<a href="/vaccines/vaccineaddform"><em class="fa fa-plus"
+					style="font-size: 20px;"></em> Child</a>
+			</div>
+		</div>
+	</nav>
+	<div></div>
+	<div class="container">
 			<table>
 				<caption>vaccination status of child</caption>
 				<thead>
@@ -42,6 +69,14 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
+	<footer>
+		<p>
+			create by shanthini <br>Copyright © 2022 &nbsp; All rights
+			reserved.
+		</p>
+	</footer>
+	<script>
+	<%@include file="/WEB-INF/js/time.js" %>
+	</script>
 </body>
 </html>

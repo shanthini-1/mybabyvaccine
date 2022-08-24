@@ -44,7 +44,7 @@
 <div>${error}</div>
 	<div id="root">
 		<div>
-			<h1 class="logotitle">Child Registeration</h1>
+			<h1 class="logotitle">Update Vaccination Status</h1>
 		</div>
 		<div id="form">
 			<addform:form action="addvaccinationstatuss" method="post"
@@ -54,14 +54,7 @@
 						<label for="childId">Child Id</label>
 					</div>
 					<div class="col-75">
-						<%-- <addform:input path="childId" /> --%>
-						<addform:select path="childId" name="cid" id="cid">
-					<%-- <addform:option value=''>-select-</addform:option> --%>
-						<c:forEach items="${listAllChildrenId}" var="childId"
-							varStatus="loop">
-							<addform:option value='${childId}'>${childId}</addform:option>
-						</c:forEach>
-					</addform:select> 
+						<addform:input path="childId" name="childId" id="childId" type="text"/>
 					</div>
 				</div>
 				<div class="row">
@@ -69,14 +62,7 @@
 						<label for="vaccineId">Vaccine Id</label>
 					</div>
 					<div class="col-75">
-						<%-- <addform:input path="vaccineId" /> --%>
-						<addform:select path="vaccineId" name="vid" id="vid" placeholder="vaccine id">
-				<%-- 	<addform:option value=''>-select-</addform:option> --%>
-						<c:forEach items="${allvaccines}" var="vaccine"
-							varStatus="loop">
-							<addform:option value='${vaccine.vaccineId}'>${vaccine.vaccineName}-${vaccine.vaccineId} </addform:option>
-						</c:forEach>
-					</addform:select> 
+						<addform:input path="vaccineId" name="vaccineId" id="vaccineId" type="text"/>
 					</div>
 				</div>
 				
@@ -93,7 +79,6 @@
 						<label for="vaccinatedStatus">Vaccinated Status</label>
 					</div>
 					<div class="col-75">
-						<%-- <addform:input path="vaccinatedStatus" /> --%>
 						 Vaccinated <addform:radiobutton path="vaccinatedStatus" value="Vaccinated" required="true"></addform:radiobutton> 
         					Not-Vaccinated <addform:radiobutton path="vaccinatedStatus" value="Not-Vaccinated"></addform:radiobutton>
 					</div>
@@ -104,14 +89,14 @@
 						
 					</div>
 					<div class="col-75">
-						<%-- <addform:input path="hospitalId" /> --%>
-						<addform:select path="hospitalId" name="hid" id="hid">
-				<%-- 	<addform:option value='' >-select-</addform:option> --%>
+						<select name="hospitalId" id="hospitalId" required>
+						<option value="" selected disabled >Select Hospital</option>
 						<c:forEach items="${listAllTheHospitals}" var="hospital"
 							varStatus="loop">
-							<addform:option value='${hospital.hospitalId}'>${hospital.hospitalName} </addform:option>
+							<option value='${hospital.hospitalId}'>${hospital.hospitalName} </option>
 						</c:forEach>
-					</addform:select>
+					</select>
+					
 					</div>
 				</div>
 				<div class="row">
@@ -119,14 +104,13 @@
 						<label for="attenderId">Attender Id</label>
 					</div>
 					<div class="col-75">
-						<%-- <addform:input path="attenderId" /> --%>
-						<addform:select path="attenderId" name="sid" id="sid">
-				<%-- 	<addform:option value='' >-select-</addform:option> --%>
-						<c:forEach items="${listAllAttenders}" var="hospitalstaff"
-							varStatus="loop">
-							<addform:option value='${hospitalstaff.staffId}'>${hospitalstaff.staffId} </addform:option>
-						</c:forEach>
-					</addform:select>
+						<select name="attenderId" id="attenderId" required>
+							<option value="" selected disabled >Select Attender</option>
+							
+							<c:forEach items="${listAllAttenders}" var="hospitalstaff">
+								<option value='${hospitalstaff.staffId}'> ${hospitalstaff.userName}-${hospitalstaff.userId}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -152,7 +136,7 @@
 					</div>
 				</div>
 				<div class="button-s">
-					<addform:button>Add Vaccination status</addform:button>
+					<addform:button>Update Vaccination status</addform:button>
 				</div>
 
 			</addform:form>

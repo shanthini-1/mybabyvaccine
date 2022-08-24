@@ -40,7 +40,9 @@ public class LoginController {
 			if ("Staff".equals(userA.getPersonCategory())) {
 				return "redirect:/login/staffpagea";
 			} else if ("User".equals(userA.getPersonCategory())) {
+				model.addAttribute("userdata", theUser);
 				return "redirect:/login/userpagea";
+				
 			} else if ("Admin".equals(userA.getPersonCategory())) {
 				return "redirect:/login/adminpagea";
 			} else {
@@ -59,7 +61,9 @@ public class LoginController {
 	}
 
 	@GetMapping("/userpagea")
-	public String showUserPage(Model model) {
+	public String showUserPage(Model model,@RequestParam("userdata")Login userl) {
+		Login loggeduser = userl;
+		model.addAttribute("userdatal", loggeduser);
 		return "/actionstarters/useraction";
 	}
 

@@ -25,7 +25,7 @@
 		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/person/user-firstpage"><em
+				<a href="/persons/userfirstview"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -69,11 +69,10 @@
 						<label for="gender">Gender</label>
 					</div>
 					<div class="col-75">
-						<addpersonform:select path="gender" class="text-box"
-							placeholder="gender" title="gender required" required="true">
-							<addpersonform:option value="Male">Male</addpersonform:option>
-							<addpersonform:option value="Female">Female</addpersonform:option>
-						</addpersonform:select>
+						Male
+						<addpersonform:radiobutton path="gender" value="Male" required="true" />
+						Female
+						<addpersonform:radiobutton path="gender" value="Female" />
 					</div>
 				</div>
 				<addpersonform:errors path="gender" class="text-danger" />
@@ -84,7 +83,7 @@
 					<div class="col-75">
 						<addpersonform:select name="personCategory" path="personCategory"
 							id="personCategory" required="true">
-							<option value="">-none-</option>
+							<option value="">Select Category</option>
 							<option value="Staff">Staff</option>
 							<option value="User">User</option>
 						
@@ -154,14 +153,12 @@
 						<label for="pinCode">Pin Code</label>
 					</div>
 					<div class="col-75">
-						 <addpersonform:select path="pinCode" name="pinCode" id="pinCode" placeholder="pincode"
-					pattern="^[6][0-9]*{6}"  required="true">
-					<addpersonform:option value=''>-select-</addpersonform:option>
-						<c:forEach items="${listAllPincode}" var="pinCode"
-							varStatus="loop">
-							<addpersonform:option value='${pinCode}'>${pinCode}</addpersonform:option>
-						</c:forEach>
-					</addpersonform:select> 
+						<select name="pinCode" id="pinCode" required>
+							<option value="" selected disabled>Select Pincode</option>
+							<c:forEach items="${listOfpincode}" var="code" varStatus="loop">
+								<option value='${code}'>${code}</option>
+							</c:forEach>
+						</select> 
 					</div>
 				</div>
 				<addpersonform:errors path="pinCode" class="text-danger" />

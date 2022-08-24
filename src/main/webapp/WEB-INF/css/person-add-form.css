@@ -119,6 +119,9 @@ input[type=text], [type=email], [type=date], [type=password], [type=tel],
 	resize: vertical;
 	text-transform: capitalize;
 }
+#opt{
+	text-decoration: #ccc;
+}
 
 /* Style the label to display next to the inputs */
 label {

@@ -13,7 +13,6 @@
 </style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 <body>
 	<header>
@@ -41,11 +40,11 @@
 			<h1 class="logotitle">Child Update form</h1>
 		</div>
 		<div id="form">
-			<updatechildform:form action="modifychilds" method="post"
+			<updatechildform:form action="/children/modifychilds" method="post"
 				modelAttribute="modifyChild">
 				<div class="row">
 					<div class="col-25">
-						<label for="childId">Child Id</label>
+						<label for="childId">Child Register No</label>
 					</div>
 					<div class="col-75">
 						<updatechildform:input path="childId" type="text" name="user id"
@@ -81,11 +80,10 @@
 						<label for="gender">Gender </label>
 					</div>
 					<div class="col-75">
-						<updatechildform:select path="gender" class="text-box"
-							title="gender required" required="true">
-							<updatechildform:option value="Male">Male</updatechildform:option>
-							<updatechildform:option value="Female">Female</updatechildform:option>
-						</updatechildform:select>
+						Male
+						<updatechildform:radiobutton path="gender" value="Male" required="true" />
+						Female
+						<updatechildform:radiobutton path="gender" value="Female" />
 					</div>
 				</div>
 
@@ -115,33 +113,16 @@
 				<updatechildform:errors path="birthPlace" class="text-danger" />
 				<div class="row">
 					<div class="col-25">
-						<label for="bloodGroup">Blood Group</label>
-					</div>
-					<div class="col-75">
-						<updatechildform:select path="bloodGroup" class="text-box"
-							placeholder="BloodGroup" title="Id must be required"
-							required="true">
-							<updatechildform:option value="A Positive">A Positive</updatechildform:option>
-							<updatechildform:option value="B Positive">B Positive</updatechildform:option>
-							<updatechildform:option value="AB Positive">AB Positive</updatechildform:option>
-							<updatechildform:option value="A Negative">A Negative</updatechildform:option>
-							<updatechildform:option value="B Negative">B Negative</updatechildform:option>
-							<updatechildform:option value="AB Negative">AB Negative</updatechildform:option>
-							<updatechildform:option value="O Positive">O Positive</updatechildform:option>
-							<updatechildform:option value="O Negative">O Negative</updatechildform:option>
-						</updatechildform:select>
-					</div>
-				</div>
-				<updatechildform:errors path="bloodGroup" class="text-danger" />
-				<div class="row">
-					<div class="col-25">
 						<label for="hospitalId">Hospital Id</label>
 					</div>
-					<div class="col-75">
-						<updatechildform:input path="hospitalId" type="text"
-							name="user id" minlength="3" maxlength="6" id="user id"
-							placeholder="user id" pattern="^[0-9]*$" required="true" />
-					</div>
+					 <div class="col-75">
+					<select name="hospitalId" id="hospitalId" required>
+							<option value='${modifyChild.hospitalId}' ><c:out value='${modifyChild.hospital.hospitalName}'></c:out></option>
+							<c:forEach items="${listOfHospital}" var="hospitals">
+								<option value='${hospitals.hospitalId}'>${hospitals.hospitalName}-${hospitals.hospitalId}</option>
+							</c:forEach>
+						</select>
+						</div> 
 				</div>
 				<updatechildform:errors path="hospitalId" class="text-danger" />
 				<div class="row">
@@ -149,9 +130,13 @@
 						<label for="doctorId">Doctor Id</label>
 					</div>
 					<div class="col-75">
-						<updatechildform:input path="doctorId" type="text" name="user id"
-							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
+							<select name="doctorId" id="doctorId" required>
+							<option value='${modifyChild.doctorId}' ><c:out value='${modifyChild.doctor.hosStaff.userName}'></c:out></option>
+							
+							<c:forEach items="${docName}" var="doctor">
+								<option value='${doctor.userId}'> ${doctor.userName}-${doctor.userId}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<updatechildform:errors path="doctorId" class="text-danger" />
@@ -159,10 +144,13 @@
 					<div class="col-25">
 						<label for="fatherId">Father Id</label>
 					</div>
-					<div class="col-75">
-						<updatechildform:input path="fatherId" type="text" name="user id"
-							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
+				 <div class="col-75">
+							<select name="fatherId" id="fatherId" required>
+							<option value='${modifyChild.fatherId}' ><c:out value='${modifyChild.father.userName}'></c:out></option>
+							<c:forEach items="${listOfFather}" var="father">
+								<option value='${father.userId}'>${father.userName}-${father.userId}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<updatechildform:errors path="fatherId" class="text-danger" />
@@ -171,9 +159,12 @@
 						<label for="motherId">Mother Id</label>
 					</div>
 					<div class="col-75">
-						<updatechildform:input path="motherId" type="text" name="user id"
-							minlength="3" maxlength="6" id="user id" placeholder="user id"
-							pattern="^[0-9]*$" required="true" />
+							<select name="motherId" id="motherId" required>
+							<option value='${modifyChild.motherId}' ><c:out value='${modifyChild.mother.userName}'></c:out></option>
+							<c:forEach items="${listOfMother}" var="mother">
+								<option value='${mother.userId}'>${mother.userName}-${mother.userId}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<updatechildform:errors path="motherId" class="text-danger" />
@@ -182,9 +173,12 @@
 						<label for="guardianId">Guardian Id</label>
 					</div>
 					<div class="col-75">
-						<updatechildform:input path="guardianId" type="text"
-							name="user id" minlength="3" maxlength="6" id="user id"
-							placeholder="user id" pattern="^[0-9]*$"  />
+							<select name="guardianId" id="guardianId" required>
+							<option value='${modifyChild.guardianId}' ><c:out value='${modifyChild.guardian.userName}'></c:out></option>
+							<c:forEach items="${listOfGuardian}" var="guardian">
+								<option value='${guardian.userId}'>${guardian.userName}-${guardian.userId}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<updatechildform:errors path="guardianId" class="text-danger" />

@@ -40,27 +40,33 @@
 		<div id="form">
 			<updatehospitalstaffform:form action="modifyhospitalstaffs"
 				method="post" modelAttribute="modifyHospitalStaff">
-				<div class="row">
-					<div class="col-25">
-						<label for="staffId">Staff Id</label>
-					</div>
-					<div class="col-75">
-						<updatehospitalstaffform:input path="staffId" readonly="true"/>
-					</div>
-				</div>
+			
 				<div class="row">
 					<div class="col-25">
 						<label for="hospitalId">Hospital Id</label>
 					</div>
 					<div class="col-75">
-					 <updatehospitalstaffform:select path="hospitalId" name="hospital Id" id="hospital Id" placeholder="Hospital Id"
-					pattern="^[0-9]*{6}"  required="true">
-					<updatehospitalstaffform:option value=''>-select-</updatehospitalstaffform:option>
-						<c:forEach items="${listAllTheHospitals}" var="hospital"
-							varStatus="loop">
-							<updatehospitalstaffform:option value='${hospital.hospitalId}'>${hospital.hospitalName} - ${hospital.hospitalId}</updatehospitalstaffform:option>
-						</c:forEach>
-					</updatehospitalstaffform:select> 
+						<select name="hospitalId" id="hospitalId" required>
+							<option value="" selected disabled >Select
+								Person</option>
+							<c:forEach items="${listAllTheHospitals}" var="hospital">
+								<option value='${hospital.hospitalId}'>${hospital.hospitalName}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-25">
+						<label for="staffId">Staff Id</label>
+					</div>
+					<div class="col-75">
+					 <select name="staffId" id="staffId" required>
+							<option value="" selected disabled >Select
+								Person</option>
+							<c:forEach items="${listOfstaffs}" var="staffPerson">
+								<option value='${staffPerson.userId}'>${staffPerson.userName}</option>
+							</c:forEach>
+						</select> 
 					</div>
 				</div>
 					<div class="row">

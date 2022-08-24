@@ -14,12 +14,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 import com.chainsys.mybabyvaccine.compositemodel.ChildVaccineCompositeTable;
 
@@ -42,8 +40,6 @@ public class VaccinationStatus {
 	private int vaccineId;
 	
 	@NotNull(message = "*Date of vaccination date can not be null")
-	@PastOrPresent(message = "*Date of vaccination must be on or before today")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "DTAE_OF_VACCINATION")
 	private Date dateOfVaccination;
 	
@@ -75,6 +71,29 @@ public class VaccinationStatus {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CHILD_ID", nullable = false, insertable = false, updatable = false)
 	private Child child;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "HOSPITAL_ID", nullable = false, insertable = false, updatable = false)
+	private Hospital hospital;
+	
+	public Hospital getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(Hospital hospital) {
+		this.hospital = hospital;
+	}
+
+	public HospitalStaff getAttender() {
+		return attender;
+	}
+
+	public void setAttender(HospitalStaff attender) {
+		this.attender = attender;
+	}
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ATTENDER_ID", nullable = false, insertable = false, updatable = false)
+	private HospitalStaff attender;
 
 	public Child getChild() {
 		return child;

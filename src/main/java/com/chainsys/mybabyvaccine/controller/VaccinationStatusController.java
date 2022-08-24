@@ -77,21 +77,37 @@ public class VaccinationStatusController {
 		return REDIRECT_PAGE;
 	}
 
-//-----------------
-	
-	@GetMapping("/modifyvaccinationstatusform")
-	public String modifyingVaccinationStatusForm() {
-		return "/vaccine-status/update-vaccine-status-form";
-	}
-
-	@GetMapping("/vaccinationstatusmodifyform")
-	public String showVaccinationStatusUpdateForm(@RequestParam("cid") int childId, @RequestParam("vid") int vacId,
-			Model model) {
-		ChildVaccineCompositeTable compObj = new ChildVaccineCompositeTable(childId, vacId);
+	@GetMapping("/vaccinationstatusmodifyview")
+	public String showVaccinationStatusUpdateForm(Model model) {
+		ChildVaccineCompositeTable compObj = new ChildVaccineCompositeTable();
 		Optional<VaccinationStatus> theVac = vaccinationStatusService.getVaccinationStatussById(compObj);
 		model.addAttribute("modifyvaccinationStatus", theVac);
 		return "/vaccine-status/update-vaccinationstatus-form";
 	}
+	@GetMapping("/modifyvaccinationstatusform")
+	public String modifyingVaccinationStatusForm() {
+		return "/vaccine-status/update-vaccine-status-form";
+	}
+//-----------------
+	
+	
+	@GetMapping("/vaccinationstatusmodifyform")
+	public String ShowstatusUpdateFormView(@RequestParam("cid") int childId, @RequestParam("vid") int vacId,
+			Model model) {
+		Child child = childServices.findById(childId);
+		Vaccine vaccine = vaccineServices.getVaccinesById(vacId);
+		model.addAttribute("vacdetail", vaccine);
+		model.addAttribute("childdetail", child);
+		List<Hospital> hospitalList = hospitalServices.getHospitals();
+		model.addAttribute("listAllTheHospitals", hospitalList);
+		List<HospitalStaff> attenderList = hospitalStaffServices.getHospitalStaffAttender();
+		System.out.println(attenderList);
+		model.addAttribute("listAllAttenders", attenderList);
+		VaccinationStatus theVac = new VaccinationStatus();
+		model.addAttribute("modifyvaccinationStatus", theVac);
+		return "/vaccine-status/update-vaccinationstatus-form";
+	}
+	
 
 	@PostMapping("/modifyvaccinationstatuschild")
 	public String modifyVaccineStatusForm(@ModelAttribute("modifyvaccinationStatus") VaccinationStatus vaccstatus) {

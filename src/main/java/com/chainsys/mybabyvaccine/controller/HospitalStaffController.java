@@ -3,9 +3,11 @@
  */
 package com.chainsys.mybabyvaccine.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,7 +92,7 @@ public class HospitalStaffController {
 	}
 
 	/*
-	 * list staffs after addind staff details
+	 * list staffs after adding staff details
 	 */
 	@PostMapping("addhospitalstaffs")
 	public String addHospitalStaff(@ModelAttribute("addHospitalStaff") HospitalStaff theHospitalStaff) {
@@ -163,10 +165,21 @@ public class HospitalStaffController {
 		if (thehosstaff.isPresent()) {
 			int idValue = thehosstaff.get().getHospitalId();
 			model.addAttribute("fetchHospitalById", hospitalServices.getHospitalById(idValue));
-
 			model.addAttribute("fetchstaffById", personServices.getPersonById(thehosstaff.get().getStaffId()));
-
 		}
 		return "/hospital/find-by-id-hospital-staff-form";
 	}
+	@GetMapping("/getdocdetails")
+	public String getDoctorsDetails(Model model) {
+		List<HospitalStaff> hos =hospitalStaffServices.getHospitalStaffByrole();
+		List<Person> doc = new ArrayList<>();
+		for (HospitalStaff doctors : hos) {
+			doc.add(personServices.getPersonById(doctors.getStaffId()));
+		}
+		model.addAttribute("staffDoc", hos);
+		model.addAttribute("docName", doc);
+		return "";
+
+	}
+	
 }

@@ -29,7 +29,7 @@ public class PersonServices {
 	public List<Person> getPersons() {
 		return personRepo.findAll();
 	}
-
+	
 	public void removePerson(Integer personId) {
 		personRepo.deleteById(personId);
 	}
@@ -51,20 +51,16 @@ public class PersonServices {
 
 	}
 	
-//	public List<Person> getAllFather(){
-//		return personRepo.fatherList();
-//	}
-//	
-//	public List<Person> getAllMother(){
-//		return personRepo.motherList();
-//	}
-//	
-//	public List<Person> getAllUser(){
-//		return personRepo.userList();
-//	}
+	public List<Person> getAllUser(){
+		return personRepo.userList();
+	}
 	
 	public List<Person> getAllStaff(){
-		return personRepo.findAllByPersonCategory();
+		return personRepo.staffList();
+	}
+
+	public Person getPersonByEmail(String email) {
+		return personRepo.findByEmail(email);
 	}
 
 

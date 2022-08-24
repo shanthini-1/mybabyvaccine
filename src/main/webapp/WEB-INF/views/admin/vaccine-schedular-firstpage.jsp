@@ -21,7 +21,7 @@
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/vaccinationschedular/vaccineSchedularfirstview"> <em class="fa fa-arrow-circle-left"
+				<a href="/vaccine/vaccineSchedularfirstview"> <em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">

@@ -6,14 +6,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List of Person with location</title>
-<style>
-<%@include file="/WEB-INF/css/person-add-form.css" %>
+<style type="text/css">
+<%@include file="/WEB-INF/css/listpage.css" %>
 </style>
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
+<div>${error}</div>
 	<header>
 		<div>
 			<span id="time"> </span>
@@ -33,8 +37,12 @@
 
 		</div>
 	</nav>
-	<div id="root">
-		<div id="vacform">
+	<div><input id="sInput" type="text" placeholder="Search..">
+</div>
+<br>
+<div>${error}</div>
+<br>
+	<div class="container">
 			<table>
 				<caption>User Detail</caption>
 				<thead>
@@ -50,12 +58,13 @@
 						<th>Street</th>
 						<th>City</th>
 						<th>Pin Code</th>
+						<th>View</th>
 						<th>Edit</th>
 						<th>Delete</th>
 						
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="myTableData">
 					<c:forEach var="person" items="${listAllPersons}">
 						<tr>
 							<td>${person.userId}</td>
@@ -69,15 +78,14 @@
 							<td>${person.street}</td>
 							<td>${person.city}</td>
 							<td>${person.pinCode}</td>
-							<td><a href="/persons/personmodifyform?id=${person.userId}">Edit</a></td>
-						<td><a
-							href="/persons/persondeleteform?id=${person.userId}">Delete</a></td>
+							<td><a id='btn' href="/persons/getpersonlocation?id=${person.userId}">View</a></td>
+							<td><a id='btn' href="/persons/personmodifyform?id=${person.userId}">Edit</a></td>
+							<td><a id='btn' href="/persons/persondeleteform?id=${person.userId}"  onclick="return confirm('Are you sure you want to delete child ${person.userId} ?');">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-	</div>
 	<footer>
 		<p>
 			create by shanthini <br>Copyright © 2022 &nbsp; All rights

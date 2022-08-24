@@ -4,7 +4,7 @@
  */
 package com.chainsys.mybabyvaccine.models;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -27,7 +27,6 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author shan3102
@@ -44,7 +43,6 @@ public class Person {
 
 	@NotNull(message = "*Email should not be null")
 	@Size(min = 6, max = 30, message = "*Email should match required size of 6-30 characters")
-	@Pattern(regexp = "[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\\.[a-zA-Z]{2,4}", message = "*Email pattern should not match required pattern")
 	@Column(name = "EMAIL")
 	private String email;
 
@@ -56,7 +54,6 @@ public class Person {
 
 	@NotNull(message = "*Birth date can not be null")
 	@Past(message = "*Date of birth must be less than today")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "USER_DOB")
 	private Date userDob;
 
@@ -79,7 +76,6 @@ public class Person {
  
 	@NotNull(message = "*Password should not be null")
 	@Size(min = 8, max = 25, message = "*password should match required length")
-	@Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=()])(?=\\S+$).{8,25}$", message = "*Password should match given pattern")
 	@Column(name = "PASS_WORD")
 	private String passWord;
 
@@ -258,7 +254,7 @@ public class Person {
 	}
 
 	public String toString() {
-		return String.format("%L,%s,%s,%s,%s,%s,%s,%s,%s,%s", userId, userName, userDob, gender, email, passWord,
+		return String.format("%d,%s,%s,%s,%s,%s,%s,%s,%s,%s", userId, userName, userDob, gender, email, passWord,
 				phoneNumber, doorNumber, street, city);
 	}
 

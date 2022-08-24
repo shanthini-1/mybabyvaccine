@@ -22,9 +22,6 @@ public class VaccinationSchedularServices {
 	@Autowired
 	private VaccinationSchedularRepository vaccinationSchedularRepo;
 	
-	
-
-	
 	public List<VaccinationSchedular> getVaccinationSchedulars() {
 		return vaccinationSchedularRepo.findAll();
 	}

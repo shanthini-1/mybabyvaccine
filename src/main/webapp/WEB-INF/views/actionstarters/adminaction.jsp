@@ -28,8 +28,12 @@
 					style="font-size: 20px;"></em> log out</a>
 			</div>
 			<div class="menu-list">
-				<a href="index.jsp"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
+			</div>
+			<div class="menu-list">
+				<a href="/login/staffpagea">
+				<em	class="fa fa-group" style="font-size: 20px;">Staff</em></a>
 			</div>
 		</div>
 	</nav>

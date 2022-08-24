@@ -76,8 +76,8 @@ span {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
-	margin-bottom: 144px;
-	color: rgb(236, 179, 101, 0.5);
+	margin-bottom: 20px;
+	background-color: rgb(236, 179, 101, 0.3);
 }
 
 #form {
@@ -101,7 +101,6 @@ span {
 	min-height: 100vh;
 	justify-content: center;
 	border-radius: 5px;
-	background-color: #f2f2f2;
 	padding: 20px;
 }
 
@@ -201,38 +200,4 @@ input[type=submit] {
 		width: 100%;
 		margin-top: 0;
 	}
-}
-
-#formbuttons {
-	display: flex;
-	align-content: row;
-	align-items: center;
-	justify-content: space-between;
-}
-
-button {
-	font-size: 20px;
-	text-rendering: auto;
-	color: buttontext;
-	display: inline-block;
-	text-align: center;
-	align-items: center;
-	box-sizing: border-box;
-	background-color: buttonface;
-	padding: 1px;
-	border-width: 2px;
-	border-radius: 10px;
-	border-style: outset;
-	border-color: navy;
-}
-
-
-button:hover {
-	/* border-bottom-color: black; */
-	border: 2px solid rgb(6, 70, 99, 0.9);
-}
-
-.button-s {
-	margin-top: 10px;
-	text-align: center;
 }

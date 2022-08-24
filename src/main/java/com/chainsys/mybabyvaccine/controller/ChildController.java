@@ -4,6 +4,7 @@ package com.chainsys.mybabyvaccine.controller;
  * @author
  */
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,7 @@ public class ChildController {
 	private PersonServices personServices;
 	
 	
+	
 	@GetMapping("/childfirstview")
 	public String showChildActionMenu() {
 		return "/child/child-firstpage";
@@ -78,6 +80,34 @@ public class ChildController {
 	public String showChildAddForm(Model model) {
 		Child theChild = new Child();
 		model.addAttribute("addChild", theChild);
+		List<Hospital> hosList = hospitalServices.getHospitals();
+		model.addAttribute("listOfHospital",hosList);
+		List<HospitalStaff> docList = hospitalStaffServices.getHospitalStaffDoctor();
+		model.addAttribute("listOfDoctor", docList);
+		List<Person> guardianlist = personServices.getPersons();
+		model.addAttribute("listOfGuardian", guardianlist);
+		List<Person> fatherlist = new ArrayList<>();
+		for (Person dad :guardianlist ) {
+			if(dad.getGender().equals("Male")) {
+				fatherlist.add(dad);
+			}
+		}
+		model.addAttribute("listOfFather", fatherlist);
+		List<Person> motherlist = new ArrayList<>();
+		for (Person mom :guardianlist ) {
+			if(mom.getGender().equals("Female")) {
+				motherlist.add(mom);
+			}
+		}
+		model.addAttribute("listOfMother", motherlist);
+		List<HospitalStaff> hos =hospitalStaffServices.getHospitalStaffByrole();
+		List<Person> doc = new ArrayList<>();
+		for (HospitalStaff doctors : hos) {
+			doc.add(personServices.getPersonById(doctors.getStaffId()));
+		}
+		
+		model.addAttribute("staffDoc", hos);
+		model.addAttribute("docName", doc);
 		return "/child/add-form-child";
 	}
 
@@ -104,6 +134,34 @@ public class ChildController {
 	public String showChildUpdateForm(@RequestParam("childId") int childId, Model model) {
 		Child theChildren = childServices.findById(childId);
 		model.addAttribute("modifyChild", theChildren);
+		List<Hospital> hosList = hospitalServices.getHospitals();
+		model.addAttribute("listOfHospital",hosList);
+		List<HospitalStaff> docList = hospitalStaffServices.getHospitalStaffDoctor();
+		model.addAttribute("listOfDoctor", docList);
+		List<Person> guardianlist = personServices.getPersons();
+		model.addAttribute("listOfGuardian", guardianlist);
+		List<Person> fatherlist = new ArrayList<>();
+		for (Person dad :guardianlist ) {
+			if(dad.getGender().equals("Male")) {
+				fatherlist.add(dad);
+			}
+		}
+		model.addAttribute("listOfFather", fatherlist);
+		List<Person> motherlist = new ArrayList<>();
+		for (Person mom :guardianlist ) {
+			if(mom.getGender().equals("Female")) {
+				motherlist.add(mom);
+			}
+		}
+		model.addAttribute("listOfMother", motherlist);
+		List<HospitalStaff> hos =hospitalStaffServices.getHospitalStaffByrole();
+		List<Person> doc = new ArrayList<>();
+		for (HospitalStaff doctors : hos) {
+			doc.add(personServices.getPersonById(doctors.getStaffId()));
+		}
+		
+		model.addAttribute("staffDoc", hos);
+		model.addAttribute("docName", doc);
 		return "/child/update-form-child";
 	}
 
@@ -245,7 +303,5 @@ public class ChildController {
 		model.addAttribute("listofchildbyguardian", childs);
 		return "list-childs-by-gaurdian";
 	}
-	
-	
 
 }

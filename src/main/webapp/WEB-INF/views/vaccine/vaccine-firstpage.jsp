@@ -21,11 +21,11 @@
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/vaccine/vaccinefirstview"> <em class="fa fa-arrow-circle-left"
+				<a href="/actionstarters/staffaction"> <em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
-				<a href="index.jsp"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 		</div>
@@ -35,8 +35,10 @@
 			
 			<ul>
 				<li><a href="/vaccines/vaccineaddform">Add vaccine </a>
-				<li><a href="/vaccines/getvaccine">Fetch vaccine </a>
 				<li><a href="/vaccines/listallvaccines">List vaccine </a>
+				<li><a href="/vacschedular/vacSchchildform">Fetch child vaccine schedule</a>
+				<li><a href="/vacschedular/listallvaccineSchedule">vaccine schedule list </a>
+				<li><a href="/vaccinationstatus/listallvaccinationstatus">List Vaccination Status</a>
 			</ul>
 			</div>
 			<div class="img">

@@ -40,16 +40,16 @@
 		<div id="form">
 			<addhospitalform:form action="addhospitals" method="post"
 				modelAttribute="addHospital">
-				
+
 				<div class="row">
 					<div class="col-25">
 						<label for="hospitalName">Hospital Name</label>
 					</div>
 					<div class="col-75">
-						<addhospitalform:input path="hospitalName" type="text" name="hospitalName"
-							minlength="3" maxlength="25" id="hospitalName"
-							placeholder="Hospital Name" pattern="^[A-Za-z ]+[A-Za-z ]*{3-25}$"
-							required="true"/>
+						<addhospitalform:input path="hospitalName" type="text"
+							name="hospitalName" minlength="3" maxlength="25"
+							id="hospitalName" placeholder="Hospital Name"
+							pattern="^[A-Za-z ]+[A-Za-z ]*{3-25}$" required="true" />
 					</div>
 				</div>
 				<div class="row">
@@ -57,9 +57,10 @@
 						<label for="hospitalPlotNo">Hospital Plot No</label>
 					</div>
 					<div class="col-75">
-						<addhospitalform:input path="hospitalPlotNo" type="text" name="hospitalPlotNo"
-							minlength="1" maxlength="10" id="door no" placeholder="hospital Plot No"
-							pattern="[0-9A-Za-z+-\\/]*$" required="true"/>
+						<addhospitalform:input path="hospitalPlotNo" type="text"
+							name="hospitalPlotNo" minlength="1" maxlength="10" id="door no"
+							placeholder="hospital Plot No" pattern="[0-9A-Za-z+-\\/]*$"
+							required="true" />
 					</div>
 				</div>
 				<div class="row">
@@ -67,9 +68,10 @@
 						<label for="hospitalStreet">Hospital Street</label>
 					</div>
 					<div class="col-75">
-						<addhospitalform:input path="hospitalStreet" type="text" name="street"
-							minlength="3" maxlength="25" id="street" placeholder="street name"
-							pattern="^[A-Za-z]+[A-Za-z ]*$" required="true" />
+						<addhospitalform:input path="hospitalStreet" type="text"
+							name="street" minlength="3" maxlength="25" id="street"
+							placeholder="street name" pattern="^[A-Za-z]+[A-Za-z ]*$"
+							required="true" />
 					</div>
 				</div>
 				<div class="row">
@@ -87,12 +89,12 @@
 						<label for="pinCode">Hospital pin Code</label>
 					</div>
 					<div class="col-75">
-					 <select name="pinCode" id="pinCode" required>
-						<c:forEach items="${listAllpincode}" var="pinCode"
-							varStatus="loop">
-							<option  value='${pinCode}'>${pinCode}<option>
-						</c:forEach>
-					</select> 
+						<select name="pinCode" id="pinCode" required>
+							<option value="" selected disabled>Select Pincode</option>
+							<c:forEach items="${listOfpincode}" var="code" varStatus="loop">
+								<option value='${code}'>${code}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -100,16 +102,17 @@
 						<label for="contactPersonId">Contact Person Id</label>
 					</div>
 					<div class="col-75">
-							 <select name="contactPersonId" id="contactPersonId" required>
-						<c:forEach items="${listAllStaffs}" var="cperson"
-							varStatus="loop">
-							<option value='${cperson.userId}'>${cperson.userId}<option>
-						</c:forEach>
-					</select> 
+						<select name="contactPersonId" id="contactPersonId" required>
+							<option value="" selected disabled >Select
+								Person</option>
+							<c:forEach items="${listOfstaffs}" var="cperson">
+								<option value='${cperson.userId}'>${cperson.userName}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
-				<div>
-					<addhospitalform:button>Add Hospital</addhospitalform:button>
+				<div class="button-s">
+				<addhospitalform:button>Add Hospital</addhospitalform:button>
 				</div>
 			</addhospitalform:form>
 		</div>

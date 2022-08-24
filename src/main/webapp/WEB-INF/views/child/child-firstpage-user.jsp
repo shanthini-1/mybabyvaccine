@@ -4,12 +4,14 @@
 <html lang="en">
 <head>
 <meta charset="ISO-8859-1">
-<title>User</title>
+<title>Child</title>
 <style type="text/css">
 <%@include file ="/WEB-INF/css/firstpages.css" %>
+
 </style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
 	<header>
@@ -22,8 +24,8 @@
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/login/staffpagea"> <em class="fa fa-arrow-circle-left"
-					style="font-size: 20px;"></em></a>
+				<a href="/actionstarters/useraction">
+				<em	class="fa fa-arrow-circle-left" style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
 				<a href="/"><em class="fa fa-home"
@@ -32,18 +34,24 @@
 		</div>
 	</nav>
 	<div class="main">
-		<div class="dashboard">
-			
+	<div class="dashboard">
 			<ul>
-				<li><a href="/persons/addpersonform">Add Person </a>
-				<!-- <li><a href="/persons/userlocationfindform">Find Person </a> -->
-				<li><a href="/persons/listallpersons">list of person </a>
-			</ul>
-		</div>
-		<div class="img">
-			<img alt="family"
-				src="https://www.a-fotografy.co.uk/wp-content/uploads/2020/04/family-photos-with-newborn-and-toddler-007.jpg">
-		</div>
+		<li><a href="/children/addchildform">Add Child </a>
+		<li><a href="/children/listallchilds">List Children </a>
+		<li><a href="/children/fetchchildform">Fetch Child </a>
+		<li><a href="/children/fetchchildbyhospitalid">List
+				Children by Hospital </a>
+		<li><a href="/children/fetchchildbydoctorid">List
+				Children by Doctor</a>
+		<li><a href="/children/fetchhospitalandchildform">fetch
+				Child hospital</a>
+		<li><a href="/children/fetchchildandparent">fetch Child
+				parent</a>
+		<li><a href="/children/fetchchildandguardian">fetch Child
+				guardian</a>
+	</ul>
+	</div>
+	<div class="img"><img alt="child" src="https://rukminim1.flixcart.com/image/416/416/jwaztzk0/poster/v/f/g/medium-p40681-baby-wall-poster-original-imafhyggyntd9wng.jpeg?q=70"></div>
 	</div>
 	<footer>
 		<p>
@@ -56,6 +64,5 @@
 	<%@include file="/WEB-INF/js/time.js" %>
 		
 	</script>
-
 </body>
 </html>

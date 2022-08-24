@@ -31,6 +31,10 @@
 				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
+			<div class="menu-list">
+				<a href="/login/staffpagea">
+				<em	class="fa fa-group" style="font-size: 20px;">Staff</em></a>
+			</div>
 		</div>
 	</nav>
 	<div class="main">
@@ -39,8 +43,6 @@
 		<li><a href="/hospitals/addhospitalform">Add Hospital </a></li>
 		<li><a href="/hospitals/listallhospitals">list All
 				Hospital </a></li>
-		<li><a href="/hospitals/hospitalfindform">Find Hospital
-		</a></li>
 		<li><a href="/hospitals/hoscontactfindform">Find Contact
 				Person</a></li>
 	</ul>

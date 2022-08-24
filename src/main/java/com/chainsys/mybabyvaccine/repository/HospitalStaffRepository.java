@@ -25,7 +25,9 @@ public interface HospitalStaffRepository extends CrudRepository<HospitalStaff, I
 
 	List<HospitalStaff> findAll();
 
-	@Query(value = "SELECT * FROM HOSPITAL_STAFF WHERE STAFF_ROLE='ATTENDER'", nativeQuery = true)
+	@Query(value = "SELECT * FROM HOSPITAL_STAFF WHERE STAFF_ROLE='Attender'", nativeQuery = true)
 	List<HospitalStaff> listAllAttender();
+	@Query(value = "SELECT * FROM HOSPITAL_STAFF WHERE STAFF_ROLE='Doctor'", nativeQuery = true)
+	List<HospitalStaff> listAllDoctor();
 
 }

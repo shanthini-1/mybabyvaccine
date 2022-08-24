@@ -37,6 +37,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 	</nav>
 	<div>
 	</div>
+	<div>${error}</div>
 	<div class="container">
 			<table>
 			<caption>Hospital</caption>
@@ -49,9 +50,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 						<th>Hospital City</th>
 						<th>Hospital pin Code</th>
 						<th>Contact Person Id</th>
-						<th>View Contact Person</th>
+						<th>Contact Person Detail</th>
 						<th>Update</th>
-						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,9 +64,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 							<td>${hospital.hospitalCity}</td>
 							<td>${hospital.pinCode}</td>
 							<td>${hospital.contactPersonId}</td>
-							<td><a href="/persons/fetchperson?id=${hospital.contactPersonId}">View</a></td>
+							<td><a href="/persons/getpersonlocation?id=${hospital.contactPersonId}">View</a></td>
 							<td><a href="/hospitals/hospitalmodifyform?id=${hospital.hospitalId}">Edit</a></td>
-							<td><a href="/hospitals/hospitaldeleteform?id=${hospital.hospitalId}">Delete</a></td>
+						
 							
 						</tr>
 					</c:forEach>

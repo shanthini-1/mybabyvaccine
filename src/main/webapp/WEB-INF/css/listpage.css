@@ -123,12 +123,6 @@ footer {
 	text-shadow: black;
 	text-align: center;
 }
-table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-	text-transform: capitalize;
-}
 
 td, th {
 	border: 1px solid #dddddd;
@@ -145,4 +139,22 @@ tr:hover{
 a{
 text-decoration: none;
 color:inherit;
+}
+#btn {
+	text-decoration: none;
+	background-color: rgb(192, 192, 192);
+	color: white;
+	padding: 2px 5px;
+	border: none;
+	border-radius: 1px;
+	cursor: pointer;
+}
+input[type=text] {
+	width: 25%;
+	padding: 12px;
+	margin-left:4px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
 }

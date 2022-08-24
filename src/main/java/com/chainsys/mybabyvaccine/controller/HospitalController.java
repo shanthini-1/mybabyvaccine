@@ -27,7 +27,7 @@ import com.chainsys.mybabyvaccine.services.PersonServices;
 @Controller
 @RequestMapping("/hospitals")
 public class HospitalController {
-	private static final String REDIRECT_PAGE = "redirect:/hospital/listallhospitals";
+	private static final String REDIRECT_PAGE = "redirect:/hospitals/listallhospitals";
 	@Autowired
 	private HospitalServices hospitalServices;
 	@Autowired
@@ -63,10 +63,11 @@ public class HospitalController {
 	public String showHospitalAddForm(Model model) {
 		Hospital theHospital = new Hospital();
 		model.addAttribute("addHospital", theHospital);
-		List<Integer> pincodelist = locationCodeServices.getLocationPincodeList();
-		model.addAttribute("listAllpincode", pincodelist);
-		List<Person> staffList = personServices.getAllStaff();
-		model.addAttribute("listAllStaffs", staffList);
+		List<Integer> pinlist = locationCodeServices.getLocationPincodeList();
+		List<Integer> c=pinlist;
+		model.addAttribute("listOfpincode", c);
+		List<Person> sList = personServices.getAllStaff();
+		model.addAttribute("listOfstaffs", sList);
 		return "/hospital/add-form-hospital";
 	}
 
@@ -82,8 +83,8 @@ public class HospitalController {
 
 	@GetMapping("/hospitalmodifyform")
 	public String showHospitalUpdateForm(@RequestParam("id") int hospitalId, Model model) {
-		List<Integer> pincodelist = locationCodeServices.getLocationPincodeList();
-		model.addAttribute("listAllpincode", pincodelist);
+		List<Integer> pinlist = locationCodeServices.getLocationPincodeList();
+		model.addAttribute("listOfpincode", pinlist);
 		List<Person> staffList = personServices.getAllStaff();
 		model.addAttribute("listAllStaffs", staffList);
 		Hospital theHospital = hospitalServices.getHospitalById(hospitalId);
@@ -104,7 +105,7 @@ public class HospitalController {
 	@GetMapping("/hospitaldeleteform")
 	public String deleteHospital(@RequestParam("id") int hospitalId) {
 		hospitalServices.removeHospital(hospitalId);
-		return "redirect:/admin/hospital/listallhospitals";
+		return REDIRECT_PAGE;
 	}
 
 //	--------------------------------------

@@ -22,16 +22,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 		<div class="logo">Baby Health Tracker</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
+				<a href="/login/userpagea"><em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em> Back </a>
 			</div>
 			<div class="menu-list">
 				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
 					Home</a>
-			</div>
-			<div class="menu-list">
-				<a href="/vaccines/vaccineaddform"><em class="fa fa-plus"
-					style="font-size: 20px;"></em> Child</a>
 			</div>
 		</div>
 	</nav>
@@ -48,9 +44,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 						<th>Dosage</th>
 						<th>Suggestion</th>
 						<th>Vaccine Price</th>
-						<th>View</th>
-						<th>Edit</th>
-						<th>Delete</th>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -63,9 +57,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 							<td>${vac.dosage}</td>
 							<td>${vac.suggestion}</td>
 							<td>${vac.vaccinePrice}</td>
-							<td><a id='btn' href="/vaccines/fetchvaccine?id=${vac.vaccineId}">View</a></td>
-							<td><a id='btn' href="/vaccines/vaccinemodifyform?id=${vac.vaccineId}">Edit</a></td>
-						<td><a id='btn' href="/vaccines/vaccinedeleteform?id=${vac.vaccineId}" onclick="return confirm('Are you sure you want to delete vaccine ${vac.vaccineName} ?');">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

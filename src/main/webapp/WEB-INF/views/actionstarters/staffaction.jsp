@@ -32,7 +32,7 @@
 					style="font-size: 20px;"></em> log out</a>
 			</div>
 			<div class="menu-list">
-				<a href="index.html"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 		</div>

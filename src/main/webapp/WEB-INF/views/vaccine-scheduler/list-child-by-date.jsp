@@ -10,7 +10,7 @@
 <body>
 <div class="container">
 			<table>
-			<caption>vaccine schedule list</caption>
+			<caption>Vaccine Schedule List</caption>
 				<thead>
 					<tr>
 					<th>Child Id</th>
@@ -36,5 +36,14 @@
 				</tbody>
 			</table>
 		</div>
+		<footer>
+		<p>
+			create by shanthini <br>Copyright © 2022 &nbsp; All rights
+			reserved.
+		</p>
+	</footer>
+	<script>
+			<%@include file="/WEB-INF/js/time.js" %>
+	</script>
 </body>
 </html>

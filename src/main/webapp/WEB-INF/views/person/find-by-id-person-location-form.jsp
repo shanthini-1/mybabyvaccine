@@ -40,16 +40,8 @@
 			<h1 class="logotitle">User Details</h1>
 		</div>
 		<div id="form">
-			<findpersonform:form action="" method="get"
-				modelAttribute="fetchPersonByIdA">
-				<div class="row">
-					<div class="col-25">
-						<label for="userId">User Id</label>
-					</div>
-					<div class="col-75">
-						<findpersonform:input path="userId" readonly="true" />
-					</div>
-				</div>
+			<findpersonform:form action="/persons/listallpersons" method="get"
+				modelAttribute="persondetails">
 				<div class="row">
 					<div class="col-25">
 						<label for="userName">User Name</label>
@@ -123,8 +115,8 @@
 					</div>
 				</div>
 			</findpersonform:form>
-			<findpersonform:form action="" method="get"
-				modelAttribute="fetchPersonloctionById">
+			<findpersonform:form action="/persons/listallpersons" method="get"
+				modelAttribute="locationdetails">
 				<div class="row">
 					<div class="col-25">
 						<label for="pinCode">Pin Code</label>
@@ -157,6 +149,7 @@
 						<findpersonform:input path="country" readonly="true" />
 					</div>
 				</div>
+				<findpersonform:button>Back</findpersonform:button>
 			</findpersonform:form>
 		</div>
 	</div>

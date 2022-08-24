@@ -38,7 +38,7 @@
 			<h1 class="logotitle">Update Hospital Detail </h1>
 		</div>
 		<div id="form">
-			<updatehospitalform:form action="modifyhospitals" method="post"
+			<updatehospitalform:form action="/hospitals/modifyhospitals" method="post"
 				modelAttribute="modifyHospital">
 		<div class="row">
 					<div class="col-25">
@@ -94,15 +94,12 @@
 						<label for="pinCode">Hospital pin Code</label>
 					</div>
 					<div class="col-75">
-					 <updatehospitalform:select path="pinCode" name="pinCode" id="pinCode" placeholder="pincode"
-					pattern="^[6][0-9]*{6}"  required="true">
-						<c:forEach items="${listAllPincode}" var="pinCode"
-							varStatus="loop">
-							<updatehospitalform:option value='${pinCode}'>${pinCode}</updatehospitalform:option>
-						</c:forEach>
-					</updatehospitalform:select> 
-					
-						<updatehospitalform:input path="pinCode" />
+					 <select name="pinCode" id="pinCode" required>
+							<option value="" selected disabled>Select Pincode</option>
+							<c:forEach items="${listOfpincode}" var="code" varStatus="loop">
+								<option value='${code}'>${code}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -110,16 +107,15 @@
 						<label for="contactPersonId">Contact Person Id</label>
 					</div>
 					<div class="col-75">
-					 <updatehospitalform:select path="contactPersonId" name="contactPersonId" id="contactPersonId" placeholder="Contact Person"
-					pattern="^[0-9]*{6}"  required="true">
-						<c:forEach items="${listAllStaffs}" var="cperson"
-							varStatus="loop">
-							<updatehospitalform:option value='${cperson.userId}'>${cperson.userName} - ${cperson.userId}</updatehospitalform:option>
-						</c:forEach>
-					</updatehospitalform:select>
+					<select name="contactPersonId" id="contactPersonId" required>
+							<option value="" selected disabled >Select Person</option>
+							<c:forEach items="${listAllStaffs}" var="cPerson">
+								<option value='${cPerson.userId}'>${cPerson.userName}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
-				<div>
+				<div class="button-s">
 					<updatehospitalform:button>Update Hospital</updatehospitalform:button>
 				</div>
 			</updatehospitalform:form>

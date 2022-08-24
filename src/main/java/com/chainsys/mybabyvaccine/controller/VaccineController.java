@@ -25,7 +25,8 @@ import com.chainsys.mybabyvaccine.services.VaccineServices;
 @Controller
 @RequestMapping("/vaccines")
 public class VaccineController {
-	private static final String REDIRECT_PAGE = "redirect:/vaccine/listallvaccines";
+	private static final String REDIRECT_PAGE = "redirect:/vaccines/listallvaccines";
+	private static final String ERROR = "error";
 	@Autowired
 	private VaccineServices vacServices;
 	
@@ -41,6 +42,13 @@ public class VaccineController {
 		return "/vaccine/list-vaccines";
 	}
 
+	@GetMapping("/listallvaccinesuser")
+	public String getVaccinesuser(Model model) {
+		List<Vaccine> vaclist = vacServices.getVaccines();
+		model.addAttribute("allvaccines", vaclist);
+		return "/vaccine/list-vaccines-user";
+	}
+
 	@GetMapping("/getvaccine")
 	public String fetchVaccineform() {
 		return "/vaccine/fetch-vaccine-form";
@@ -48,8 +56,13 @@ public class VaccineController {
 
 	@GetMapping("/fetchvaccine")
 	public String getVaccineById(@RequestParam("id") int vacId, Model model) {
+		try {
 		Vaccine theVac = vacServices.getVaccinesById(vacId);
 		model.addAttribute("findvaccinebyid", theVac);
+		}catch (Exception e) {
+			model.addAttribute(ERROR, "Unable Add User");
+			return REDIRECT_PAGE;
+		}
 		return "/vaccine/findbyid-vaccine-form";
 	}
 
@@ -61,26 +74,36 @@ public class VaccineController {
 	}
 
 	@PostMapping("/addvaccines")
-	public String addNewVaccines(@ModelAttribute("addvaccine") Vaccine vaccine) {
+	public String addNewVaccines(@ModelAttribute("addvaccine") Vaccine vaccine,Model model) {
+		try {
 		vacServices.addVaccine(vaccine);
+		}catch (Exception e) {
+			model.addAttribute(ERROR, "Unable Add User");
+			return REDIRECT_PAGE;
+		}
 		return REDIRECT_PAGE;
-	}
-
-	@GetMapping("/modifyvaccineform")
-	public String updateVaccineform() {
-		return "/vaccine/modify-vaccine-form";
 	}
 
 	@GetMapping("/vaccinemodifyform")
 	public String showVaccineUpdateForm(@RequestParam("id") int id, Model model) {
-		Vaccine theVac = vacServices.getVaccinesById(id);
-		model.addAttribute("modifyvaccine", theVac);
+		try {
+			Vaccine theVac = vacServices.getVaccinesById(id);
+			model.addAttribute("modifyvaccine", theVac);
+		}catch (Exception e) {
+			model.addAttribute(ERROR, "Invalid user Detail");
+			return REDIRECT_PAGE;
+		}
 		return "/vaccine/update-vaccine-form";
 	}
 
 	@PostMapping("/modifyvaccines")
-	public String modifyingVaccine(@ModelAttribute("modifyvaccine") Vaccine vac) {
-		vacServices.addVaccine(vac);
+	public String modifyingVaccine(@ModelAttribute("modifyvaccine") Vaccine vac,Model model) {
+		try{
+			vacServices.addVaccine(vac);
+		}catch(Exception e){
+			model.addAttribute(ERROR, "Invalid user Detail");
+			return REDIRECT_PAGE;
+		}
 		return REDIRECT_PAGE;
 	}
 
@@ -91,7 +114,13 @@ public class VaccineController {
 
 	@GetMapping("/vaccinedeleteform")
 	public String showVaccineDeleteForm(@RequestParam("id") int id, Model model) {
+		try {
 		vacServices.removeVaccine(id);
+		}catch(Exception e) {
+			model.addAttribute(ERROR, "Invalid User Detail");
+			return REDIRECT_PAGE;
+		}
 		return REDIRECT_PAGE;
 	}
+	
 }

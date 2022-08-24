@@ -37,12 +37,6 @@
 		<div id="form">
 			<updateform:form action="modifyvaccines" method="post"
 				modelAttribute="modifyvaccine">
-				<div>
-					<label for="vaccineId">Vaccine Id</label>
-				</div>
-				<div>
-					<updateform:input path="vaccineId" readonly="true" />
-				</div>
 			<div class="row">
 					<div class="col-25">
 						<label for="vaccineName">Vaccine Name </label>

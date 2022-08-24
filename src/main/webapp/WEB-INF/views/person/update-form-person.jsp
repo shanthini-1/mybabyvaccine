@@ -25,7 +25,7 @@
 		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/person/user-firstpage"><em
+				<a href="/persons/userfirstview"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -77,11 +77,10 @@
 						<label for="gender">Gender</label>
 					</div>
 					<div class="col-75">
-						<updatepersonform:select path="gender" class="text-box"
-							placeholder="gender" title="gender required" required="true">
-							<updatepersonform:option value="Male">Male</updatepersonform:option>
-							<updatepersonform:option value="Female">Female</updatepersonform:option>
-						</updatepersonform:select>
+						Male
+						<updatepersonform:radiobutton path="gender" value="Male" required="true" />
+						Female
+						<updatepersonform:radiobutton path="gender" value="Female" />
 					</div>
 				</div>
 				<updatepersonform:errors path="gender" class="text-danger" />
@@ -92,8 +91,7 @@
 					<div class="col-75">
 						<updatepersonform:select name="personCategory" path="personCategory"
 							id="personCategory" required="true">
-							<option value="">-none-</option>
-							<option value="Staff">Staff</option>
+							<option value="${modifyPerson.personCategory}">${modifyPerson.personCategory}</option>
 							<option value="User">User</option>
 						
 						</updatepersonform:select>
@@ -162,17 +160,15 @@
 						<label for="pinCode">Pin Code</label>
 					</div>
 					<div class="col-75">
-						 <updatepersonform:select path="pinCode" name="pinCode" id="pinCode" placeholder="pincode"
-					pattern="^[6][0-9]*{6}"  required="true">
-					<updatepersonform:option value=''>-select-</updatepersonform:option>
-						<c:forEach items="${listAllPincode}" var="pinCode"
-							varStatus="loop">
-							<updatepersonform:option value='${pinCode}'>${pinCode}</updatepersonform:option>
-						</c:forEach>
-					</updatepersonform:select> 
+						 <select name="pinCode" id="pinCode" required>
+							<option value="${modifyPerson.pinCode}" >${modifyPerson.pinCode}</option>
+							<c:forEach items="${listOfpincode}" var="code" varStatus="loop">
+								<option value='${code}'>${code}</option>
+							</c:forEach>
+						</select> 
 					</div>
 				</div>
-				<updatepersonform:errors path="pinCode" class="text-danger" />
+				<!-- use session to update password  -->
 				<div class="row">
 					<div class="col-25">
 						<label for="passWord">Password</label>
@@ -184,9 +180,10 @@
 							required="true" />
 					</div>
 				</div>
-				<updatepersonform:errors path="passWord" class="text-danger" />
+				<updatepersonform:errors path="pinCode" class="text-danger" />
+				
 				<div class="button-s">
-					<updatepersonform:button>Update User</updatepersonform:button>
+					<updatepersonform:button>Update</updatepersonform:button>
 				</div>
 			</updatepersonform:form>
 		</div>

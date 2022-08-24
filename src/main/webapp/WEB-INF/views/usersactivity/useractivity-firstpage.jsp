@@ -22,7 +22,7 @@
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/login/staffpagea"> <em class="fa fa-arrow-circle-left"
+				<a href="/login/userpagea"> <em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -35,9 +35,7 @@
 		<div class="dashboard">
 			
 			<ul>
-				<li><a href="/persons/addpersonform">Add Person </a>
-				<!-- <li><a href="/persons/userlocationfindform">Find Person </a> -->
-				<li><a href="/persons/listallpersons">list of person </a>
+				<li><a href="/persons/viewuser">Profile </a>
 			</ul>
 		</div>
 		<div class="img">

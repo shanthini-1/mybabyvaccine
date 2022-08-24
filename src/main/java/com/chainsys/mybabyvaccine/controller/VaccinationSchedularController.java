@@ -25,7 +25,7 @@ import com.chainsys.mybabyvaccine.services.VaccineServices;
  *
  */
 @Controller
-@RequestMapping("/vaccinationschedular")
+@RequestMapping("/vacschedular")
 public class VaccinationSchedularController {
 	@Autowired
 	private VaccinationSchedularServices vaccinationSchedularService;
@@ -39,22 +39,40 @@ public class VaccinationSchedularController {
 		return "/vaccine-scheduler/vaccine-scheduler-firstpage";
 	}
 
+	@GetMapping("/listallvaccineSchedule")
+	public String showVaccinationSchedulerList(Model model) {
+		List<VaccinationSchedular> vacSc  = vaccinationSchedularService.getVaccinationSchedulars();
+		System.out.println(vacSc);
+		model.addAttribute("listAllSchedules", vacSc);
+		return "/vaccine-scheduler/list-all-vaccine-scheduler";
+	}
+	
+	@GetMapping("/vacSchchildform")
+	public String showFormVacSchedulerByChild(Model model) {
+		
+		  List<Child>childidlist = childServices.getChilds();
+		  model.addAttribute("listAllChildrenId", childidlist);
+		 
+		return "/vaccine-scheduler/show-list-child-vaccine-form";
+	}
+	
 	@GetMapping("/vaccineSchedularViewform")
-	public String showVaccinationSchedularAddForm(@RequestParam("childId") int cid, Model model) {
+	public String showVaccinationSchedularAddForm(@RequestParam("id") int cid, Model model) {
 		Child childObj = childServices.findById(cid);
 		List<VaccinationSchedular> vacSc = vaccinationSchedularService.getAllVaccineSchedularsByChildId(cid);
 		model.addAttribute("childDetail", childObj);
 		model.addAttribute("vaccinesch", vacSc);
-		return "show-child-vaccineschedular";
+		
+		return "/vaccine-scheduler/show-child-vaccineschedular";
 	}
 
 	@GetMapping("/vaccineSchedularformfordate")
 	public String showFormVacSchedulerByDate() {
-		return "show-list-child-by-date-form";
+		return "/vaccine-scheduler/show-list-child-by-date-form";
 	}
 
 	@GetMapping("/vaccinelistdate")
-	public String showListOfToVaccineByDateform(@RequestParam("date") Date date, Model model) {
+	public String showListToVaccineByDateform(@RequestParam("date") Date date, Model model) {
 		List<VaccinationSchedular> vacSc = null;
 		try {
 			vacSc = vaccinationSchedularService.getAllVaccineSchedulesByDate(date);

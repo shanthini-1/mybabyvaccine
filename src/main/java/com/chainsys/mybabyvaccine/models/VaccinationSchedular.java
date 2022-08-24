@@ -13,7 +13,6 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -40,13 +39,13 @@ public class VaccinationSchedular {
 	
 	@NotNull(message = "*Date to vaccinate can not be null")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@FutureOrPresent
 	@Column(name="DATE_TO_VACCINATE")
 	private Date dateToVaccinate;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "VACCINE_ID", nullable = false, insertable = false, updatable = false)
 	private Vaccine vaccine;
+	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "CHILD_ID", nullable = false, insertable = false, updatable = false)
 	private Child child;
