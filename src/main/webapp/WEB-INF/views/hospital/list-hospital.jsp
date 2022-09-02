@@ -11,6 +11,10 @@
 </style>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
 	<header>
@@ -19,7 +23,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/hospitals/hospitalfirstview"><em class="fa fa-arrow-circle-left"
@@ -35,9 +39,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 			</div>
 		</div>
 	</nav>
-	<div>
-	</div>
 	<div>${error}</div>
+	<div><input id="sInput" type="text" placeholder="Search.."></div>
+	<br>
 	<div class="container">
 			<table>
 			<caption>Hospital</caption>
@@ -54,7 +58,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 						<th>Update</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="myTableData">
 					<c:forEach var="hospital" items="${listAllTheHospitals}">
 						<tr>
 							<td>${hospital.hospitalId}</td>
@@ -63,11 +67,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 							<td>${hospital.hospitalStreet}</td>
 							<td>${hospital.hospitalCity}</td>
 							<td>${hospital.pinCode}</td>
-							<td>${hospital.contactPersonId}</td>
-							<td><a href="/persons/getpersonlocation?id=${hospital.contactPersonId}">View</a></td>
+							<td>${hospital.contactPerson.userName}</td>
+							<td><a href="/persons/getcpersonlocation?id=${hospital.contactPersonId}">View</a></td>
 							<td><a href="/hospitals/hospitalmodifyform?id=${hospital.hospitalId}">Edit</a></td>
 						
-							
 						</tr>
 					</c:forEach>
 				</tbody>

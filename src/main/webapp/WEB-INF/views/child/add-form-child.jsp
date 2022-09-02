@@ -24,7 +24,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/children/childfirstview"><em class="fa fa-arrow-circle-left"
@@ -198,7 +198,7 @@
 					<addchildform:button>Add Child</addchildform:button>
 				</div>
 			</addchildform:form>
-			${result}
+			
 		</div>
 	</div>
 	<footer>

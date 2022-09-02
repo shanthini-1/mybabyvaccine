@@ -6,9 +6,41 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>vaccineschedule list by date</title>
+<style type="text/css">
+<%@include file="/WEB-INF/css/listpage.css" %>
+</style>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
-<div class="container">
+<div>${error}</div>
+	<header>
+		<div>
+			<span id="time"> </span>
+		</div>
+	</header>
+	
+	<nav class="navbar">
+		<div class="logo">MyBabyVaccine</div>
+		<div class="navmenu">
+			<div class="menu-list">
+				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
+					style="font-size: 20px;"></em> Back </a>
+			</div>
+			<div class="menu-list">
+				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
+					Home</a>
+			</div>
+			
+		</div>
+	</nav>
+	<div><input id="sInput" type="text" placeholder="Search.."></div>
+	<br>
+	<div class="container">
 			<table>
 			<caption>Vaccine Schedule List</caption>
 				<thead>

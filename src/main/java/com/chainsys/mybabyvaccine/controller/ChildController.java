@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -295,13 +297,13 @@ public class ChildController {
 		return "list-child-by-guardian-form";
 	}
 
-	@GetMapping("listchildbyguardianid")
-	public String listChildByGuardianId(@RequestParam("gId") Integer guardianId, Model model) {
-		Person guardian = personServices.getPersonById(guardianId);
-		model.addAttribute("childGuardian", guardian);
-		List<Child> childs = childServices.getChildGuardianId(guardianId);
+	@GetMapping("listchildbyuserid")
+	public String listChildByGuardianId(Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer uIdA=(Integer)session.getAttribute("uId");
+		List<Child> childs = childServices.getChildGuardianId(uIdA);
 		model.addAttribute("listofchildbyguardian", childs);
-		return "list-childs-by-gaurdian";
+		return "/child/list-childs-by-user";
 	}
 
 }

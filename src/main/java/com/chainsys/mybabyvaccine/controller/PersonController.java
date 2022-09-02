@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.chainsys.mybabyvaccine.commonutils.InvalidInputDataException;
-import com.chainsys.mybabyvaccine.models.Login;
 import com.chainsys.mybabyvaccine.models.Person;
 import com.chainsys.mybabyvaccine.services.LocationCodeServices;
 import com.chainsys.mybabyvaccine.services.PersonServices;
@@ -35,6 +34,7 @@ public class PersonController {
 	private static final String MESSAGE = "Invalid User Detail";
 	private static final String ERROR ="error";
 	private static final String RESULT ="result";
+	private static final String EMAIL ="email";
 	
 	@Autowired
 	private PersonServices personServices;
@@ -137,10 +137,13 @@ public class PersonController {
 	}
 
 	@GetMapping("/viewuser")
-	public String getPersonByEmail(@RequestParam("userdatal") Login userA, Model model) {
-		Person theperson = personServices.getPersonByEmail(userA.getEmail());
-		model.addAttribute("fetchPersonById", theperson);
-		return "/person/find-by-id-person-form";
+	public String getPersonByEmail(Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String emailId=(String)session.getAttribute(EMAIL);
+		Person user = personServices.getPersonByEmail(emailId);
+		model.addAttribute("userl", user);
+		model.addAttribute("locationdetail", locServices.getLocationcodeById(user.getPinCode()));
+		return "/person/find-by-id-uperson-location-form";
 	}
 //	----------------------------
 	@GetMapping("/userlocationfindform")
@@ -162,5 +165,40 @@ public class PersonController {
 		model.addAttribute("persondetails", theperson);
 		model.addAttribute("locationdetails", locServices.getLocationcodeById(theperson.getPinCode()));
 		return "/person/find-by-id-person-location-form";
+	}
+	
+	@GetMapping("/getcpersonlocation")
+	public String getCPersonLocationById(@RequestParam("id") Integer userId, Model model,HttpSession session) {
+		Person theperson=null;
+		try {
+		theperson= personServices.getPersonById(userId);
+		if(theperson==null)
+			throw new InvalidInputDataException("Cannot View Person Detail");
+		}catch(Exception e) {
+			session.setAttribute(ERROR, e.getMessage());
+			return REDIRECT_PAGE;
+		}
+		model.addAttribute("persondetails", theperson);
+		model.addAttribute("locationdetails", locServices.getLocationcodeById(theperson.getPinCode()));
+		return "/person/find-by-id-cperson-location-form";
+	}
+	
+	@GetMapping("/vieweditform")
+	public String showPhoneEditForm(Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String emailId=(String)session.getAttribute(EMAIL);
+		Person user = personServices.getPersonByEmail(emailId);
+		model.addAttribute("userl", user);
+		return "/person/user-phone-edit";
+	}
+	
+	@PostMapping("/updatephone")
+	public String updateUserPhone(@RequestParam("phoneNumber") long num, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String emailId=(String)session.getAttribute(EMAIL);
+		Person user = personServices.getPersonByEmail(emailId);
+		model.addAttribute("phone", num);
+		personServices.editPhno(user.getUserId(), num);
+	    return "redirect:/persons/viewuser";	
 	}
 }

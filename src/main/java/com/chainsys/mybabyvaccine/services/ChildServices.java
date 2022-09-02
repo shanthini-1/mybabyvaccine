@@ -51,6 +51,7 @@ public class ChildServices {
 			Date date =Date.valueOf(theChild.getChildDob().toLocalDate().plusMonths(vaccine.getWeek()));
 			vsObj.setDateToVaccinate(date);
 			vaccinationSchedularRepository.save(vsObj);
+
 		}
 		return theChild;
 	}

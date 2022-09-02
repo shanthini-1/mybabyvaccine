@@ -21,7 +21,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/children/childfirstview"><em
@@ -70,8 +70,8 @@
 						<label for="childDob">Child Dob </label>
 					</div>
 					<div class="col-75">
-						<updatechildform:input path="childDob" type="date"
-							placeholder="birth date" required="true" />
+						<updatechildform:input path="childDob" type="date" 
+							placeholder="birth date" required="true" readonly="true"/>
 					</div>
 				</div>
 				<updatechildform:errors path="childDob" class="text-danger" />

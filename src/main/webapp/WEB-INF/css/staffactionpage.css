@@ -189,3 +189,7 @@ footer {
 	text-shadow: black;
 	text-align: center;
 }
+
+.usernameright{
+	float: right;
+}

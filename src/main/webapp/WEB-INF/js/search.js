@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 $(document).ready(function(){
   $("#sInput").on("keyup", function() {
     var value = $(this).val().toLowerCase();

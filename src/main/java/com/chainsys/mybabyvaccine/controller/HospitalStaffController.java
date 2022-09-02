@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,11 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.chainsys.mybabyvaccine.models.Hospital;
 import com.chainsys.mybabyvaccine.models.HospitalStaff;
 import com.chainsys.mybabyvaccine.models.Person;
 import com.chainsys.mybabyvaccine.services.HospitalServices;
 import com.chainsys.mybabyvaccine.services.HospitalStaffServices;
-import com.chainsys.mybabyvaccine.services.LocationCodeServices;
 import com.chainsys.mybabyvaccine.services.PersonServices;
 
 /**
@@ -38,8 +37,7 @@ public class HospitalStaffController {
 	private HospitalServices hospitalServices;
 	@Autowired
 	private PersonServices personServices;
-	@Autowired
-	private LocationCodeServices codeServices;
+	
 	
 	@GetMapping("/hospitalstafffirstview")
 	public String showHospitalActionMenu() {
@@ -84,10 +82,16 @@ public class HospitalStaffController {
 	public String showHospitalStaffAddForm(Model model) {
 		HospitalStaff theHospitalStaff = new HospitalStaff();
 		model.addAttribute("addHospitalStaff", theHospitalStaff);
-		List<Integer> pincodelist = codeServices.getLocationPincodeList();
-		model.addAttribute("listAllpincode", pincodelist);
-		List<Person> staffList = personServices.getAllStaff();
-		model.addAttribute("listAllStaffs", staffList);
+		List<Hospital> hosList = hospitalServices.getHospitals();
+		model.addAttribute("listOfHospital",hosList);
+		List<Person> personlist = personServices.getPersons();
+		List<Person> stafflist = new ArrayList<>();
+		for (Person staff :personlist ) {
+			if(staff.getPersonCategory().equals("Staff")) {
+				stafflist.add(staff);
+			}
+		}
+		model.addAttribute("listAllStaffs",stafflist);
 		return "/hospital/add-form-hospital-staff";
 	}
 
@@ -112,9 +116,19 @@ public class HospitalStaffController {
 	 * update staff details by staffId - staff details giving form
 	 */
 	@GetMapping("/hospitalstaffupdateform")
-	public String showHospitalStaffUpdate(@RequestParam("id") int hospitalId, Model model) {
-		Optional<HospitalStaff> theHospitalStaff = hospitalStaffServices.getHospitalStaffById(hospitalId);
+	public String showHospitalStaffUpdate(@RequestParam("id") int sId, Model model) {
+		Optional<HospitalStaff> theHospitalStaff = hospitalStaffServices.getHospitalStaffById(sId);
 		model.addAttribute("modifyHospitalStaff", theHospitalStaff);
+		List<Hospital> hosList = hospitalServices.getHospitals();
+		model.addAttribute("listOfHospital",hosList);
+		List<Person> personlist = personServices.getPersons();
+		List<Person> stafflist = new ArrayList<>();
+		for (Person staff :personlist ) {
+			if(staff.getPersonCategory().equals("Staff")) {
+				stafflist.add(staff);
+			}
+		}
+		model.addAttribute("listAllStaffs",stafflist);
 		return "/hospital/update-form-hospital-staff";
 	}
 
@@ -159,7 +173,6 @@ public class HospitalStaffController {
 	 */
 	@GetMapping("/gethospitalstaffpersondetails")
 	public String getHospitalStaffDetailsById(@RequestParam("id") Integer id, Model model) {
-
 		Optional<HospitalStaff> thehosstaff = hospitalStaffServices.getHospitalStaffById(id);
 		model.addAttribute("fetchHospitalStaffById", thehosstaff);
 		if (thehosstaff.isPresent()) {

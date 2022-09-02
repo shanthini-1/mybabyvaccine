@@ -11,9 +11,12 @@
 <style>
 <%@include file="/WEB-INF/css/person-add-form.css" %>
 </style>
+<script type="text/javascript">
+<%@include file="/WEB-INF/js/datecheck.js" %>
+</script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ 
 </head>
 <body>
 	<header>
@@ -22,7 +25,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/persons/userfirstview"><em
@@ -47,9 +50,9 @@
 						<label for="userName">User Name</label>
 					</div>
 					<div class="col-75">
-						<addpersonform:input path="userName" type="text" name="username"
-							minlength="3" maxlength="25" id="user name"
-							placeholder="user name" pattern="^[A-Za-z ]+[A-Za-z ]*{3-25}$"
+						<addpersonform:input path="userName" type="text" name="username" id="username"
+							minlength="3" maxlength="25" 
+							placeholder="user name" pattern="^[A-Za-z]+[A-Za-z ]*$"
 							required="true" />
 					</div>
 				</div>
@@ -59,8 +62,8 @@
 						<label for="userDob">User Dob </label>
 					</div>
 					<div class="col-75">
-						<addpersonform:input path="userDob" type="date"
-							placeholder="birth date" required="true"/>
+						<addpersonform:input path="userDob" type="date" onblur="checkDatenofuture()"  onchange="pass()"
+							placeholder="birth date" required="true" id="bDate" />
 					</div>
 				</div>
 				<addpersonform:errors path="userDob" class="text-danger" />
@@ -167,10 +170,8 @@
 						<label for="passWord">Password</label>
 					</div>
 					<div class="col-75">
-						<addpersonform:input path="passWord" type="password" minlength="8"
-							maxlength="25" placeholder="password"
-							pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$"
-							required="true" />
+						<addpersonform:input  path="passWord" type="password" minlength="8" placeholder="password" id="passcode"
+							required="true" value=""/>
 					</div>
 				</div>
 				<addpersonform:errors path="passWord" class="text-danger" />
@@ -186,6 +187,16 @@
 			reserved.
 		</p>
 	</footer>
+	<script>
+
+        function pass()
+        {
+            var str1 = document.getElementById("username").value;
+            var str2 = document.getElementById("bDate").value;
+            var result = str1.toLowerCase().substr(0,4).concat(str2.substr(-10,4));
+            document.getElementById("passcode").value = result ;
+        }
+    </script>
 	<script>
 			<%@include file="/WEB-INF/js/time.js" %>
 	</script>

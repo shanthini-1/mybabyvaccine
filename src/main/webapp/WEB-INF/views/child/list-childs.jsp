@@ -23,7 +23,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/children/childfirstview"><em class="fa fa-arrow-circle-left"
@@ -39,8 +39,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 			</div>
 		</div>
 	</nav>
-	<div><input id="sInput" type="text" placeholder="Search..">
-</div>
+	<div><input id="sInput" type="text" placeholder="Search.."></div>
 	<div class="container">
 		<table>
 			<caption>List of Child</caption>
@@ -59,7 +58,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 					<th>Mother Id</th>
 					<th>Guardian Id</th>
 					<th>Edit</th>
-					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody id="myTableData">
@@ -78,7 +76,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 						<td>${child.mother.userName}</td>
 						<td>${child.guardian.userName}</td>
 						<td><a id='btn' href="/children/childmodifyform?childId=${child.childId}">Edit</a></td>
-						<td><a id='btn' href="/children/childdeleteform?childId=${child.childId}" onclick="return confirm('Are you sure you want to delete child ${child.childId}?');">Delete</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -39,12 +39,17 @@ public class VaccinationStatusServices {
 		vaccinationStatusRepo.deleteById(compId);		
 	}
 
-	public List<VaccinationStatus> getChildrenListByVacId(int vaccineid) {
+	public List<VaccinationStatus> getChildrenListByVacId(Integer vaccineid) {
 		return vaccinationStatusRepo.findByVaccineId(vaccineid);
 	}
 
-	public List<VaccinationStatus> getVaccineListByChildId(int childId) {
+	public List<VaccinationStatus> getVaccineListByChildId(Integer childId) {
 		return vaccinationStatusRepo.findByChildId(childId);
+	}
+
+	public VaccinationStatus getVaccinationStatusByIds(Integer babyId, Integer vaccineId) {
+		
+		return  vaccinationStatusRepo.findByChildIdAndVaccineId(babyId,vaccineId);
 	}
 	
 	

@@ -11,15 +11,21 @@
 </style>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
+<div>${error}</div>
 	<header>
 		<div>
 			<span id="time"> </span>
 		</div>
 	</header>
+	
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine </div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
@@ -32,7 +38,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 			
 		</div>
 	</nav>
-	<div></div>
+	<div><input id="sInput" type="text" placeholder="Search.."></div>
+	<br>
 	<div class="container">
 			<table>
 			<caption>vaccine schedule list</caption>
@@ -46,12 +53,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 					<th>Dosage</th>
 					<th>Suggestion</th>
 					<th>Date To Vaccinate</th>
+					<th>Vaccination Status</th>
+					<th>No.Of.Days to vaccinate</th>
 					<th>Update Status</th>
+					
 
 				</tr>
 				</thead>
-				<tbody>
-					 <c:forEach var="vac" items="${listAllSchedules}"> 
+				<tbody id="myTableData">
+					 <c:forEach var="vac" items="${listAllSchedules}" varStatus="loop"> 
 						<tr>
 							<td>${vac.childId}</td>
 							<td>${vac.child.childName}</td>
@@ -61,6 +71,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 							<td>${vac.vaccine.dosage}</td>
 							<td>${vac.vaccine.suggestion}</td>
 							<td>${vac.dateToVaccinate}</td>
+							<td>${vacSts[loop.index]}</td>
+							<td>${vacEx[loop.index]}</td>
 							 <td><a id='btn' href="/vaccinationstatus/vaccinationstatusmodifyform?cid= ${vac.childId}&vid=${vac.vaccineId}">Update</a></td>
 						</tr>
 					 </c:forEach> 

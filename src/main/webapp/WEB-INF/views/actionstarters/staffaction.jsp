@@ -9,6 +9,9 @@
 <title>Staff Action</title>
 <style type="text/css">
 <%@include file="/WEB-INF/css/staffactionpage.css" %>
+h5{
+float:right;
+}
 </style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +23,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
@@ -53,6 +56,13 @@
 				<a href="/persons/userfirstview">Person</a>
 			</div>
 		</div>
+		<div class="usernameright">
+		<div class="dropdown ">
+			<div class="dropbtn">
+				<h5>user: ${userl.userName}</h5>
+			</div>
+		</div>
+	</div>
 	</div>
 	<div class="body-content">
 
@@ -66,7 +76,7 @@
 				src="https://www.bhf.org.uk/-/media/news-images/2021/september/syringe-and-vial-640x410.jpg?w=100%25&rev=8a0afcdac1474a998d8947904defc52b&hash=10602B13683498D6DF1AE8D386551BC7 "
 				alt="vaccine" id="imgbd"> </a>
 		</div>
-		<div>
+		<div>  
 			<a href="/persons/userfirstview"><img
 				src="https://www.theladders.com/wp-content/uploads/parents-baby-190626.jpg "
 				alt="user" id="imgbd"> </a>

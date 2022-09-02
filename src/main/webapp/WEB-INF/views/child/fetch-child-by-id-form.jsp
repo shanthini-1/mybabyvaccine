@@ -29,7 +29,7 @@ input #childId {
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/children/childfirstview"><em
@@ -49,7 +49,7 @@ input #childId {
 		<div id="form">
 			<form:form action="/children/fetchchild" method="get">
 					 <select name="cid" id="cid" required>
-				 	<option value=''>-select-</option> 
+				 	<option value=''selected disabled>-select-</option> 
 						<c:forEach items="${listAllChildrenId}" var="childId"
 							varStatus="loop">
 							<option value='${childId}'>${childId}<option>

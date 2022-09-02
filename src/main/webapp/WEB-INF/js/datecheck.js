@@ -5,7 +5,7 @@
 
 
 function checkDatenofuture() {
-       let date = document.getElementById('attendanceDate').value;
+       let date = document.getElementById('bDate').value;
        let now = new Date();
        let dt1 = Date.parse(now),
        dt2 = Date.parse(date);

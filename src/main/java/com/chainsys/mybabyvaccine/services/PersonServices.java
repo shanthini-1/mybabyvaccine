@@ -63,5 +63,9 @@ public class PersonServices {
 		return personRepo.findByEmail(email);
 	}
 
-
+	public void editPhno(Integer id, long phno) {
+		Person person=personRepo.findByUserId(id);
+		person.setPhoneNumber(phno);
+		personRepo.save(person);
+	}
 }

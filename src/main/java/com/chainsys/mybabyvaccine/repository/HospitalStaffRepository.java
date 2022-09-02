@@ -4,7 +4,6 @@
 package com.chainsys.mybabyvaccine.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +15,7 @@ import com.chainsys.mybabyvaccine.models.HospitalStaff;
  *
  */
 public interface HospitalStaffRepository extends CrudRepository<HospitalStaff, Integer> {
-	Optional<HospitalStaff> findByStaffId(Integer hosStaffId);
+	HospitalStaff findByStaffId(Integer hosStaffId);
 
 	@Override
 	<S extends HospitalStaff> S save(S hosStaffId);

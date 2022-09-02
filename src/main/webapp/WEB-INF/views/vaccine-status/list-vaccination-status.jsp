@@ -11,6 +11,10 @@
 </style>
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
 	<header>
@@ -36,7 +40,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 			
 		</div>
 	</nav>
-	<div></div>
+	<div><input id="sInput" type="text" placeholder="Search.."></div>
+	<br>
 	<div class="container">
 			<table>
 				<caption>Vaccine Status</caption>
@@ -55,7 +60,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome
 						
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="myTableData">
 					<c:forEach var="vac" items="${allVaccinationStatuslist}">
 						<tr>
 							<td>${vac.childId}</td>

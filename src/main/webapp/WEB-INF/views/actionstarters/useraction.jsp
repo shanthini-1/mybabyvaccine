@@ -20,11 +20,11 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/login/loginform"> <em class="fa fa-arrow-circle-left"
+				<a href="/"> <em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -50,9 +50,16 @@
 		</div>
 		<div class="dropdown">
 			<div class="dropbtn">
-				<a href="">Child</a>
+				<a href="/children/listchildbyuserid">Child</a>
+			</div>
+		</div><div class="usernameright">
+		<div class="dropdown ">
+			<div class="dropbtn">
+				<h5>user: ${userl.userName}</h5>
 			</div>
 		</div>
+	</div>
+		
 	</div>
 	<div class="body-content">
 
@@ -67,9 +74,9 @@
 				alt="vaccine" id="imgbd"> </a>
 		</div>
 		<div>
-			<img
-				src="https://static.toiimg.com/photo/68790934.cms "
-				alt="Children" id="imgbd"> 
+			<a href="/children/listchildbyuserid">
+			<img src="https://static.toiimg.com/photo/68790934.cms "
+				alt="Children" id="imgbd"> </a>
 		</div>
 	</div>
 	<footer>

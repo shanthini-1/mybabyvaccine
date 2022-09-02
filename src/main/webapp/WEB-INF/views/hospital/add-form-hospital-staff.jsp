@@ -21,7 +21,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/hospitalstaff/hospitalstafffirstview"><em class="fa fa-arrow-circle-left"
@@ -48,8 +48,8 @@
 					<div class="col-75">
 						<select name="hospitalId" id="hospitalId" required>
 							<option value="" selected disabled >Select
-								Person</option>
-							<c:forEach items="${listAllTheHospitals}" var="hospital">
+								Hospital</option>
+							<c:forEach items="${listOfHospital}" var="hospital">
 								<option value='${hospital.hospitalId}'>${hospital.hospitalName}</option>
 							</c:forEach>
 						</select>
@@ -63,7 +63,7 @@
 					 <select name="staffId" id="staffId" required>
 							<option value="" selected disabled >Select
 								Person</option>
-							<c:forEach items="${listOfstaffs}" var="staffPerson">
+							<c:forEach items="${listAllStaffs}" var="staffPerson">
 								<option value='${staffPerson.userId}'>${staffPerson.userName}</option>
 							</c:forEach>
 						</select> 

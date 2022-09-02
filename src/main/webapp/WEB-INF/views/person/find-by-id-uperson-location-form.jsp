@@ -22,17 +22,20 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">MyBabyVaccine</div>
+		<div class="logo">My Baby vaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/persons/listallpersons"><em
+				<a href="/login/userpagea"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
 				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
-
+			<div class="menu-list">
+				<a href="/persons/vieweditform" title="Change Phone number" ><em class="fa fa-edit"
+					style="font-size: 20px;"></em> Edit</a>
+			</div>
 		</div>
 	</nav>
 	<div id="root">
@@ -41,7 +44,7 @@
 		</div>
 		<div id="form">
 			<findpersonform:form action="" method="get"
-				modelAttribute="persondetails">
+				modelAttribute="userl">
 				<div class="row">
 					<div class="col-25">
 						<label for="userName">User Name</label>
@@ -115,8 +118,8 @@
 					</div>
 				</div>
 			</findpersonform:form>
-			<findpersonform:form action="/persons/listallpersons" method="get"
-				modelAttribute="locationdetails">
+			<findpersonform:form action="" method="get"
+				modelAttribute="locationdetail">
 				<div class="row">
 					<div class="col-25">
 						<label for="pinCode">Pin Code</label>
@@ -149,7 +152,6 @@
 						<findpersonform:input path="country" readonly="true" />
 					</div>
 				</div>
-				<findpersonform:button>Back</findpersonform:button>
 			</findpersonform:form>
 		</div>
 	</div>

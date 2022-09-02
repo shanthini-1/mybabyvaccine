@@ -20,11 +20,11 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/actionstarters/staffaction">
+				<a href="/login/staffpagea">
 				<em	class="fa fa-arrow-circle-left" style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
@@ -39,16 +39,7 @@
 		<li><a href="/children/addchildform">Add Child </a>
 		<li><a href="/children/listallchilds">List Children </a>
 		<li><a href="/children/fetchchildform">Fetch Child </a>
-		<li><a href="/children/fetchchildbyhospitalid">List
-				Children by Hospital </a>
-		<li><a href="/children/fetchchildbydoctorid">List
-				Children by Doctor</a>
-		<li><a href="/children/fetchhospitalandchildform">fetch
-				Child hospital</a>
-		<li><a href="/children/fetchchildandparent">fetch Child
-				parent</a>
-		<li><a href="/children/fetchchildandguardian">fetch Child
-				guardian</a>
+		
 	</ul>
 	</div>
 	<div class="img"><img alt="child" src="https://rukminim1.flixcart.com/image/416/416/jwaztzk0/poster/v/f/g/medium-p40681-baby-wall-poster-original-imafhyggyntd9wng.jpeg?q=70"></div>

@@ -22,14 +22,14 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/locations/locationfirstview"><em
 					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
 			</div>
 			<div class="menu-list">
-				<a href="index.html"><em class="fa fa-home"
+				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
 

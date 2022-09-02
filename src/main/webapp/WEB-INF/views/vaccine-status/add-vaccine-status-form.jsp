@@ -25,7 +25,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
 				<a href="/vaccines/vaccinefirstview"><em class="fa fa-arrow-circle-left"
@@ -121,7 +121,7 @@
 						<addform:input path="babyWeight"  type="text" inputmode="decimal"
 							name="babyWeight" maxlength="5" id="babyWeight"
 							placeholder="babyWeight"
-							pattern="^([0-9]*{3}+\\.?[0-9]*|\\.[0-9]+)$" required="true" />
+							pattern="^([0-9]*{2}+\\.?[0-9]*|\\.[0-9]+)$" required="true" />
 					</div>
 				</div>
 				<div class="row">

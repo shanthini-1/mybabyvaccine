@@ -1,13 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang ="en">
 <head>
 <title>Details of vaccination status children</title>
+<style>
+<%@include file="/WEB-INF/css/person-add-form.css" %>
+</style>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+	<header>
+		<div>
+			<span id="time"> </span>
+		</div>
+	</header>
+	<nav class="navbar">
+		<div class="logo">MyBabyVaccine</div>
+		<div class="navmenu">
+			<div class="menu-list">
+				<a href="/vaccines/vaccinefirstview"><em
+					class="fa fa-arrow-circle-left" style="font-size: 30px;"></em></a>
+			</div>
+			<div class="menu-list">
+				<a href="/"><em class="fa fa-home" style="font-size: 20px;"></em>
+					Home</a>
+			</div>
+		</div>
+	</nav>
 	<div id="root">
 		<div id="form">
 			<form:form action="" method="get"
@@ -124,5 +147,12 @@
 		</div>
 	</div>
 	</div>
+	<footer>
+		<p>create by shanthini <br>Copyright © 2022 &nbsp; All rights reserved.
+		</p>
+	</footer>
+	<script>
+	<%@include file="/WEB-INF/js/time.js" %>
+	</script>
 </body>
 </html>

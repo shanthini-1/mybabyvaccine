@@ -28,8 +28,11 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
 	@Query(value="select * from person where person_category='User'",nativeQuery = true)
 	List<Person> userList();
 	
-	@Query(value = "SELECT * FROM PERSON  WHERE PERSON_CATEGORY='Staff'", nativeQuery = true)
+	@Query(value = "SELECT * FROM PERSON WHERE PERSON_CATEGORY='Staff'", nativeQuery = true)
 	List<Person> staffList();
 
 	Person findByEmail(String email);
+	@Query(value="update person set phone_no=?2 where user_id = ?1",nativeQuery = true)
+	void editPhoneNo(Integer id,long phno);
+	
 }

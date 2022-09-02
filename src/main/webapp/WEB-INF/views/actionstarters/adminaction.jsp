@@ -16,7 +16,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
@@ -50,9 +50,16 @@
 		</div>
 		<div class="dropdown">
 			<div class="dropbtn">
-				<a href="/staffs/hospitalstafffirstview">Staff</a>
+				<a href="/hospitalstaff/hospitalstafffirstview">Staff</a>
 			</div>
 		</div>
+		<div class="usernameright">
+		<div class="dropdown ">
+			<div class="dropbtn">
+				<h5>user: ${userl.personCategory}</h5>
+			</div>
+		</div>
+	</div>
 	</div>
 	<div class="body-content">
 

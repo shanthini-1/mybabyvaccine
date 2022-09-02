@@ -18,7 +18,7 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
@@ -36,7 +36,6 @@
 			
 			<ul>
 				<li><a href="/persons/addpersonform">Add Person </a>
-				<!-- <li><a href="/persons/userlocationfindform">Find Person </a> -->
 				<li><a href="/persons/listallpersons">list of person </a>
 			</ul>
 		</div>

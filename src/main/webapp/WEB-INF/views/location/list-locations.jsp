@@ -11,7 +11,10 @@
 </style>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+<%@include file="/WEB-INF/js/search.js" %>
+</script>
 </head>
 <body>
 	<header>
@@ -20,10 +23,10 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">Baby Health Tracker</div>
+		<div class="logo">MyBabyVaccine</div>
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/"><em class="fa fa-arrow-circle-left"
+				<a href="/locations/locationfirstview"><em class="fa fa-arrow-circle-left"
 					style="font-size: 20px;"></em> Back </a>
 			</div>
 			<div class="menu-list">
@@ -31,12 +34,12 @@
 					Home</a>
 			</div>
 			<div class="menu-list">
-				<a href="/loctaions/addlocationform"><em class="fa fa-plus"
+				<a href="/locations/addlocationform"><em class="fa fa-plus"
 					style="font-size: 20px;"></em> Location</a>
 			</div>
 		</div>
 	</nav>
-	<div></div>
+	<div>${error}</div><div><input id="sInput" type="text" placeholder="Search.."></div><br>
 	<div class="container">
 
 		<table>
@@ -53,17 +56,14 @@
 					<th>Delete</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="myTableData">
 				<c:forEach var="locationCode" items="${listAllLocation}">
 					<tr>
 						<td>${locationCode.pinCode}</td>
 						<td>${locationCode.district}</td>
 						<td>${locationCode.stateName}</td>
 						<td>${locationCode.country}</td>
-						<td><a
-							href="/locations/locationmodifyform?locId=${locationCode.pinCode}">Edit</a></td>
-						<td><a
-							href="/locations/locationdeleteform?locId=${locationCode.pinCode}">Delete</a></td>
+						<td><a href="/locations/locationmodifyform?locId=${locationCode.pinCode}">Edit</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>

@@ -2,6 +2,7 @@
  * 
  */
 package com.chainsys.mybabyvaccine.controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,8 +67,14 @@ public class HospitalController {
 		List<Integer> pinlist = locationCodeServices.getLocationPincodeList();
 		List<Integer> c=pinlist;
 		model.addAttribute("listOfpincode", c);
-		List<Person> sList = personServices.getAllStaff();
-		model.addAttribute("listOfstaffs", sList);
+		List<Person> personlist = personServices.getPersons();
+		List<Person> stafflist = new ArrayList<>();
+		for (Person staff :personlist ) {
+			if(staff.getPersonCategory().equals("Staff")) {
+				stafflist.add(staff);
+			}
+		}
+		model.addAttribute("listOfstaffs", stafflist);
 		return "/hospital/add-form-hospital";
 	}
 
@@ -85,8 +92,14 @@ public class HospitalController {
 	public String showHospitalUpdateForm(@RequestParam("id") int hospitalId, Model model) {
 		List<Integer> pinlist = locationCodeServices.getLocationPincodeList();
 		model.addAttribute("listOfpincode", pinlist);
-		List<Person> staffList = personServices.getAllStaff();
-		model.addAttribute("listAllStaffs", staffList);
+		List<Person> personlist = personServices.getPersons();
+		List<Person> stafflist = new ArrayList<>();
+		for (Person staff :personlist ) {
+			if(staff.getPersonCategory().equals("Staff")) {
+				stafflist.add(staff);
+			}
+		}
+		model.addAttribute("listAllStaffs",stafflist);
 		Hospital theHospital = hospitalServices.getHospitalById(hospitalId);
 		model.addAttribute("modifyHospital", theHospital);
 		return "/hospital/update-form-hospital";

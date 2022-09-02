@@ -26,4 +26,6 @@ public interface VaccinationStatusRepository extends CrudRepository<VaccinationS
 	List<VaccinationStatus> findByChildId(int childId);
 	List<VaccinationStatus> findByVaccineId(int vacId);
 
+	VaccinationStatus findByChildIdAndVaccineId(Integer babyId, Integer vaccineId);
+
 }

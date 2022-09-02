@@ -20,21 +20,18 @@
 		</div>
 	</header>
 	<nav class="navbar">
-		<div class="logo">My Baby Vaccine</div>
+		<div class="logo">MyBabyVaccine</div>
 
 		<div class="navmenu">
 			<div class="menu-list">
-				<a href="/hospitals/hospitalfirstview">
+				<a href="/login/adminpagea">
 				<em	class="fa fa-arrow-circle-left" style="font-size: 20px;"></em></a>
 			</div>
 			<div class="menu-list">
 				<a href="/"><em class="fa fa-home"
 					style="font-size: 20px;"></em> Home</a>
 			</div>
-			<div class="menu-list">
-				<a href="/login/staffpagea">
-				<em	class="fa fa-group" style="font-size: 20px;">Staff</em></a>
-			</div>
+			
 		</div>
 	</nav>
 	<div class="main">
@@ -43,8 +40,6 @@
 		<li><a href="/hospitals/addhospitalform">Add Hospital </a></li>
 		<li><a href="/hospitals/listallhospitals">list All
 				Hospital </a></li>
-		<li><a href="/hospitals/hoscontactfindform">Find Contact
-				Person</a></li>
 	</ul>
 		</div>
 	<div class="img"><img alt="hospital" src="https://rukminim1.flixcart.com/image/416/416/jwaztzk0/poster/v/f/g/medium-p40681-baby-wall-poster-original-imafhyggyntd9wng.jpeg?q=70"></div>
