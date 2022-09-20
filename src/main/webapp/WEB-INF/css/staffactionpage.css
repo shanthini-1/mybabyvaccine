@@ -106,11 +106,12 @@ span {
 	height: 50px;
 	padding: 0;
 	margin: 0;
-	width: 100%;
+	width: 200px;
+    height: 500px;
 }
 
 .dropdown {
-	float: left;
+	text-align: center;
 	overflow: hidden;
 	color: #feeee0;
 }
@@ -191,5 +192,12 @@ footer {
 }
 
 .usernameright{
-	float: right;
+	float: none;
+}
+.box{
+	    display: flex;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+	  box-shadow: 10px 10px 5px lightblue;
+	
 }

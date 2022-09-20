@@ -37,7 +37,19 @@
 			</div>
 		</div>
 	</nav>
+	<div class="box">
 	<div class="dashboard">
+	<div class="usernameright">
+		<div class="dropdown ">
+		<div class="dropbtn">
+				<em class="fa fa-user-circle-o" style="font-size: 120px;color: white"></em>
+			</div>
+		<div class="dropbtn">
+				<h5>${userl.userName}</h5>
+			</div>
+			
+		</div>
+	</div>
 		<div class="dropdown">
 			<div class="dropbtn">
 				<a href="/persons/viewuser">User</a>
@@ -52,14 +64,7 @@
 			<div class="dropbtn">
 				<a href="/children/listchildbyuserid">Child</a>
 			</div>
-		</div><div class="usernameright">
-		<div class="dropdown ">
-			<div class="dropbtn">
-				<h5>user: ${userl.userName}</h5>
-			</div>
 		</div>
-	</div>
-		
 	</div>
 	<div class="body-content">
 
@@ -78,6 +83,7 @@
 			<img src="https://static.toiimg.com/photo/68790934.cms "
 				alt="Children" id="imgbd"> </a>
 		</div>
+	</div>
 	</div>
 	<footer>
 		<p>

@@ -78,7 +78,6 @@
 					</div>
 				</div>
 				<form:button class="inputs">Log in</form:button>
-
 			</form:form>
 			
 			<div id="formFooter">

@@ -1,4 +1,4 @@
-package com.chainsys.mybabyvaccine.controller;
+ package com.chainsys.mybabyvaccine.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -70,7 +70,7 @@ public class LoginController {
 		{
 			model.addAttribute("error", e.getMessage());
 		}
-		return "index";
+		return "loginform";
 	}
 
 	@GetMapping("/staffpagea")
@@ -107,8 +107,12 @@ public class LoginController {
 		return "/home/error";
 	}
 	
-	@GetMapping("/userHome")
-	public String showPage( Model model) {
-		return "/home/user-land";
+	@GetMapping("/dateweekorholiday")
+	public String showdateweekorholiday(Model model) {
+		return "/jsdemos/date-function";
+	}
+	@GetMapping("/hoursbtwntwodate")
+	public String showhoursbtwntwodate(Model model) {
+		return "/jsdemos/hours-btwn-two-date";
 	}
 }
